@@ -16,7 +16,7 @@ class HomeView extends StatelessWidget {
         child: Stack(
           children: [
             Positioned(top: 0, child: Image.asset("assets/Ellipse 2.png")),
-            Positioned(top: 300, child: Image.asset("assets/Ellipse 1.png")),
+            Positioned(top: 310, child: Image.asset("assets/Ellipse 1.png")),
             Padding(
               padding: const EdgeInsets.only(top: 50),
               child: SizedBox(

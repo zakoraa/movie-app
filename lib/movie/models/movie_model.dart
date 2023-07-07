@@ -1,6 +1,6 @@
 class Movie {
   final int? id;
-  final double? rating;
+  final dynamic rating;
   final String? title, poster, backdrop, releaseDate, overview;
 
   Movie({
@@ -17,12 +17,11 @@ class Movie {
     return Movie(
         id: json['id'],
         title: json['title'],
-        rating: json['vote_avarage'],
+        rating: json['vote_average'],
         releaseDate: json['release_date'],
         poster: json['poster_path'] ?? '',
         backdrop: json['backdrop_path'] ?? '',
-        overview: json['overview']
-        );
+        overview: json['overview']);
   }
 
   static List<Movie> moviesFromSnapshot(List snapshot) {
