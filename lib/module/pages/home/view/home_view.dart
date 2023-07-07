@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../widget/trending_now.dart';
 import '../widget/header_widget.dart';
 import '../widget/list_view_widget.dart';
 
@@ -15,7 +16,7 @@ class HomeView extends StatelessWidget {
         child: Stack(
           children: [
             Positioned(top: 0, child: Image.asset("assets/Ellipse 2.png")),
-            Positioned(bottom: 0, child: Image.asset("assets/Ellipse 1.png")),
+            Positioned(top: 300, child: Image.asset("assets/Ellipse 1.png")),
             Padding(
               padding: const EdgeInsets.only(top: 50),
               child: SizedBox(
@@ -30,7 +31,7 @@ class HomeView extends StatelessWidget {
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 20),
-                        child: Text("Latest"),
+                        child: Text("For You"),
                       ),
                       SizedBox(
                         height: 30.0,
@@ -41,8 +42,9 @@ class HomeView extends StatelessWidget {
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 20),
-                        child: Text("Favorite"),
+                        child: Text("Trending Now"),
                       ),
+                      TrendingNow(),
                     ],
                   ),
                 ),
