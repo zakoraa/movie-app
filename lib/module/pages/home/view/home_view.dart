@@ -37,15 +37,12 @@ class HomeView extends StatelessWidget {
                       ),
                       ListViewWidget(),
                       SizedBox(
-                        height: 30.0,
+                        height: 5.0,
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 20),
                         child: Text("Favorite"),
                       ),
-                      // Column(
-                      //   children: ,
-                      // )
                     ],
                   ),
                 ),
