@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movieapp/movie/controllers/movie_get_discovere.dart';
 
+import '../widget/carousel_slider_widget.dart';
 import '../widget/trending_now.dart';
 import '../widget/header_widget.dart';
 import '../widget/list_view_widget.dart';
@@ -26,6 +28,10 @@ class HomeView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
                       HeaderWidget(),
+                      SizedBox(
+                        height: 30.0,
+                      ),
+                      CarouselSliderWidget(),
                       SizedBox(
                         height: 30.0,
                       ),

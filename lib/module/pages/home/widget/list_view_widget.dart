@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
 import '../../../../movie/controllers/movie_get_discovere.dart';
-import '../../../../movie/models/movie_model.dart';
 
 class ListViewWidget extends StatelessWidget {
   const ListViewWidget({
@@ -46,7 +45,7 @@ class ListViewWidget extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(25),
                               child: Image.network(
-                                "https://image.tmdb.org/t/p/w500/${movie[index].poster}",
+                                "${MovieController.imageUrlW500}${movie[index].poster}",
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -59,11 +58,14 @@ class ListViewWidget extends StatelessWidget {
                             child: Text(
                               "${movie[index].title}",
                               style: const TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   color: Color.fromARGB(255, 232, 232, 232)),
                               textAlign: TextAlign.left,
                               overflow: TextOverflow.fade,
                             ),
+                          ),
+                          const SizedBox(
+                            height: 5.0,
                           ),
                           Text(
                             movie[index].releaseDate!.substring(0, 4),

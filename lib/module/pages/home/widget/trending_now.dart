@@ -41,7 +41,7 @@ class TrendingNow extends StatelessWidget {
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               child: Image.network(
-                                                "https://image.tmdb.org/t/p/w500/${movie.poster}",
+                                                "${MovieController.imageUrlW500}${movie.poster}",
                                                 height: 120,
                                               ),
                                             ),
@@ -54,10 +54,9 @@ class TrendingNow extends StatelessWidget {
                                             padding: const EdgeInsets.only(
                                                 top: 30, left: 30),
                                             child: SizedBox(
-                                              width: 130,
+                                              width: 120,
                                               child: Text(
                                                 "${movie.title}",
-                                                textAlign: TextAlign.justify,
                                                 style: const TextStyle(
                                                     fontSize: 15),
                                               ),
@@ -67,11 +66,10 @@ class TrendingNow extends StatelessWidget {
                                             padding: const EdgeInsets.only(
                                                 top: 10, left: 30),
                                             child: SizedBox(
-                                              width: 130,
+                                              width: 120,
                                               child: Text(
                                                 movie.releaseDate!
                                                     .substring(0, 4),
-                                                textAlign: TextAlign.justify,
                                                 style: const TextStyle(
                                                     fontSize: 12,
                                                     color: Colors.grey),
