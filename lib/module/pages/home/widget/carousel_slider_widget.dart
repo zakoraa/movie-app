@@ -38,6 +38,7 @@ class CarouselSliderWidget extends StatelessWidget {
               items: carouselListMovie.map((movie) {
                 return Container(
                   width: Get.size.width,
+                  height: 225,
                   decoration: BoxDecoration(
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(20)),
@@ -46,6 +47,8 @@ class CarouselSliderWidget extends StatelessWidget {
                     child: Image.network(
                       "${MovieController.imageUrlOriginal}${movie.backdrop}",
                       fit: BoxFit.cover,
+                      height: 225,
+                      width: Get.size.width,
                     ),
                   ),
                 );

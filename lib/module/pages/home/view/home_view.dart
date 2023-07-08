@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/movie/controllers/movie_get_discovere.dart';
 
 import '../widget/carousel_slider_widget.dart';
 import '../widget/trending_now.dart';
@@ -18,7 +17,14 @@ class HomeView extends StatelessWidget {
         child: Stack(
           children: [
             Positioned(top: 0, child: Image.asset("assets/Ellipse 2.png")),
-            Positioned(top: 310, child: Image.asset("assets/Ellipse 1.png")),
+            Positioned(top: 225, child: Image.asset("assets/Ellipse 1.png")),
+            Positioned(
+              bottom: 0,
+              child: Transform(
+                  alignment: Alignment.center,
+                  transform: Matrix4.identity()..scale(-1.0, 1.0, 1.0),
+                  child: Image.asset("assets/Ellipse 1.png")),
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 50),
               child: SizedBox(
