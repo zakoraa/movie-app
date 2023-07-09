@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movieapp/module/pages/home/widget/container_drawer.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -49,7 +50,22 @@ class DrawerWidget extends StatelessWidget {
                         )
                       ],
                     ),
-                  ))
+                  )),
+              const SizedBox(
+                height: 30.0,
+              ),
+              const ContainerDrawer(
+                icon: Icons.favorite_outline,
+                text: "Favorite Movies",
+              ),
+              const ContainerDrawer(
+                icon: Icons.settings,
+                text: "Settings",
+              ),
+              const ContainerDrawer(
+                icon: Icons.logout,
+                text: "Logout",
+              ),
             ],
           ),
         ],

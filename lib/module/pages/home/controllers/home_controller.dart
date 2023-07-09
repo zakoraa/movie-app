@@ -7,6 +7,5 @@ class HomeController extends GetxController {
   final Random random = Random();
   void refreshList(RxList list) {
     list.shuffle(random);
-    update();
   }
 }

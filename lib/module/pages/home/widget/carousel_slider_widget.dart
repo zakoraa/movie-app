@@ -11,19 +11,14 @@ class CarouselSliderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MovieController movieController = Get.put(MovieController());
+    MovieController movieController = Get.find<MovieController>();
     HomeController homeController = Get.put(HomeController());
     final movies = movieController.carouselSliderListMovie;
     return Obx(() {
       homeController.refreshList(movies);
       List<Movie> carouselListMovie = movies.take(5).toList();
       return (movieController.isLoading.value)
-          ? const Center(
-              child: CircularProgressIndicator(
-                backgroundColor: Colors.grey,
-                color: Colors.white,
-              ),
-            )
+          ? const SizedBox.shrink()
           : CarouselSlider(
               options: CarouselOptions(
                 height: 225,

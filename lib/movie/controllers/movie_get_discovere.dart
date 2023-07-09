@@ -24,7 +24,6 @@ class MovieController extends GetxController {
       carouselSliderListMovie.value = data;
     }
     isLoading.value = false;
-    update();
   }
 
   @override

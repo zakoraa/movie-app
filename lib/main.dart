@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/pages/home/view/home_view.dart';
+import 'package:movieapp/movie/controllers/movie_get_discovere.dart';
 
 import 'routes/routes.dart';
 
@@ -11,6 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MovieController movieController = Get.put(MovieController());
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
