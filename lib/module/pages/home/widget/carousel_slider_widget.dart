@@ -15,7 +15,7 @@ class CarouselSliderWidget extends StatelessWidget {
     HomeController homeController = Get.put(HomeController());
     final movies = movieController.carouselSliderListMovie;
     return Obx(() {
-    homeController.refreshList(movies);
+      homeController.refreshList(movies);
       List<Movie> carouselListMovie = movies.take(5).toList();
       return (movieController.isLoading.value)
           ? const Center(
@@ -41,14 +41,35 @@ class CarouselSliderWidget extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(20)),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Image.network(
-                      "${MovieController.imageUrlOriginal}${movie.backdrop}",
-                      fit: BoxFit.cover,
-                      height: 225,
-                      width: Get.size.width,
-                    ),
+                  child: Stack(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.network(
+                          "${MovieController.imageUrlOriginal}${movie.backdrop}",
+                          fit: BoxFit.cover,
+                          height: 225,
+                          width: Get.size.width,
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 15,
+                        left: 15,
+                        child: Container(
+                            height: 30,
+                            padding: const EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                                color: const Color.fromARGB(98, 0, 0, 0),
+                                borderRadius: BorderRadius.circular(5)),
+                            child: Center(
+                              child: Text(
+                                "${movie.title}",
+                                style: const TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w700),
+                              ),
+                            )),
+                      )
+                    ],
                   ),
                 );
               }).toList(),

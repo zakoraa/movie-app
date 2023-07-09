@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../widget/carousel_slider_widget.dart';
+import '../widget/drawer_widget.dart';
 import '../widget/trending_now.dart';
 import '../widget/header_widget.dart';
 import '../widget/list_view_widget.dart';
@@ -12,6 +13,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: DrawerWidget(),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Stack(

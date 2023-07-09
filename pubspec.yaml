@@ -66,6 +66,8 @@ flutter:
   assets:
     - assets/Ellipse 1.png
     - assets/Ellipse 2.png
+    - assets/Ellipse 3.png
+    - assets/Ellipse 4.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

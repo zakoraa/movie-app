@@ -16,12 +16,15 @@ class HeaderWidget extends StatelessWidget {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Icon(
-                  Icons.menu,
-                  size: 30,
+              children: [
+                GestureDetector(
+                  onTap: (() => Scaffold.of(context).openDrawer()),
+                  child: const Icon(
+                    Icons.menu,
+                    size: 30,
+                  ),
                 ),
-                Icon(
+                const Icon(
                   Icons.search,
                   size: 30,
                 )
