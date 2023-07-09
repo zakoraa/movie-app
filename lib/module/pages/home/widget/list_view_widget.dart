@@ -13,7 +13,7 @@ class ListViewWidget extends StatelessWidget {
     MovieController movieController = Get.put(MovieController());
     HomeController homeController = Get.put(HomeController());
     final movie = movieController.listMovie;
-    return GetBuilder<MovieController>(builder: (controller) {
+    return Obx(() {
       homeController.refreshList(movie);
       return (movieController.isLoading.value)
           ? const Center(
@@ -21,7 +21,7 @@ class ListViewWidget extends StatelessWidget {
                   backgroundColor: Colors.white, color: Colors.grey),
             )
           : SizedBox(
-              height: 350,
+              height: 300,
               width: Get.size.width,
               child: ListView.builder(
                 physics: const BouncingScrollPhysics(),
@@ -37,8 +37,8 @@ class ListViewWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            height: 225,
-                            width: 150,
+                            height: 200,
+                            width: 140,
                             decoration: BoxDecoration(
                                 color: Colors.grey,
                                 borderRadius: BorderRadius.circular(25)),

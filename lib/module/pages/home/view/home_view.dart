@@ -39,7 +39,7 @@ class HomeView extends StatelessWidget {
                       ),
                       CarouselSliderWidget(),
                       SizedBox(
-                        height: 30.0,
+                        height: 40.0,
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 20),

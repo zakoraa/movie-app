@@ -13,10 +13,9 @@ class CarouselSliderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     MovieController movieController = Get.put(MovieController());
     HomeController homeController = Get.put(HomeController());
-
     final movies = movieController.carouselSliderListMovie;
-    homeController.refreshList(movies);
     return Obx(() {
+    homeController.refreshList(movies);
       List<Movie> carouselListMovie = movies.take(5).toList();
       return (movieController.isLoading.value)
           ? const Center(
@@ -32,7 +31,7 @@ class CarouselSliderWidget extends StatelessWidget {
                 autoPlay: true, //otomatis kegeser sendiri
                 autoPlayAnimationDuration:
                     const Duration(seconds: 4), //lama animasi gesernya
-                autoPlayInterval: const Duration(seconds: 10), // waktu
+                autoPlayInterval: const Duration(seconds: 7), // waktu
                 enlargeCenterPage: true,
               ),
               items: carouselListMovie.map((movie) {

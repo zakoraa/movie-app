@@ -60,7 +60,7 @@ class HeaderWidget extends StatelessWidget {
                       height: 50,
                       width: 50,
                       child: Image.network(
-                        "https://media.glamourmagazine.co.uk/photos/6138c811a35312eec27858a3/4:3/w_2080,h_1560,c_limit/gettyimages-1027343558_sf.jpg",
+                        "https://pbs.twimg.com/media/FnQKQaWXoAADHK0.jpg",
                         fit: BoxFit.cover,
                       ),
                     ))
