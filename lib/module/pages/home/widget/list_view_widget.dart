@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
-import '../../../../movie/controllers/movie_get_discovere.dart';
+import '../../../../movie/controllers/movie_get_discover.dart';
 
 class ListViewWidget extends StatelessWidget {
   const ListViewWidget({

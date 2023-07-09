@@ -16,7 +16,6 @@ class GetMovie {
       });
 
       Map data = jsonDecode(response.body);
-      // print(data);
       List _temp = [];
 
       for (dynamic i in data['results']) {

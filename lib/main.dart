@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/pages/home/view/home_view.dart';
-import 'package:movieapp/movie/controllers/movie_get_discovere.dart';
+import 'package:movieapp/movie/controllers/movie_get_discover.dart';
 
 import 'routes/routes.dart';
 

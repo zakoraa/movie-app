@@ -15,8 +15,7 @@ class ContainerDrawer extends StatelessWidget {
       padding: const EdgeInsets.only(left: 20),
       height: 50,
       decoration: const BoxDecoration(
-          border: Border.symmetric(
-              horizontal: BorderSide(color: Colors.amber, width: 1))),
+          border: Border(bottom: BorderSide(color: Colors.amber, width: 1))),
       child: Row(
         children: [
           Icon(

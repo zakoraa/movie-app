@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/movie/controllers/movie_get_discovere.dart';
+import 'package:movieapp/movie/controllers/movie_get_discover.dart';
 
 import '../widget/carousel_slider_widget.dart';
 import '../widget/drawer_widget.dart';
