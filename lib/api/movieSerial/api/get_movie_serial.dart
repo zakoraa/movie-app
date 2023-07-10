@@ -1,7 +1,5 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
-
 import '../models/serial_model.dart';
 
 class GetMovieSerial {
@@ -21,8 +19,9 @@ class GetMovieSerial {
       for (dynamic i in data["results"]) {
         movieSerialData.add(i);
       }
-      print(movieSerialData);
-
+      if (movieSerialData.length != 0) {
+        print("Get Movie Serial Success");
+      }
       return MovieSerial.movieSerialFromSnapshot(movieSerialData);
     } catch (e) {
       print("Get error : ${e.toString()}");

@@ -21,7 +21,9 @@ class GetMovie {
       for (dynamic i in data['results']) {
         movieData.add(i);
       }
-      print(movieData);
+      if (movieData.length != 0) {
+        print("Get Movie Success");
+      }
       return Movie.moviesFromSnapshot(movieData);
     } catch (e) {
       print("Get error: ${e.toString()}");
