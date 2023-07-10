@@ -52,16 +52,17 @@ class CarouselSliderWidget extends StatelessWidget {
                         left: 15,
                         child: Container(
                             height: 30,
-                            padding: const EdgeInsets.all(5),
+                            padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                            constraints:
+                                BoxConstraints(maxWidth: Get.size.width * 0.6),
                             decoration: BoxDecoration(
                                 color: const Color.fromARGB(98, 0, 0, 0),
                                 borderRadius: BorderRadius.circular(5)),
-                            child: Center(
-                              child: Text(
-                                "${movie.title}",
-                                style: const TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.w700),
-                              ),
+                            child: Text(
+                              "${movie.title}",
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w700),
                             )),
                       )
                     ],

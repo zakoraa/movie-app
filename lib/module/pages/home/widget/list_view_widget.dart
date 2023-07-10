@@ -13,8 +13,8 @@ class ListViewWidget extends StatelessWidget {
     MovieController movieController = Get.find<MovieController>();
     HomeController homeController = Get.put(HomeController());
     final movie = movieController.listMovie;
+    homeController.refreshList(movie);
     return Obx(() {
-      homeController.refreshList(movie);
       return (movieController.isLoading.value)
           ? const SizedBox.shrink()
           : Column(

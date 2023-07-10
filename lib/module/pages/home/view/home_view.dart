@@ -29,37 +29,35 @@ class HomeView extends StatelessWidget {
                   transform: Matrix4.identity()..scale(-1.0, 1.0, 1.0),
                   child: Image.asset("assets/Ellipse 1.png")),
             ),
-            Obx(()=>(movieController.isLoading.value)
-                ? SizedBox(
-                    height: Get.size.height,
-                    child: const Center(
-                      child: CircularProgressIndicator(
-                        strokeWidth: 5,
-                        backgroundColor: Colors.grey,
-                        color: Colors.white,
+            Obx(
+              () => (movieController.isLoading.value)
+                  ? SizedBox(
+                      height: Get.size.height,
+                      child: const Center(
+                        child: Text("Loading..."),
                       ),
-                    ),
-                  )
-                : Padding(
-                    padding: const EdgeInsets.only(top: 50),
-                    child: SizedBox(
-                      width: Get.size.width,
-                      child: Center(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            HeaderWidget(),
-                            SizedBox(
-                              height: 30.0,
-                            ),
-                            CarouselSliderWidget(),
-                            ListViewWidget(),
-                            TrendingNow(),
-                          ],
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.only(top: 50),
+                      child: SizedBox(
+                        width: Get.size.width,
+                        child: Center(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              HeaderWidget(),
+                              SizedBox(
+                                height: 30.0,
+                              ),
+                              CarouselSliderWidget(),
+                              ListViewWidget(),
+                              TrendingNow(),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),)
+            )
           ],
         ),
       ),
