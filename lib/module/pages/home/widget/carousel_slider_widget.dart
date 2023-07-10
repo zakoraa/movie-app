@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
-import 'package:movieapp/movie/controllers/movie_get_discover.dart';
+import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
 
-import '../../../../movie/models/movie_model.dart';
+import '../../../../api/imageAPI/image_url_api.dart';
+import '../../../../api/movie/models/movie_model.dart';
 
 class CarouselSliderWidget extends StatelessWidget {
   const CarouselSliderWidget({super.key});
@@ -16,7 +17,7 @@ class CarouselSliderWidget extends StatelessWidget {
     HomeController homeController = Get.put(HomeController());
     final movies = movieController.carouselSliderListMovie;
     return Obx(() {
-      homeController.refreshList(movies);
+      homeController.randomList(movies);
       List<Movie> carouselListMovie = movies.take(5).toList();
       return (movieController.isLoading.value)
           ? const SizedBox.shrink()
@@ -42,7 +43,7 @@ class CarouselSliderWidget extends StatelessWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Image.network(
-                          "${MovieController.imageUrlOriginal}${movie.backdrop}",
+                          "${ImageUrlApi.imageUrlOriginal}${movie.backdrop}",
                           fit: BoxFit.cover,
                           height: 225,
                           width: Get.size.width,

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
-import '../../../../movie/controllers/movie_get_discover.dart';
+import 'package:movieapp/api/movie/models/movie_model.dart';
+import '../../../../api/imageAPI/image_url_api.dart';
+import '../../../../api/movie/controllers/movie_get_discover.dart';
 
 class ListViewWidget extends StatelessWidget {
   const ListViewWidget({
@@ -13,8 +15,10 @@ class ListViewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     MovieController movieController = Get.find<MovieController>();
     HomeController homeController = Get.put(HomeController());
-    final movie = movieController.listMovie;
+    RxList<Movie> movies = movieController.listMovie;
     return Obx(() {
+      homeController.randomList(movies);
+      List<Movie> listViewMovie = movies.take(7).toList();
       return (movieController.isLoading.value)
           ? const SizedBox.shrink()
           : Column(
@@ -30,9 +34,8 @@ class ListViewWidget extends StatelessWidget {
                   child: ListView.builder(
                     physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
-                    itemCount: 7,
+                    itemCount: listViewMovie.length,
                     itemBuilder: ((context, index) {
-                      homeController.refreshList(movie);
                       return Row(
                         children: [
                           const SizedBox(
@@ -50,7 +53,7 @@ class ListViewWidget extends StatelessWidget {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(25),
                                   child: Image.network(
-                                    "${MovieController.imageUrlW500}${movie[index].poster}",
+                                    "${ImageUrlApi.imageUrlW500}${listViewMovie[index].poster}",
                                     fit: BoxFit.cover,
                                     loadingBuilder: (context, child,
                                             loadingProgress) =>
@@ -74,7 +77,7 @@ class ListViewWidget extends StatelessWidget {
                               SizedBox(
                                 width: 150,
                                 child: Text(
-                                  "${movie[index].title}",
+                                  "${listViewMovie[index].title}",
                                   style: const TextStyle(
                                       fontSize: 14,
                                       color:
@@ -87,7 +90,7 @@ class ListViewWidget extends StatelessWidget {
                                 height: 5.0,
                               ),
                               Text(
-                                movie[index].releaseDate!.substring(0, 4),
+                                listViewMovie[index].releaseDate!.substring(0, 4),
                                 style: const TextStyle(
                                     fontSize: 14,
                                     color: Colors.grey,

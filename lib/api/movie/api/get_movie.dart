@@ -2,7 +2,7 @@
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:movieapp/movie/models/movie_model.dart';
+import 'package:movieapp/api/movie/models/movie_model.dart';
 
 class GetMovie {
   Future getData() async {
@@ -16,15 +16,15 @@ class GetMovie {
       });
 
       Map data = jsonDecode(response.body);
-      List _temp = [];
+      List movieData = [];
 
       for (dynamic i in data['results']) {
-        _temp.add(i);
+        movieData.add(i);
       }
-      print(_temp);
-      return Movie.moviesFromSnapshot(_temp);
+      print(movieData);
+      return Movie.moviesFromSnapshot(movieData);
     } catch (e) {
-      print("Get error bang: ${e.toString()}");
+      print("Get error: ${e.toString()}");
     }
   }
 }
