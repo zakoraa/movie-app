@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
 import 'package:movieapp/movie/controllers/movie_get_discover.dart';
 
@@ -45,6 +46,17 @@ class CarouselSliderWidget extends StatelessWidget {
                           fit: BoxFit.cover,
                           height: 225,
                           width: Get.size.width,
+                          loadingBuilder: (context, child, loadingProgress) =>
+                              (loadingProgress == null)
+                                  ? child
+                                  : SizedBox(
+                                      height: Get.size.height,
+                                      child: Center(
+                                        child: LoadingAnimationWidget
+                                            .horizontalRotatingDots(
+                                                color: Colors.white, size: 40),
+                                      ),
+                                    ),
                         ),
                       ),
                       Positioned(

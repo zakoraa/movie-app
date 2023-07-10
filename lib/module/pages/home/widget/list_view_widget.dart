@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
 import '../../../../movie/controllers/movie_get_discover.dart';
 
@@ -13,7 +14,6 @@ class ListViewWidget extends StatelessWidget {
     MovieController movieController = Get.find<MovieController>();
     HomeController homeController = Get.put(HomeController());
     final movie = movieController.listMovie;
-    homeController.refreshList(movie);
     return Obx(() {
       return (movieController.isLoading.value)
           ? const SizedBox.shrink()
@@ -32,6 +32,7 @@ class ListViewWidget extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemCount: 7,
                     itemBuilder: ((context, index) {
+                      homeController.refreshList(movie);
                       return Row(
                         children: [
                           const SizedBox(
@@ -44,13 +45,26 @@ class ListViewWidget extends StatelessWidget {
                                 height: 200,
                                 width: 140,
                                 decoration: BoxDecoration(
-                                    color: Colors.grey,
+                                    color: Colors.black,
                                     borderRadius: BorderRadius.circular(25)),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(25),
                                   child: Image.network(
                                     "${MovieController.imageUrlW500}${movie[index].poster}",
                                     fit: BoxFit.cover,
+                                    loadingBuilder: (context, child,
+                                            loadingProgress) =>
+                                        (loadingProgress == null)
+                                            ? child
+                                            : SizedBox(
+                                                height: Get.size.height,
+                                                child: Center(
+                                                  child: LoadingAnimationWidget
+                                                      .horizontalRotatingDots(
+                                                          color: Colors.white,
+                                                          size: 40),
+                                                ),
+                                              ),
                                   ),
                                 ),
                               ),

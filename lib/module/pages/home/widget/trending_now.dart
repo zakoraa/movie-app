@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/movie/controllers/movie_get_discover.dart';
 import 'package:movieapp/movie/models/movie_model.dart';
 
@@ -57,6 +58,21 @@ class TrendingNow extends StatelessWidget {
                                               child: Image.network(
                                                 "${MovieController.imageUrlW500}${movie.poster}",
                                                 height: 120,
+                                                loadingBuilder: (context, child,
+                                                        loadingProgress) =>
+                                                    (loadingProgress == null)
+                                                        ? child
+                                                        : SizedBox(
+                                                            height:
+                                                                Get.size.height,
+                                                            child: Center(
+                                                              child: LoadingAnimationWidget
+                                                                  .horizontalRotatingDots(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      size: 40),
+                                                            ),
+                                                          ),
                                               ),
                                             ),
                                           ),

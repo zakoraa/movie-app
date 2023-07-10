@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/movie/controllers/movie_get_discover.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../widget/carousel_slider_widget.dart';
 import '../widget/drawer_widget.dart';
@@ -33,8 +34,9 @@ class HomeView extends StatelessWidget {
               () => (movieController.isLoading.value)
                   ? SizedBox(
                       height: Get.size.height,
-                      child: const Center(
-                        child: Text("Loading..."),
+                      child: Center(
+                        child: LoadingAnimationWidget.staggeredDotsWave(
+                            color: Colors.white, size: 40),
                       ),
                     )
                   : Padding(
