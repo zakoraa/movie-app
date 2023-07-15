@@ -7,6 +7,7 @@ import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
 
 import '../../../../api/imageAPI/image_url_api.dart';
 import '../../../../api/movie/models/movie_model.dart';
+import '../../movieDetails/view/movie_details_view.dart';
 
 class CarouselSliderWidget extends StatelessWidget {
   const CarouselSliderWidget({super.key});
@@ -32,53 +33,57 @@ class CarouselSliderWidget extends StatelessWidget {
                 enlargeCenterPage: true,
               ),
               items: carouselListMovie.map((movie) {
-                return Container(
-                  width: Get.size.width,
-                  height: 225,
-                  decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Stack(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.network(
-                          "${ImageUrlApi.imageUrlOriginal}${movie.backdrop}",
-                          fit: BoxFit.cover,
-                          height: 225,
-                          width: Get.size.width,
-                          loadingBuilder: (context, child, loadingProgress) =>
-                              (loadingProgress == null)
-                                  ? child
-                                  : SizedBox(
-                                      height: Get.size.height,
-                                      child: Center(
-                                        child: LoadingAnimationWidget
-                                            .horizontalRotatingDots(
-                                                color: Colors.white, size: 40),
+                return GestureDetector(
+                  onTap: (() => Get.to(() => MovieDetailsView(movie: movie))),
+                  child: Container(
+                    width: Get.size.width,
+                    height: 225,
+                    decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Stack(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.network(
+                            "${ImageUrlApi.imageUrlOriginal}${movie.backdrop}",
+                            fit: BoxFit.cover,
+                            height: 225,
+                            width: Get.size.width,
+                            loadingBuilder: (context, child, loadingProgress) =>
+                                (loadingProgress == null)
+                                    ? child
+                                    : SizedBox(
+                                        height: Get.size.height,
+                                        child: Center(
+                                          child: LoadingAnimationWidget
+                                              .horizontalRotatingDots(
+                                                  color: Colors.white,
+                                                  size: 40),
+                                        ),
                                       ),
-                                    ),
+                          ),
                         ),
-                      ),
-                      Positioned(
-                        bottom: 15,
-                        left: 15,
-                        child: Container(
-                            height: 30,
-                            padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
-                            constraints:
-                                BoxConstraints(maxWidth: Get.size.width * 0.6),
-                            decoration: BoxDecoration(
-                                color: const Color.fromARGB(98, 0, 0, 0),
-                                borderRadius: BorderRadius.circular(5)),
-                            child: Text(
-                              "${movie.title}",
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w700),
-                            )),
-                      )
-                    ],
+                        Positioned(
+                          bottom: 15,
+                          left: 15,
+                          child: Container(
+                              height: 30,
+                              padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                              constraints: BoxConstraints(
+                                  maxWidth: Get.size.width * 0.6),
+                              decoration: BoxDecoration(
+                                  color: const Color.fromARGB(98, 0, 0, 0),
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: Text(
+                                "${movie.title}",
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w700),
+                              )),
+                        )
+                      ],
+                    ),
                   ),
                 );
               }).toList(),
