@@ -33,17 +33,19 @@ class TrendingNow extends StatelessWidget {
                     child: Column(
                         children: trendingMovies.map((movie) {
                       return GestureDetector(
-                        onTap: () => Get.to(()=> MovieDetailsView(movie: movie,)),
+                        onTap: () => Get.to(()=>MovieDetailsView(movie: movie)),
                         child: Column(
                           children: [
                             Container(
                               height: 150,
                               width: Get.size.width * 0.9,
                               decoration: BoxDecoration(
-                                  color: const Color.fromARGB(46, 144, 143, 143),
+                                  color:
+                                      const Color.fromARGB(46, 144, 143, 143),
                                   borderRadius: BorderRadius.circular(25)),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
@@ -62,19 +64,21 @@ class TrendingNow extends StatelessWidget {
                                                 child: Image.network(
                                                   "${ImageUrlApi.imageUrlW500}${movie.poster}",
                                                   height: 120,
-                                                  loadingBuilder: (context, child,
+                                                  loadingBuilder: (context,
+                                                          child,
                                                           loadingProgress) =>
                                                       (loadingProgress == null)
                                                           ? child
                                                           : SizedBox(
-                                                              height:
-                                                                  Get.size.height,
+                                                              height: Get
+                                                                  .size.height,
                                                               child: Center(
                                                                 child: LoadingAnimationWidget
                                                                     .horizontalRotatingDots(
                                                                         color: Colors
                                                                             .white,
-                                                                        size: 40),
+                                                                        size:
+                                                                            40),
                                                               ),
                                                             ),
                                                 ),
@@ -121,7 +125,8 @@ class TrendingNow extends StatelessWidget {
                                           color: Color(0xFFFFB039),
                                           borderRadius: BorderRadius.only(
                                               bottomLeft: Radius.circular(10),
-                                              bottomRight: Radius.circular(10))),
+                                              bottomRight:
+                                                  Radius.circular(10))),
                                       child: Center(
                                         child: Column(
                                           mainAxisAlignment:

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'detail_profile_picture.dart';
+
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({
     Key? key,
@@ -57,16 +59,22 @@ class HeaderWidget extends StatelessWidget {
                     )
                   ],
                 ),
-                ClipRRect(
-                    borderRadius: BorderRadius.circular(50),
-                    child: SizedBox(
-                      height: 50,
-                      width: 50,
-                      child: Image.network(
-                        "https://pbs.twimg.com/media/FnQKQaWXoAADHK0.jpg",
-                        fit: BoxFit.cover,
-                      ),
-                    ))
+                GestureDetector(
+                  onTap: () => Get.to(()=>DetailProfilePicture()),
+                  child: Hero(
+                    tag :"imageTag",
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: SizedBox(
+                          height: 50,
+                          width: 50,
+                          child: Image.network(
+                            "https://pbs.twimg.com/media/FnQKQaWXoAADHK0.jpg",
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                  ),
+                )
               ],
             )
           ],
