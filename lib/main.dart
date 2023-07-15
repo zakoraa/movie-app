@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           )),
-      home: const HomeView(),
+      home: const MovieDetailsView(),
       getPages: AppPage.pages,
     );
   }
