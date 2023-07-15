@@ -34,7 +34,8 @@ class CarouselSliderWidget extends StatelessWidget {
               ),
               items: carouselListMovie.map((movie) {
                 return GestureDetector(
-                  onTap: (() => Get.to(() => MovieDetailsView(movie: movie))),
+                  onTap: (() => Get.to(() => MovieDetailsView(movie: movie),
+                      transition: Transition.fade)),
                   child: Container(
                     width: Get.size.width,
                     height: 225,

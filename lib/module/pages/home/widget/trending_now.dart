@@ -33,7 +33,9 @@ class TrendingNow extends StatelessWidget {
                     child: Column(
                         children: trendingMovies.map((movie) {
                       return GestureDetector(
-                        onTap: () => Get.to(()=>MovieDetailsView(movie: movie)),
+                        onTap: () => Get.to(
+                            () => MovieDetailsView(movie: movie),
+                            transition: Transition.fade),
                         child: Column(
                           children: [
                             Container(

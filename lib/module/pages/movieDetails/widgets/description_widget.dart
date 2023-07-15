@@ -17,77 +17,78 @@ class Description extends StatelessWidget {
   Widget build(BuildContext context) {
     final String movieDescription = "${movie.title} : ${movie.overview}";
     return Container(
-      width: Get.size.width,
-      height: Get.size.height,
-      decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-            Colors.transparent,
-            Colors.transparent,
-            Color.fromARGB(205, 13, 7, 7),
-            Color(0xFF0D0707),
-            Color(0xFF0D0707),
-          ])),
-      child: Padding(
-        padding: EdgeInsets.only(left: 20, right: 20, top: imgHeight - 150),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                  width: 250,
-                  child: Text(
-                    "${movie.title} (${movie.releaseDate})",
+        width: Get.size.width,
+        height: Get.size.height,
+        constraints: const BoxConstraints(maxHeight: 1000),
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+              Colors.transparent,
+              Colors.transparent,
+              Colors.transparent,
+              Color.fromARGB(205, 13, 7, 7),
+              Color(0xFF0D0707),
+              Color(0xFF0D0707),
+            ])),
+        child: Padding(
+          padding: EdgeInsets.only(left: 20, right: 20, top: imgHeight - 150),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: 250,
+                    child: Text(
+                      "${movie.title} (${movie.releaseDate})",
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                  const Icon(
+                    Icons.favorite_outline,
+                    size: 30,
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              Row(
+                children: [
+                  const Icon(
+                    Icons.star,
+                    size: 20,
+                  ),
+                  const SizedBox(
+                    width: 5.0,
+                  ),
+                  Text(
+                    "${movie.rating}",
                     style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-                const Icon(
-                  Icons.favorite_outline,
-                  size: 30,
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            Row(
-              children: [
-                const Icon(
-                  Icons.star,
-                ),
-                const SizedBox(
-                  width: 10.0,
-                ),
-                Text(
-                  "${movie.rating}",
-                  style: const TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 15.0,
+              ),
+              Text(
+                movieDescription,
+                style: const TextStyle(
+                    fontWeight: FontWeight.w400,
                     color: Colors.grey,
-                  ),
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 15.0,
-            ),
-            Text(
-              (movieDescription.length >= 300)
-                  ? "${movieDescription.substring(0, 300)} ..."
-                  : movieDescription,
-              style: const TextStyle(
-                  fontWeight: FontWeight.w500,
-                  color: Colors.grey,
-                  fontSize: 14),
-            ),
-          ],
-        ),
-      ),
-    );
+                    fontSize: 14),
+              )
+            ],
+          ),
+        ));
   }
 }

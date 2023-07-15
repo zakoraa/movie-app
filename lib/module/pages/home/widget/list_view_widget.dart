@@ -44,8 +44,10 @@ class ListViewWidget extends StatelessWidget {
                             width: 20.0,
                           ),
                           GestureDetector(
-                            onTap: () => Get.to(() =>
-                                MovieDetailsView(movie: listViewMovie[index])),
+                            onTap: () => Get.to(
+                                () => MovieDetailsView(
+                                    movie: listViewMovie[index]),
+                                transition: Transition.fade),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
