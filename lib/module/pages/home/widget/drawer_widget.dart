@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/pages/home/widget/container_drawer.dart';
+import 'package:movieapp/module/pages/home/widget/detail_profile_picture.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -31,16 +32,23 @@ class DrawerWidget extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        ClipRRect(
-                            borderRadius: BorderRadius.circular(100),
-                            child: SizedBox(
-                              height: 100,
-                              width: 100,
-                              child: Image.network(
-                                "https://pbs.twimg.com/media/FnQKQaWXoAADHK0.jpg",
-                                fit: BoxFit.cover,
-                              ),
-                            )),
+                        GestureDetector(
+                          onTap: () =>
+                              Get.to(() => const DetailProfilePicture()),
+                          child: Hero(
+                            tag: "imageDrawerTag",
+                            child: ClipRRect(
+                                borderRadius: BorderRadius.circular(100),
+                                child: SizedBox(
+                                  height: 100,
+                                  width: 100,
+                                  child: Image.network(
+                                    "https://pbs.twimg.com/media/FnQKQaWXoAADHK0.jpg",
+                                    fit: BoxFit.cover,
+                                  ),
+                                )),
+                          ),
+                        ),
                         const SizedBox(
                           height: 10.0,
                         ),

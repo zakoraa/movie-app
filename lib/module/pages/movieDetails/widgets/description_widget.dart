@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -79,9 +81,9 @@ class Description extends StatelessWidget {
                   ? "${movieDescription.substring(0, 300)} ..."
                   : movieDescription,
               style: const TextStyle(
-                fontWeight: FontWeight.w500,
-                color: Colors.grey,
-              ),
+                  fontWeight: FontWeight.w500,
+                  color: Colors.grey,
+                  fontSize: 14),
             ),
           ],
         ),
