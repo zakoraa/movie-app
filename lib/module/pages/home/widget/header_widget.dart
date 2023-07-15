@@ -60,7 +60,10 @@ class HeaderWidget extends StatelessWidget {
                   ],
                 ),
                 GestureDetector(
-                  onTap: () => Get.to(() => const DetailProfilePicture(), opaque: false),
+                  onTap: () => Get.to(() => const DetailProfilePicture(),
+                      opaque: false,
+                      fullscreenDialog: true,
+                      transition: Transition.circularReveal),
                   child: Hero(
                     tag: "imageTag",
                     child: ClipRRect(
