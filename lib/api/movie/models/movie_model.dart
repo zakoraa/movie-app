@@ -18,7 +18,7 @@ class Movie {
         id: json['id'],
         title: json['title'],
         rating: json['vote_average'],
-        releaseDate: json['release_date'],
+        releaseDate: json['release_date'].substring(0, 4),
         poster: json['poster_path'] ?? '',
         backdrop: json['backdrop_path'] ?? '',
         overview: json['overview']);

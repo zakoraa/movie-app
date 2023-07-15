@@ -1,10 +1,14 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../api/imageAPI/image_url_api.dart';
 import '../widgets/description_widget.dart';
 
 class MovieDetailsView extends StatelessWidget {
-  const MovieDetailsView({super.key});
+  const MovieDetailsView({super.key, this.movie});
+  final movie;
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +19,24 @@ class MovieDetailsView extends StatelessWidget {
         child: Stack(
           children: [
             Image.network(
-              "https://images.bisnis.com/upload/img/Spider-Man_Across_the_SpiderVerse_rekomendasi_film_1.jpg",
+              "${ImageUrlApi.imageUrlOriginal}${movie.poster}",
               fit: BoxFit.cover,
               height: imgHeight,
               width: imgWidth,
             ),
-            Description(imgHeight: imgHeight)
+            Description(imgHeight: imgHeight, movie: movie),
+            SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: GestureDetector(
+                  onTap: () => Get.back(),
+                  child: const Icon(
+                    Icons.arrow_back_ios,
+                    size: 30,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

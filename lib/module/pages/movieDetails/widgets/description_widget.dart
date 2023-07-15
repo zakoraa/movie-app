@@ -5,15 +5,17 @@ class Description extends StatelessWidget {
   const Description({
     Key? key,
     required this.imgHeight,
+    required this.movie,
   }) : super(key: key);
 
   final double imgHeight;
+  final movie;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: Get.size.width,
-      height: 1000,
+      height: Get.size.height,
       decoration: const BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -21,7 +23,6 @@ class Description extends StatelessWidget {
               colors: [
             Colors.transparent,
             Colors.transparent,
-            // Color.fromARGB(205, 13, 7, 7),
             Color.fromARGB(205, 13, 7, 7),
             Color(0xFF0D0707),
             Color(0xFF0D0707),
@@ -33,15 +34,18 @@ class Description extends StatelessWidget {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
-                  "Spiderman (2023)",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 28,
-                      fontWeight: FontWeight.w500),
+              children: [
+                SizedBox(
+                  width: 250,
+                  child: Text(
+                    "${movie.title} (${movie.releaseDate})",
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w500),
+                  ),
                 ),
-                Icon(
+                const Icon(
                   Icons.favorite_outline,
                   size: 30,
                 )
@@ -51,16 +55,16 @@ class Description extends StatelessWidget {
               height: 20.0,
             ),
             Row(
-              children: const [
-                Icon(
+              children: [
+                const Icon(
                   Icons.star,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10.0,
                 ),
                 Text(
-                  "8.6",
-                  style: TextStyle(
+                  "${movie.rating}",
+                  style: const TextStyle(
                     color: Colors.grey,
                   ),
                 )
@@ -69,9 +73,9 @@ class Description extends StatelessWidget {
             const SizedBox(
               height: 15.0,
             ),
-            const Text(
-              "Spiderman : After reuniting with Gwen Stacy, Brooklyn’s full-time, friendly neighborhood Spider-Man is catapulted across the Multiverse, where he encounters the Spider Society, a team of Spider-People charged with protecting the Multiverse’s very existence. But when the heroes clash on how to handle a new threat, Miles finds himself pitted against the other Spiders and must set out on his own to save those he loves most.",
-              style: TextStyle(
+            Text(
+              "${movie.title} : ${movie.overview}",
+              style: const TextStyle(
                 fontWeight: FontWeight.w500,
                 color: Colors.grey,
               ),

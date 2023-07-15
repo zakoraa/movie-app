@@ -99,8 +99,7 @@ class TrendingNow extends StatelessWidget {
                                             child: SizedBox(
                                               width: 120,
                                               child: Text(
-                                                movie.releaseDate!
-                                                    .substring(0, 4),
+                                                movie.releaseDate!,
                                                 style: const TextStyle(
                                                     fontSize: 12,
                                                     color: Colors.grey),

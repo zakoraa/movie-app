@@ -16,4 +16,6 @@ class HomeController extends GetxController {
   void sortedByRating() {
     movies.sort((a, b) => b.rating.compareTo(a.rating));
   }
+
+  
 }
