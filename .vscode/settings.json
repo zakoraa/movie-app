@@ -16,4 +16,5 @@
       "editor.defaultFormatter": "Dart-Code.dart-code"
 },
 "cmake.sourceDirectory": "C:/Users/Zakora/Documents/FlutterProject/movieapp/linux",
+"cmake.configureOnOpen": false,
 }

@@ -1,9 +1,10 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/pages/home/view/home_view.dart';
 import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
-
-import 'module/pages/movieDetails/view/movie_details_view.dart';
+import 'package:movieapp/module/pages/login/view/login_view.dart';
 import 'routes/routes.dart';
 
 void main() => runApp(const MyApp());
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           )),
-      home: const HomeView(),
+      home: const LoginView(),
       getPages: AppPage.pages,
     );
   }

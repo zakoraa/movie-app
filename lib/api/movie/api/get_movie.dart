@@ -21,7 +21,7 @@ class GetMovie {
       for (dynamic i in data['results']) {
         movieData.add(i);
       }
-      if (movieData.length != 0) {
+      if (movieData.isNotEmpty) {
         print("Get Movie Success");
       }
       return Movie.moviesFromSnapshot(movieData);

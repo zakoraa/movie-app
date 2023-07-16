@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/serial_model.dart';
@@ -19,7 +21,7 @@ class GetMovieSerial {
       for (dynamic i in data["results"]) {
         movieSerialData.add(i);
       }
-      if (movieSerialData.length != 0) {
+      if (movieSerialData.isNotEmpty) {
         print("Get Movie Serial Success");
       }
       return MovieSerial.movieSerialFromSnapshot(movieSerialData);

@@ -44,8 +44,7 @@ class HeaderWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
                     Text(
-                      "Hi Guinevere Beck,",
-                      style: TextStyle(),
+                      "Hi Guinevere Beck,"
                     ),
                     SizedBox(
                       height: 5.0,
