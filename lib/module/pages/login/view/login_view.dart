@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../widgets/textfield_widget.dart';
+
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
 
@@ -42,33 +44,15 @@ class LoginView extends StatelessWidget {
                         SizedBox(
                           width: Get.size.width,
                           child: Column(
-                            children: [
-                              const Text(
+                            children: const [
+                              Text(
                                 "WELCOME",
                                 style: TextStyle(fontSize: 30),
                               ),
-                              const SizedBox(
-                                height: 30.0,
+                              SizedBox(
+                                height: 40.0,
                               ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 20, right: 20),
-                                child: TextField(
-                                    cursorColor: Colors.grey,
-                                    style: const TextStyle(
-                                        color: Colors.white, fontSize: 20),
-                                    decoration: InputDecoration(
-                                      fillColor: const Color.fromARGB(
-                                          106, 158, 158, 158),
-                                      filled: true,
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                    )),
-                              ),
+                              TextFieldWidget(),
                             ],
                           ),
                         ),
