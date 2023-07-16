@@ -41,19 +41,55 @@ class LoginView extends StatelessWidget {
                   child: ListView(
                       physics: const BouncingScrollPhysics(),
                       children: [
-                        SizedBox(
-                          width: Get.size.width,
-                          child: Column(
-                            children: const [
-                              Text(
-                                "WELCOME",
-                                style: TextStyle(fontSize: 30),
-                              ),
-                              SizedBox(
-                                height: 40.0,
-                              ),
-                              TextFieldWidget(),
-                            ],
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20, right: 20),
+                          child: SizedBox(
+                            width: Get.size.width,
+                            child: Column(
+                              children: [
+                                const Text(
+                                  "WELCOME",
+                                  style: TextStyle(fontSize: 30),
+                                ),
+                                const SizedBox(
+                                  height: 40.0,
+                                ),
+                                const TextFieldWidget(
+                                    text: "Username", icon: Icons.person),
+                                const SizedBox(
+                                  height: 30.0,
+                                ),
+                                const TextFieldWidget(
+                                  text: "Password",
+                                  icon: Icons.key,
+                                  obscureText: true,
+                                ),
+                                const SizedBox(
+                                  height: 50.0,
+                                ),
+                                Material(
+                                  color: Colors.transparent,
+                                  elevation: 0.0,
+                                  child: InkWell(
+                                    borderRadius: BorderRadius.circular(20),
+                                    onTap: () {},
+                                    child: Container(
+                                      width: Get.size.width,
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                          color: const Color.fromARGB(
+                                              94, 255, 193, 7),
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
+                                      child: const Center(
+                                          child: Text(
+                                        "Login",
+                                      )),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ]),
