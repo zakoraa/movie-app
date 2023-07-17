@@ -9,6 +9,6 @@ class AppPage {
     GetPage(
         name: RouteName.movieDetailsView,
         page: () => MovieDetailsView(),
-        transition: Transition.fade)
+        transition: Transition.fade, popGesture: true)
   ];
 }

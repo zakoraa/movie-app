@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movieapp/module/pages/login/controllers/login_controller.dart';
 
 import '../../../widgets/textfield_widget.dart';
 
@@ -8,6 +9,7 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    LoginController loginController = Get.put(LoginController());
     return Scaffold(
         backgroundColor: Colors.black,
         body: SizedBox(
@@ -54,14 +56,15 @@ class LoginView extends StatelessWidget {
                                 const SizedBox(
                                   height: 40.0,
                                 ),
-                                const TextFieldWidget(
+                                TextFieldWidget(
                                     text: "Username", icon: Icons.person),
                                 const SizedBox(
                                   height: 30.0,
                                 ),
-                                const TextFieldWidget(
+                                TextFieldWidget(
                                   text: "Password",
                                   icon: Icons.key,
+                                  suffixIcon: true,
                                   obscureText: true,
                                 ),
                                 const SizedBox(

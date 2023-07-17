@@ -15,7 +15,7 @@ class Description extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String movieDescription = "${movie.title} : ${movie.overview}";
+    final String movieDescription = "${movie.overview}";
     return Container(
         width: Get.size.width,
         height: Get.size.height,

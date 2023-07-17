@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:movieapp/module/pages/login/controllers/login_controller.dart';
 
 class TextFieldWidget extends StatelessWidget {
   const TextFieldWidget({
     Key? key,
     required this.text,
     required this.icon,
+    this.suffixIcon = false,
     this.obscureText = false,
   }) : super(key: key);
 
   final String text;
   final IconData icon;
-  final bool obscureText;
+  final bool suffixIcon, obscureText;
 
   @override
   Widget build(BuildContext context) {
+    LoginController loginController = Get.put(LoginController());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -22,18 +26,18 @@ class TextFieldWidget extends StatelessWidget {
           child: Text(
             text,
             style: const TextStyle(
-                color: Colors.grey,
-                fontSize: 18,
-                fontWeight: FontWeight.w400),
+                color: Colors.grey, fontSize: 18, fontWeight: FontWeight.w400),
           ),
         ),
         const SizedBox(
           height: 10.0,
         ),
-        TextField(
+        Obx(() => TextField(
             cursorColor: Colors.grey,
             style: const TextStyle(color: Colors.white, fontSize: 18),
-            obscureText: obscureText,
+            obscureText: obscureText == false
+                ? loginController.obscureText.value
+                : !loginController.isVisible.value,
             decoration: InputDecoration(
               hintText: text,
               hintStyle: const TextStyle(
@@ -43,6 +47,16 @@ class TextFieldWidget extends StatelessWidget {
                 icon,
                 color: Colors.grey,
               ),
+              suffixIcon: suffixIcon == true
+                  ? GestureDetector(
+                      onTap: () => loginController.visiblePass(),
+                      child: Icon(
+                        loginController.isVisible.value
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        color: Colors.grey,
+                      ))
+                  : const SizedBox.shrink(),
               fillColor: const Color.fromARGB(67, 158, 158, 158),
               filled: true,
               enabledBorder: OutlineInputBorder(
@@ -55,7 +69,7 @@ class TextFieldWidget extends StatelessWidget {
                   borderSide: const BorderSide(
                     color: Colors.transparent,
                   )),
-            )),
+            )))
       ],
     );
   }
