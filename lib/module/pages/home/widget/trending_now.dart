@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
 import 'package:movieapp/api/movie/models/movie_model.dart';
-import 'package:movieapp/module/pages/movieDetails/view/movie_details_view.dart';
+import 'package:movieapp/routes/route_name.dart';
 
 import '../../../../api/imageAPI/image_url_api.dart';
 import '../controllers/home_controller.dart';
@@ -33,9 +33,8 @@ class TrendingNow extends StatelessWidget {
                     child: Column(
                         children: trendingMovies.map((movie) {
                       return GestureDetector(
-                        onTap: () => Get.to(
-                            () => MovieDetailsView(movie: movie),
-                            transition: Transition.fade),
+                        onTap: () => Get.toNamed(RouteName.movieDetailsView,
+                            arguments: movie),
                         child: Column(
                           children: [
                             Container(

@@ -5,7 +5,10 @@ import 'package:movieapp/routes/route_name.dart';
 
 class AppPage {
   static final pages = [
-    GetPage(name: RouteName.homeView, page: ()=> const HomeView()),
-    GetPage(name: RouteName.movieDetailsView, page: ()=> const  MovieDetailsView())
+    GetPage(name: RouteName.homeView, page: () => const HomeView()),
+    GetPage(
+        name: RouteName.movieDetailsView,
+        page: () => MovieDetailsView(),
+        transition: Transition.fade)
   ];
 }

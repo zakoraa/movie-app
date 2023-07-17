@@ -7,8 +7,8 @@ import '../../../../api/imageAPI/image_url_api.dart';
 import '../widgets/description_widget.dart';
 
 class MovieDetailsView extends StatelessWidget {
-  const MovieDetailsView({super.key, this.movie});
-  final movie;
+  MovieDetailsView({super.key});
+  final movie = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +31,8 @@ class MovieDetailsView extends StatelessWidget {
                           : SizedBox(
                               height: imgHeight,
                               child: Center(
-                                child:
-                                    LoadingAnimationWidget.horizontalRotatingDots(
+                                child: LoadingAnimationWidget
+                                    .horizontalRotatingDots(
                                   size: 40,
                                   color: Colors.white,
                                 ),

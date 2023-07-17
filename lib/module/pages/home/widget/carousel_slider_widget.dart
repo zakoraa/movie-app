@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
 import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
+import 'package:movieapp/routes/route_name.dart';
 
 import '../../../../api/imageAPI/image_url_api.dart';
 import '../../../../api/movie/models/movie_model.dart';
-import '../../movieDetails/view/movie_details_view.dart';
 
 class CarouselSliderWidget extends StatelessWidget {
   const CarouselSliderWidget({super.key});
@@ -34,8 +34,8 @@ class CarouselSliderWidget extends StatelessWidget {
               ),
               items: carouselListMovie.map((movie) {
                 return GestureDetector(
-                  onTap: (() => Get.to(() => MovieDetailsView(movie: movie),
-                      transition: Transition.fade)),
+                  onTap: (() => Get.toNamed(RouteName.movieDetailsView,
+                      arguments: movie)),
                   child: Container(
                     width: Get.size.width,
                     height: 225,

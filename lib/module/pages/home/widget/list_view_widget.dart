@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
 import 'package:movieapp/api/movie/models/movie_model.dart';
-import 'package:movieapp/module/pages/movieDetails/view/movie_details_view.dart';
+import 'package:movieapp/routes/route_name.dart';
 import '../../../../api/imageAPI/image_url_api.dart';
 import '../../../../api/movie/controllers/movie_get_discover.dart';
 
@@ -44,10 +44,8 @@ class ListViewWidget extends StatelessWidget {
                             width: 20.0,
                           ),
                           GestureDetector(
-                            onTap: () => Get.to(
-                                () => MovieDetailsView(
-                                    movie: listViewMovie[index]),
-                                transition: Transition.fade),
+                            onTap: () => Get.toNamed(RouteName.movieDetailsView,
+                                arguments: listViewMovie[index]),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [

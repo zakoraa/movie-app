@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           )),
-      home: const LoginView(),
+      home: const HomeView(),
       getPages: AppPage.pages,
     );
   }
