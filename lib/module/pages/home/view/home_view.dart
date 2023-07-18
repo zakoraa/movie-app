@@ -5,6 +5,7 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../widget/carousel_slider_widget.dart';
 import '../widget/drawer_widget.dart';
+import '../widget/select_type.dart';
 import '../widget/trending_now.dart';
 import '../widget/header_widget.dart';
 import '../widget/list_view_widget.dart';
@@ -48,6 +49,10 @@ class HomeView extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
                               HeaderWidget(),
+                              SizedBox(
+                                height: 20.0,
+                              ),
+                              SelectType(),
                               SizedBox(
                                 height: 30.0,
                               ),

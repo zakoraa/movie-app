@@ -9,6 +9,12 @@ class HomeController extends GetxController {
 
   RxList<Movie> movies = Get.put(MovieController()).trendingListMovie;
 
+  RxInt selectedIndex = 0.obs;
+
+  void selectIndex(int index) {
+    selectedIndex.value = index;
+  }
+
   void randomList(RxList list) {
     list.shuffle(random);
   }
@@ -16,6 +22,4 @@ class HomeController extends GetxController {
   void sortedByRating() {
     movies.sort((a, b) => b.rating.compareTo(a.rating));
   }
-
-  
 }

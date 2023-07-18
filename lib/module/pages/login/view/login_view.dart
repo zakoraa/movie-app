@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/pages/login/controllers/login_controller.dart';
+import 'package:movieapp/routes/route_name.dart';
 
 import '../../../widgets/textfield_widget.dart';
 
@@ -56,12 +57,12 @@ class LoginView extends StatelessWidget {
                                 const SizedBox(
                                   height: 40.0,
                                 ),
-                                TextFieldWidget(
+                                const TextFieldWidget(
                                     text: "Username", icon: Icons.person),
                                 const SizedBox(
                                   height: 30.0,
                                 ),
-                                TextFieldWidget(
+                                const TextFieldWidget(
                                   text: "Password",
                                   icon: Icons.key,
                                   suffixIcon: true,
@@ -75,7 +76,7 @@ class LoginView extends StatelessWidget {
                                   elevation: 0.0,
                                   child: InkWell(
                                     borderRadius: BorderRadius.circular(20),
-                                    onTap: () {},
+                                    onTap: () => Get.toNamed(RouteName.homeView),
                                     child: Container(
                                       width: Get.size.width,
                                       height: 50,

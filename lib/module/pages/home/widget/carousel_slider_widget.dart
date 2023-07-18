@@ -10,7 +10,9 @@ import '../../../../api/imageAPI/image_url_api.dart';
 import '../../../../api/movie/models/movie_model.dart';
 
 class CarouselSliderWidget extends StatelessWidget {
-  const CarouselSliderWidget({super.key});
+  const CarouselSliderWidget({super.key, this.movies});
+  
+  final movies;
 
   @override
   Widget build(BuildContext context) {

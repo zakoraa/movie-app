@@ -33,11 +33,11 @@ class DrawerWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         GestureDetector(
-                          onTap: () =>
-                              Get.to(() => const DetailProfilePicture(),
-                                  opaque: false,
-                                  fullscreenDialog: true,
-                                  transition: Transition.circularReveal),
+                          onTap: () => Get.to(
+                              () => const DetailProfilePicture(),
+                              opaque: false,
+                              fullscreenDialog: true,
+                              transition: Transition.circularReveal),
                           child: Hero(
                             tag: "imageDrawerTag",
                             child: ClipRRect(
