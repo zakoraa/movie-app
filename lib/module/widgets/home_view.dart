@@ -1,17 +1,30 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
 
-import '../widget/carousel_slider_widget.dart';
-import '../widget/drawer_widget.dart';
-import '../widget/select_type.dart';
-import '../widget/trending_now.dart';
-import '../widget/header_widget.dart';
-import '../widget/list_view_widget.dart';
+import '../../../../api/movieSerial/controllers/movie_serial_controller.dart';
+import '../pages/home/widget/carousel_slider_widget.dart';
+import '../pages/home/widget/drawer_widget.dart';
+import '../pages/home/widget/header_widget.dart';
+import '../pages/home/widget/list_view_widget.dart';
+import '../pages/home/widget/select_type.dart';
+import '../pages/home/widget/trending_now.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  const HomeView({
+    super.key,
+    required this.carouselMovieList,
+    required this.listViewMovieList,
+    required this.trendingNowMovieList,
+  });
+
+  final carouselMovieList;
+  final listViewMovieList;
+  final trendingNowMovieList;
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +44,8 @@ class HomeView extends StatelessWidget {
                   transform: Matrix4.identity()..scale(-1.0, 1.0, 1.0),
                   child: Image.asset("assets/Ellipse 1.png")),
             ),
-            Obx(
-              () => (movieController.isLoading.value)
+            Obx(() {
+              return (movieController.isLoading.value)
                   ? SizedBox(
                       height: Get.size.height,
                       child: Center(
@@ -47,24 +60,30 @@ class HomeView extends StatelessWidget {
                         child: Center(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              HeaderWidget(),
-                              SizedBox(
+                            children: [
+                              const HeaderWidget(),
+                              const SizedBox(
                                 height: 20.0,
                               ),
-                              SelectType(),
-                              SizedBox(
+                              const SelectType(),
+                              const SizedBox(
                                 height: 30.0,
                               ),
-                              CarouselSliderWidget(),
-                              ListViewWidget(),
-                              TrendingNow(),
+                              CarouselSliderWidget(
+                                carouselMovieList: carouselMovieList,
+                              ),
+                              ListViewWidget(
+                                listViewMovieList: listViewMovieList,
+                              ),
+                              TrendingNow(
+                                trendingNowMovieList: trendingNowMovieList,
+                              ),
                             ],
                           ),
                         ),
                       ),
-                    ),
-            )
+                    );
+            })
           ],
         ),
       ),

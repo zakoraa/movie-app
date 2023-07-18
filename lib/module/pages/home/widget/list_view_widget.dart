@@ -8,18 +8,17 @@ import '../../../../api/imageAPI/image_url_api.dart';
 import '../../../../api/movie/controllers/movie_get_discover.dart';
 
 class ListViewWidget extends StatelessWidget {
-  const ListViewWidget({Key? key, this.movies}) : super(key: key);
+  const ListViewWidget({Key? key, required this.listViewMovieList}) : super(key: key);
 
-  final movies;
+  final listViewMovieList;
 
   @override
   Widget build(BuildContext context) {
     MovieController movieController = Get.find<MovieController>();
     HomeController homeController = Get.put(HomeController());
-    RxList<Movie> movies = movieController.listMovie;
     return Obx(() {
-      homeController.randomList(movies);
-      List<Movie> listViewMovie = movies.take(7).toList();
+      homeController.randomList(listViewMovieList);
+      List<Movie> listViewMovie = listViewMovieList.take(7).toList();
       return (movieController.isLoading.value)
           ? const SizedBox.shrink()
           : Column(

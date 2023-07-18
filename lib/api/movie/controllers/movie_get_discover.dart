@@ -4,18 +4,18 @@ import 'package:movieapp/api/movie/models/movie_model.dart';
 import '../api/get_movie.dart';
 
 class MovieController extends GetxController {
-  RxList<Movie> listMovie = <Movie>[].obs;
-  RxList<Movie> trendingListMovie = <Movie>[].obs;
-  RxList<Movie> carouselSliderListMovie = <Movie>[].obs;
+  RxList<Movie> listViewMovieList = <Movie>[].obs;
+  RxList<Movie> trendingNowMovieList = <Movie>[].obs;
+  RxList<Movie> carouselSliderMovieList = <Movie>[].obs;
   final GetMovie _getMovie = GetMovie();
   var isLoading = true.obs;
 
   Future<void> getData() async {
     var data = await _getMovie.getData();
     if (data != null) {
-      listMovie.value = data;
-      trendingListMovie.value = data;
-      carouselSliderListMovie.value = data;
+      listViewMovieList.value = data;
+      trendingNowMovieList.value = data;
+      carouselSliderMovieList.value = data;
     }
     isLoading.value = false;
   }

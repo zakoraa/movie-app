@@ -9,15 +9,16 @@ import '../../../../api/imageAPI/image_url_api.dart';
 import '../controllers/home_controller.dart';
 
 class TrendingNow extends StatelessWidget {
-  const TrendingNow({super.key});
+  const TrendingNow({super.key, required this.trendingNowMovieList});
 
+  final trendingNowMovieList;
   @override
   Widget build(BuildContext context) {
     MovieController movieController = Get.put(MovieController());
     HomeController homeController = Get.put(HomeController());
     return Obx(() {
-      homeController.sortedByRating();
-      RxList<Movie> trendingMovies = homeController.movies.take(3).toList().obs;
+      homeController.sortedByRating(trendingNowMovieList);
+      List<Movie> trendingMovies = trendingNowMovieList.take(3).toList();
       return (movieController.isLoading.value)
           ? const SizedBox.shrink()
           : Column(

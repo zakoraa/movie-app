@@ -3,12 +3,16 @@ import 'package:movieapp/api/movieSerial/api/get_movie_serial.dart';
 import 'package:movieapp/api/movieSerial/models/serial_model.dart';
 
 class MovieSerialController extends GetxController {
-  RxList<MovieSerial> listMovieSerial = <MovieSerial>[].obs;
+  RxList<MovieSerial> listMovieSerialList = <MovieSerial>[].obs;
+  RxList<MovieSerial> carouselSliderMovieSerialList = <MovieSerial>[].obs;
+  RxList<MovieSerial> trendingNowMovieSerialList = <MovieSerial>[].obs;
   final GetMovieSerial _getMovieSerial = GetMovieSerial();
   Future<void> getData() async {
     var data = await _getMovieSerial.getData();
     if (data != null) {
-      listMovieSerial.value = data;
+      listMovieSerialList.value = data;
+      carouselSliderMovieSerialList.value = data;
+      trendingNowMovieSerialList.value = data;
     }
   }
 

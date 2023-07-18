@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,18 +12,20 @@ import '../../../../api/imageAPI/image_url_api.dart';
 import '../../../../api/movie/models/movie_model.dart';
 
 class CarouselSliderWidget extends StatelessWidget {
-  const CarouselSliderWidget({super.key, this.movies});
-  
-  final movies;
+  const CarouselSliderWidget({
+    super.key,
+    required this.carouselMovieList
+  });
+
+  final carouselMovieList;
 
   @override
   Widget build(BuildContext context) {
     MovieController movieController = Get.find<MovieController>();
     HomeController homeController = Get.put(HomeController());
-    final movies = movieController.carouselSliderListMovie;
     return Obx(() {
-      homeController.randomList(movies);
-      List<Movie> carouselListMovie = movies.take(5).toList();
+      homeController.randomList(carouselMovieList);
+      List<Movie> carouselListMovie = carouselMovieList.take(5).toList();
       return (movieController.isLoading.value)
           ? const SizedBox.shrink()
           : CarouselSlider(

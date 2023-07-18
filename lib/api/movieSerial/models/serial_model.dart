@@ -19,8 +19,8 @@ class MovieSerial {
         title: json["original_name"],
         releaseDate: json["first_air_date"],
         rating: json["vote_average"],
-        poster: json["poster_path"],
-        backdrop: json["backdrop_path"],
+        poster: json["poster_path"]??"https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png",
+        backdrop: json["backdrop_path"]??"https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png",
         overview: json["overview"]);
   }
 

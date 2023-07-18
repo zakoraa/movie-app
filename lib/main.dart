@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
-import 'package:movieapp/module/pages/home/view/home_view.dart';
+import 'package:movieapp/module/pages/home/view/movie_home_view.dart';
 import 'package:movieapp/module/pages/login/view/login_view.dart';
+import 'api/movieSerial/controllers/movie_serial_controller.dart';
+import 'module/pages/home/controllers/home_controller.dart';
 import 'routes/routes.dart';
 
 void main() => runApp(const MyApp());
@@ -16,6 +18,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MovieController movieController = Get.put(MovieController());
+    HomeController homeController = Get.put(HomeController());
+    MovieSerialController movieSerialController = Get.put(MovieSerialController());
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -28,7 +32,7 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           )),
-      home: const HomeView(),
+      home: const MovieHomeView(),
       getPages: AppPage.pages,
     );
   }
