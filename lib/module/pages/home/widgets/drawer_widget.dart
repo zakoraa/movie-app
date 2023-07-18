@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/module/pages/home/widget/container_drawer.dart';
-import 'package:movieapp/module/pages/home/widget/detail_profile_picture.dart';
+import 'package:movieapp/module/pages/home/widgets/container_drawer.dart';
+import 'package:movieapp/module/pages/home/widgets/detail_profile_picture.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});

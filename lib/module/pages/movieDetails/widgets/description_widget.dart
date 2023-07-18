@@ -59,24 +59,26 @@ class Description extends StatelessWidget {
               const SizedBox(
                 height: 20.0,
               ),
-              Row(
-                children: [
-                  const Icon(
-                    Icons.star,
-                    size: 20,
-                  ),
-                  const SizedBox(
-                    width: 5.0,
-                  ),
-                  Text(
-                    "${movie.rating}",
-                    style: const TextStyle(
-                        color: Colors.grey,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14),
-                  )
-                ],
-              ),
+              (movie.rating == "")
+                  ? const SizedBox.shrink()
+                  : Row(
+                      children: [
+                        const Icon(
+                          Icons.star,
+                          size: 20,
+                        ),
+                        const SizedBox(
+                          width: 5.0,
+                        ),
+                        Text(
+                          "${movie.rating}",
+                          style: const TextStyle(
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14),
+                        )
+                      ],
+                    ),
               const SizedBox(
                 height: 15.0,
               ),

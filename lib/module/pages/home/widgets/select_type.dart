@@ -16,10 +16,10 @@ class SelectType extends StatelessWidget {
     MovieController movieController = Get.find<MovieController>();
     MovieSerialController movieSerialController =
         Get.put(MovieSerialController());
-    Map<String, dynamic> movieType = {
-      "Movies": movieController,
-      "Serial TV": movieSerialController,
-    };
+    List<String> movieType = [
+      "Movies",
+      "Serial TV"
+    ];
     return Padding(
       padding: const EdgeInsets.only(left: 20),
       child: SizedBox(
@@ -40,7 +40,7 @@ class SelectType extends StatelessWidget {
                   margin: const EdgeInsets.only(right: 10),
                   child: Center(
                     child: Text(
-                      movieType.keys.elementAt(index),
+                      movieType[index],
                       style: const TextStyle(
                           fontWeight: FontWeight.w200, fontSize: 14),
                     ),

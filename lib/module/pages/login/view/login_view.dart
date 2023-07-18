@@ -76,7 +76,7 @@ class LoginView extends StatelessWidget {
                                   elevation: 0.0,
                                   child: InkWell(
                                     borderRadius: BorderRadius.circular(20),
-                                    onTap: () => Get.toNamed(RouteName.homeView),
+                                    onTap: () => Get.toNamed(RouteName.mainPage),
                                     child: Container(
                                       width: Get.size.width,
                                       height: 50,

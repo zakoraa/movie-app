@@ -7,12 +7,12 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
 
 import '../../../../api/movieSerial/controllers/movie_serial_controller.dart';
-import '../pages/home/widget/carousel_slider_widget.dart';
-import '../pages/home/widget/drawer_widget.dart';
-import '../pages/home/widget/header_widget.dart';
-import '../pages/home/widget/list_view_widget.dart';
-import '../pages/home/widget/select_type.dart';
-import '../pages/home/widget/trending_now.dart';
+import '../pages/home/widgets/carousel_slider_widget.dart';
+import '../pages/home/widgets/drawer_widget.dart';
+import '../pages/home/widgets/header_widget.dart';
+import '../pages/home/widgets/list_view_widget.dart';
+import '../pages/home/widgets/select_type.dart';
+import '../pages/home/widgets/trending_now.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({

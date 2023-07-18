@@ -1,9 +1,6 @@
 import 'package:get/get.dart';
 import 'dart:math';
 
-import '../../../../api/movie/controllers/movie_get_discover.dart';
-import '../../../../api/movie/models/movie_model.dart';
-
 class HomeController extends GetxController {
   final Random random = Random();
 
@@ -13,11 +10,13 @@ class HomeController extends GetxController {
     selectedIndex.value = index;
   }
 
-  void randomList(RxList list){
-  list.shuffle(random);
+  void randomList(RxList list) {
+    list.shuffle(random);
   }
 
   void sortedByRating(RxList list) {
+    list.sort((a, b) => a.title.compareTo(b.title));
     list.sort((a, b) => b.rating.compareTo(a.rating));
+    list.sort((a, b) => b.releaseDate.compareTo(a.releaseDate));
   }
 }

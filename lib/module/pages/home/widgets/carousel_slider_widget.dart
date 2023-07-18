@@ -7,9 +7,8 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
 import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
 import 'package:movieapp/routes/route_name.dart';
-
 import '../../../../api/imageAPI/image_url_api.dart';
-import '../../../../api/movie/models/movie_model.dart';
+
 
 class CarouselSliderWidget extends StatelessWidget {
   const CarouselSliderWidget({
@@ -25,7 +24,7 @@ class CarouselSliderWidget extends StatelessWidget {
     HomeController homeController = Get.put(HomeController());
     return Obx(() {
       homeController.randomList(carouselMovieList);
-      List<Movie> carouselListMovie = carouselMovieList.take(5).toList();
+      List carouselListMovie = carouselMovieList.take(5).toList();
       return (movieController.isLoading.value)
           ? const SizedBox.shrink()
           : CarouselSlider(

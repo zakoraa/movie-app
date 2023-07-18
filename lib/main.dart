@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
+import 'package:movieapp/main_page.dart';
 import 'package:movieapp/module/pages/home/view/movie_home_view.dart';
+import 'package:movieapp/module/pages/home/view/serial_movie_home_view.dart';
 import 'package:movieapp/module/pages/login/view/login_view.dart';
 import 'api/movieSerial/controllers/movie_serial_controller.dart';
 import 'module/pages/home/controllers/home_controller.dart';
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           )),
-      home: const MovieHomeView(),
+      home: const MainPage(),
       getPages: AppPage.pages,
     );
   }

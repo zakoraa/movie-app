@@ -18,7 +18,7 @@ class ListViewWidget extends StatelessWidget {
     HomeController homeController = Get.put(HomeController());
     return Obx(() {
       homeController.randomList(listViewMovieList);
-      List<Movie> listViewMovie = listViewMovieList.take(7).toList();
+      List listViewMovie = listViewMovieList.take(7).toList();
       return (movieController.isLoading.value)
           ? const SizedBox.shrink()
           : Column(

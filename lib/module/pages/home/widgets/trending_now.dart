@@ -18,7 +18,7 @@ class TrendingNow extends StatelessWidget {
     HomeController homeController = Get.put(HomeController());
     return Obx(() {
       homeController.sortedByRating(trendingNowMovieList);
-      List<Movie> trendingMovies = trendingNowMovieList.take(3).toList();
+      List trendingMovies = trendingNowMovieList.take(3).toList();
       return (movieController.isLoading.value)
           ? const SizedBox.shrink()
           : Column(
@@ -118,41 +118,45 @@ class TrendingNow extends StatelessWidget {
                                           ],
                                         ),
                                       ]),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 30),
-                                    child: Container(
-                                      height: 50,
-                                      width: 30,
-                                      decoration: const BoxDecoration(
-                                          color: Color(0xFFFFB039),
-                                          borderRadius: BorderRadius.only(
-                                              bottomLeft: Radius.circular(10),
-                                              bottomRight:
-                                                  Radius.circular(10))),
-                                      child: Center(
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            const Icon(
-                                              Icons.star,
-                                              size: 14,
-                                              color: Colors.black,
+                                  (movie.rating == "")
+                                      ? const SizedBox.shrink()
+                                      : Padding(
+                                          padding:
+                                              const EdgeInsets.only(right: 30),
+                                          child: Container(
+                                            height: 50,
+                                            width: 30,
+                                            decoration: const BoxDecoration(
+                                                color: Color(0xFFFFB039),
+                                                borderRadius: BorderRadius.only(
+                                                    bottomLeft:
+                                                        Radius.circular(10),
+                                                    bottomRight:
+                                                        Radius.circular(10))),
+                                            child: Center(
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  const Icon(
+                                                    Icons.star,
+                                                    size: 14,
+                                                    color: Colors.black,
+                                                  ),
+                                                  const SizedBox(
+                                                    height: 3.0,
+                                                  ),
+                                                  Text(
+                                                    "${movie.rating}",
+                                                    style: const TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 14),
+                                                  )
+                                                ],
+                                              ),
                                             ),
-                                            const SizedBox(
-                                              height: 3.0,
-                                            ),
-                                            Text(
-                                              "${movie.rating}",
-                                              style: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 14),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  )
+                                          ),
+                                        )
                                 ],
                               ),
                             ),

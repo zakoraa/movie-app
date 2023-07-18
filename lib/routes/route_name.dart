@@ -1,4 +1,6 @@
 abstract class RouteName {
-  static const homeView = '/homeView';
+  static const mainPage = '/mainPage';
+  static const movieHomeView = '/movieHomeView';
+  static const serialMovieHomeView = '/serialMovieHomeView';
   static const movieDetailsView = '/movieDetailsView';
 }
