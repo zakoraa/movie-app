@@ -26,50 +26,55 @@ class TextFieldWidget extends StatelessWidget {
           child: Text(
             text,
             style: const TextStyle(
-                color: Colors.grey, fontSize: 18, fontWeight: FontWeight.w400),
+                color: Colors.grey, fontSize: 14, fontWeight: FontWeight.w400),
           ),
         ),
         const SizedBox(
           height: 10.0,
         ),
-        Obx(() => TextField(
-            cursorColor: Colors.grey,
-            style: const TextStyle(color: Colors.white, fontSize: 18),
-            obscureText: obscureText == false
-                ? loginController.obscureText.value
-                : !loginController.isVisible.value,
-            decoration: InputDecoration(
-              hintText: text,
-              hintStyle: const TextStyle(
-                color: Colors.grey,
-              ),
-              prefixIcon: Icon(
-                icon,
-                color: Colors.grey,
-              ),
-              suffixIcon: suffixIcon == true
-                  ? GestureDetector(
-                      onTap: () => loginController.visiblePass(),
-                      child: Icon(
-                        loginController.isVisible.value
-                            ? Icons.visibility
-                            : Icons.visibility_off,
-                        color: Colors.grey,
-                      ))
-                  : const SizedBox.shrink(),
-              fillColor: const Color.fromARGB(67, 158, 158, 158),
-              filled: true,
-              enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(
-                    color: Colors.transparent,
+        Obx(() => Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: TextField(
+                  cursorColor: Colors.grey,
+                  style: const TextStyle(color: Colors.white, fontSize: 12),
+                  obscureText: obscureText == false
+                      ? loginController.obscureText.value
+                      : !loginController.isVisible.value,
+                  decoration: InputDecoration(
+                    hintText: text,
+                    hintStyle: const TextStyle(
+                      color: Colors.grey,
+                    ),
+                    prefixIcon: Icon(
+                      icon,
+                      color: Colors.grey,
+                    ),
+                    suffixIcon: suffixIcon == true
+                        ? GestureDetector(
+                            onTap: () => loginController.visiblePass(),
+                            child: Icon(
+                              loginController.isVisible.value
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.grey,
+                            ))
+                        : const SizedBox.shrink(),
+                    fillColor: const Color.fromARGB(67, 158, 158, 158),
+                    filled: true,
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 10),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Colors.transparent,
+                        )),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Colors.transparent,
+                        )),
                   )),
-              focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(
-                    color: Colors.transparent,
-                  )),
-            )))
+            ))
       ],
     );
   }

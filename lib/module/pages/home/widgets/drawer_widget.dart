@@ -57,7 +57,7 @@ class DrawerWidget extends StatelessWidget {
                         ),
                         const Text(
                           "Guinevere Beck",
-                          style: TextStyle(color: Colors.black, fontSize: 16),
+                          style: TextStyle(color: Colors.white, fontSize: 15),
                         )
                       ],
                     ),
@@ -65,18 +65,7 @@ class DrawerWidget extends StatelessWidget {
               const SizedBox(
                 height: 30.0,
               ),
-              const ContainerDrawer(
-                icon: Icons.favorite_outline,
-                text: "Favorite Movies",
-              ),
-              const ContainerDrawer(
-                icon: Icons.settings,
-                text: "Settings",
-              ),
-              const ContainerDrawer(
-                icon: Icons.logout,
-                text: "Logout",
-              ),
+              const ContainerDrawer(),
             ],
           ),
         ],

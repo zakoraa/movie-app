@@ -18,7 +18,6 @@ class Description extends StatelessWidget {
     return Container(
         width: Get.size.width,
         height: Get.size.height,
-        constraints: const BoxConstraints(maxHeight: 1000),
         decoration: const BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
@@ -81,12 +80,19 @@ class Description extends StatelessWidget {
               const SizedBox(
                 height: 15.0,
               ),
-              Text(
-                "${movie.overview}",
-                style: const TextStyle(
-                    fontWeight: FontWeight.w400,
-                    color: Colors.grey,
-                    fontSize: 12),
+              Expanded(
+                child: ListView(
+                    physics: const BouncingScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      Text(
+                        "${movie.overview}",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w400,
+                            color: Colors.grey,
+                            fontSize: 12),
+                      ),
+                    ]),
               )
             ],
           ),

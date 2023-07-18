@@ -84,7 +84,7 @@ class ListViewWidget extends StatelessWidget {
                                   child: Text(
                                     "${listViewMovie[index].title}",
                                     style: const TextStyle(
-                                        fontSize: 14,
+                                        fontSize: 13,
                                         color:
                                             Color.fromARGB(255, 232, 232, 232)),
                                     textAlign: TextAlign.left,
