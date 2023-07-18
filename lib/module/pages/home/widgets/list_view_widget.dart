@@ -1,14 +1,16 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
-import 'package:movieapp/api/movie/models/movie_model.dart';
 import 'package:movieapp/routes/route_name.dart';
 import '../../../../api/imageAPI/image_url_api.dart';
 import '../../../../api/movie/controllers/movie_get_discover.dart';
 
 class ListViewWidget extends StatelessWidget {
-  const ListViewWidget({Key? key, required this.listViewMovieList}) : super(key: key);
+  const ListViewWidget({Key? key, required this.listViewMovieList})
+      : super(key: key);
 
   final listViewMovieList;
 
@@ -95,7 +97,7 @@ class ListViewWidget extends StatelessWidget {
                                 Text(
                                   listViewMovie[index].releaseDate!,
                                   style: const TextStyle(
-                                      fontSize: 14,
+                                      fontSize: 12,
                                       color: Colors.grey,
                                       fontWeight: FontWeight.normal),
                                   textAlign: TextAlign.left,

@@ -7,6 +7,7 @@ import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
 import 'package:movieapp/main_page.dart';
 import 'api/movieSerial/controllers/movie_serial_controller.dart';
 import 'module/pages/home/controllers/home_controller.dart';
+import 'module/pages/login/view/login_view.dart';
 import 'routes/routes.dart';
 
 void main() => runApp(const MyApp());
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           )),
-      home: const MainPage(),
+      home: const LoginView(),
       getPages: AppPage.pages,
     );
   }

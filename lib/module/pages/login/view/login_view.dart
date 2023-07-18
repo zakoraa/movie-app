@@ -1,8 +1,9 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/pages/login/controllers/login_controller.dart';
 import 'package:movieapp/routes/route_name.dart';
-
 import '../../../widgets/textfield_widget.dart';
 
 class LoginView extends StatelessWidget {
@@ -18,6 +19,30 @@ class LoginView extends StatelessWidget {
           width: Get.size.width,
           child: Stack(
             children: [
+              Positioned(
+                  top: 0,
+                  right: 0,
+                  child: SizedBox(
+                      height: Get.size.height * 0.5,
+                      width: Get.size.width,
+                      child: ShaderMask(
+                        shaderCallback: (Rect bounds) {
+                          return const LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.black,
+                              Colors.transparent,
+                            ],
+                            stops: [0.0, 1.0],
+                          ).createShader(bounds);
+                        },
+                        blendMode: BlendMode.dstIn,
+                        child: Image.network(
+                          "https://bacaterus.com/wp-content/uploads/2021/09/You-S1_.webp",
+                          fit: BoxFit.cover,
+                        ),
+                      ))),
               Positioned(
                   top: 0,
                   right: 0,
@@ -37,7 +62,7 @@ class LoginView extends StatelessWidget {
                   height: Get.size.height * 0.6,
                   width: Get.size.width,
                   decoration: const BoxDecoration(
-                      color: Color.fromARGB(105, 71, 51, 21),
+                      color: Color.fromARGB(126, 71, 51, 21),
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30),
                           topRight: Radius.circular(30))),
@@ -76,13 +101,14 @@ class LoginView extends StatelessWidget {
                                   elevation: 0.0,
                                   child: InkWell(
                                     borderRadius: BorderRadius.circular(20),
-                                    onTap: () => Get.toNamed(RouteName.mainPage),
+                                    onTap: () =>
+                                        Get.toNamed(RouteName.mainPage),
                                     child: Container(
                                       width: Get.size.width,
                                       height: 50,
                                       decoration: BoxDecoration(
                                           color: const Color.fromARGB(
-                                              94, 255, 193, 7),
+                                              176, 255, 193, 7),
                                           borderRadius:
                                               BorderRadius.circular(20)),
                                       child: const Center(

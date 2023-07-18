@@ -33,7 +33,7 @@ class SelectType extends StatelessWidget {
                   width: 75,
                   decoration: BoxDecoration(
                       color: (homeController.selectedIndex.value == index)
-                          ? const Color.fromARGB(173, 255, 193, 7)
+                          ? const Color(0xFFFFAC4A)
                           : const Color.fromARGB(46, 144, 143, 143),
                       borderRadius: BorderRadius.circular(10)),
                   margin: const EdgeInsets.only(right: 10),

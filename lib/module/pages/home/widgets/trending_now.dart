@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
-import 'package:movieapp/api/movie/models/movie_model.dart';
 import 'package:movieapp/routes/route_name.dart';
 
 import '../../../../api/imageAPI/image_url_api.dart';
@@ -98,7 +97,7 @@ class TrendingNow extends StatelessWidget {
                                                 child: Text(
                                                   "${movie.title}",
                                                   style: const TextStyle(
-                                                      fontSize: 15),
+                                                      fontSize: 13),
                                                 ),
                                               ),
                                             ),
@@ -150,7 +149,7 @@ class TrendingNow extends StatelessWidget {
                                                     "${movie.rating}",
                                                     style: const TextStyle(
                                                         color: Colors.black,
-                                                        fontSize: 14),
+                                                        fontSize: 12),
                                                   )
                                                 ],
                                               ),
