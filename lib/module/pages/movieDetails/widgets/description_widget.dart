@@ -15,7 +15,6 @@ class Description extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String movieDescription = "${movie.overview}";
     return Container(
         width: Get.size.width,
         height: Get.size.height,
@@ -83,11 +82,11 @@ class Description extends StatelessWidget {
                 height: 15.0,
               ),
               Text(
-                movieDescription,
+                "${movie.overview}",
                 style: const TextStyle(
                     fontWeight: FontWeight.w400,
                     color: Colors.grey,
-                    fontSize: 14),
+                    fontSize: 12),
               )
             ],
           ),

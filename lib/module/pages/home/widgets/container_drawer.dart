@@ -27,7 +27,7 @@ class ContainerDrawer extends StatelessWidget {
           ),
           Text(
             text,
-            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
+            style: const TextStyle(fontSize: 13, fontWeight: FontWeight.normal),
           )
         ],
       ),

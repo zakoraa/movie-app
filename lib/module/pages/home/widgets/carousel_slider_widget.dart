@@ -9,12 +9,8 @@ import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
 import 'package:movieapp/routes/route_name.dart';
 import '../../../../api/imageAPI/image_url_api.dart';
 
-
 class CarouselSliderWidget extends StatelessWidget {
-  const CarouselSliderWidget({
-    super.key,
-    required this.carouselMovieList
-  });
+  const CarouselSliderWidget({super.key, required this.carouselMovieList});
 
   final carouselMovieList;
 
@@ -85,7 +81,7 @@ class CarouselSliderWidget extends StatelessWidget {
                                 "${movie.title}",
                                 overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.w700),
+                                    fontSize: 12, fontWeight: FontWeight.w700),
                               )),
                         )
                       ],

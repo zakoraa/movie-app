@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
@@ -16,10 +18,7 @@ class SelectType extends StatelessWidget {
     MovieController movieController = Get.find<MovieController>();
     MovieSerialController movieSerialController =
         Get.put(MovieSerialController());
-    List<String> movieType = [
-      "Movies",
-      "Serial TV"
-    ];
+    List<String> movieType = ["Movies", "Serial TV"];
     return Padding(
       padding: const EdgeInsets.only(left: 20),
       child: SizedBox(
@@ -31,7 +30,7 @@ class SelectType extends StatelessWidget {
                 onTap: () => homeController.selectIndex(index),
                 child: Container(
                   height: 40,
-                  width: 85,
+                  width: 75,
                   decoration: BoxDecoration(
                       color: (homeController.selectedIndex.value == index)
                           ? const Color.fromARGB(173, 255, 193, 7)
@@ -42,7 +41,7 @@ class SelectType extends StatelessWidget {
                     child: Text(
                       movieType[index],
                       style: const TextStyle(
-                          fontWeight: FontWeight.w200, fontSize: 14),
+                          fontWeight: FontWeight.w200, fontSize: 12),
                     ),
                   ),
                 ),
