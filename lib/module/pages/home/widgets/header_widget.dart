@@ -54,7 +54,7 @@ class HeaderWidget extends StatelessWidget {
                       style: TextStyle(
                           fontWeight: FontWeight.normal,
                           color: Colors.grey,
-                          fontSize: 14),
+                          fontSize: 13),
                     )
                   ],
                 ),
