@@ -100,6 +100,7 @@ class LoginView extends StatelessWidget {
                                   color: Colors.transparent,
                                   elevation: 0.0,
                                   child: InkWell(
+                                    splashColor: Colors.transparent,
                                     borderRadius: BorderRadius.circular(15),
                                     onTap: () =>
                                         Get.toNamed(RouteName.mainPage),

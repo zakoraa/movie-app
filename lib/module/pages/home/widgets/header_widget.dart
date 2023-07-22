@@ -52,9 +52,9 @@ class HeaderWidget extends StatelessWidget {
                     Text(
                       "See Whats new Today",
                       style: TextStyle(
-                          fontWeight: FontWeight.normal,
+                          fontWeight: FontWeight.w100,
                           color: Colors.grey,
-                          fontSize: 13),
+                          fontSize: 12),
                     )
                   ],
                 ),
