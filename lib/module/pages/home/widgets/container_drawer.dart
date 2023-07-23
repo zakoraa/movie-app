@@ -17,7 +17,37 @@ class ContainerDrawer extends StatelessWidget {
               (e) => GestureDetector(
                 onTap: () {
                   if (e.key == "Logout") {
-                    Get.offAllNamed(RouteName.loginView);
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text(
+                              "Do you want to Logout?",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 14),
+                            ),
+                            actions: [
+                              GestureDetector(
+                                onTap: () => Get.offAllNamed(RouteName.loginView),
+                                child: Container(
+                                  margin: const EdgeInsets.all(10),
+                                  height: 30,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                      color: Colors.amber,
+                                      borderRadius: BorderRadius.circular(5)),
+                                  child: const Center(
+                                    child: Text(
+                                      "OK",
+                                      style: TextStyle(fontSize: 13),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          );
+                        });
+                    // Get.offAllNamed(RouteName.loginView);
                   }
                 },
                 child: Container(

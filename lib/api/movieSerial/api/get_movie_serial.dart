@@ -13,7 +13,6 @@ class GetMovieSerial {
         'X-RapidAPI-Key': 'e6d9975bdamsh2d8c07dbe30ea98p155d34jsn752ab57ea078',
         'X-RapidAPI-Host': 'streamlinewatch-streaming-guide.p.rapidapi.com'
       });
-
       List data = jsonDecode(response.body);
       if (data.isNotEmpty) {
         print("Get Movie Serial Success");

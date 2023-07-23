@@ -15,7 +15,7 @@ class MovieSerial {
 
   factory MovieSerial.fromJson(Map<String, dynamic> json) {
     return MovieSerial(
-        id: json["id"],
+        id: json["_id"],
         title: json["title"],
         releaseDate: json["first_aired"].substring(0, 4),
         rating: json["vote_average"] ?? "",

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
-import 'package:movieapp/main_page.dart';
 import 'api/movieSerial/controllers/movie_serial_controller.dart';
 import 'module/pages/home/controllers/home_controller.dart';
 import 'module/pages/login/view/login_view.dart';
@@ -24,6 +23,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+          dialogBackgroundColor: const Color(0xFF2C2C2C),
           scaffoldBackgroundColor: const Color(0xFF2C2C2C),
           iconTheme: const IconThemeData(color: Color(0xFFFFFFFF)),
           textTheme: TextTheme(
