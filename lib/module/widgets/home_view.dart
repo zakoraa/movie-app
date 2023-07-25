@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/api/movieSerial/controllers/serial_movie_controller.dart';
+import 'package:movieapp/utils/loading.dart';
 import '../pages/home/widgets/carousel_slider_widget.dart';
 import '../pages/home/widgets/drawer_widget.dart';
 import '../pages/home/widgets/header_widget.dart';
@@ -29,7 +30,7 @@ class HomeView extends StatelessWidget {
     MovieController movieController = Get.find<MovieController>();
     MovieSerialController movieSerialController =
         Get.find<MovieSerialController>();
-    
+
     return Scaffold(
       drawer: const DrawerWidget(),
       body: SingleChildScrollView(
@@ -46,14 +47,9 @@ class HomeView extends StatelessWidget {
                   child: Image.asset("assets/Ellipse 1.png")),
             ),
             Obx(() {
-              return (movieController.isLoading.value || movieSerialController.isLoading.value)
-                  ? SizedBox(
-                      height: Get.size.height,
-                      child: Center(
-                        child: LoadingAnimationWidget.staggeredDotsWave(
-                            color: Colors.white, size: 40),
-                      ),
-                    )
+              return (movieController.isLoading.value &&
+                      movieSerialController.isLoading.value)
+                  ? const LoadingView()
                   : Padding(
                       padding: const EdgeInsets.only(top: 50),
                       child: SizedBox(

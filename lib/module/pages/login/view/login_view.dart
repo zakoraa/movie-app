@@ -12,6 +12,8 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginController loginController = Get.put(LoginController());
+    TextEditingController? email;
+  TextEditingController? password;
     return Scaffold(
         backgroundColor: Colors.black,
         body: SizedBox(
@@ -82,12 +84,15 @@ class LoginView extends StatelessWidget {
                                 const SizedBox(
                                   height: 40.0,
                                 ),
-                                const TextFieldWidget(
-                                    text: "Username", icon: Icons.person),
+                                TextFieldWidget(
+                                    controller: loginController.email,
+                                    text: "Username",
+                                    icon: Icons.person),
                                 const SizedBox(
                                   height: 30.0,
                                 ),
-                                const TextFieldWidget(
+                                TextFieldWidget(
+                                  controller: loginController.password,
                                   text: "Password",
                                   icon: Icons.key,
                                   suffixIcon: true,
@@ -103,7 +108,9 @@ class LoginView extends StatelessWidget {
                                     splashColor: Colors.transparent,
                                     borderRadius: BorderRadius.circular(15),
                                     onTap: () =>
-                                        Get.toNamed(RouteName.mainPage),
+                                        loginController.loginWithFirebase(
+                                            context, RouteName.mainPage),
+                                    // Get.toNamed(RouteName.mainPage),
                                     child: Container(
                                       width: Get.size.width * 0.75,
                                       height: 40,

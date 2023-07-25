@@ -12,7 +12,7 @@ class MovieController extends GetxController {
 
   Future<void> getData() async {
     var data = await _getMovie.getData();
-    if (data != null) {
+    if (data.isNotEmpty) {
       listViewMovieList.value = data;
       trendingNowMovieList.value = data;
       carouselSliderMovieList.value = data;

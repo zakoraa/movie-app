@@ -10,7 +10,7 @@ class MovieSerialController extends GetxController {
   RxBool isLoading = true.obs;
   Future<void> getData() async {
     var data = await _getMovieSerial.getData();
-    if (data != null) {
+    if (data.isNotEmpty) {
       listMovieSerialList.value = data;
       carouselSliderMovieSerialList.value = data;
       trendingNowMovieSerialList.value = data;
