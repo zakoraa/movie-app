@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
-import 'api/movieSerial/controllers/movie_serial_controller.dart';
+import 'api/movieSerial/controllers/serial_movie_controller.dart';
 import 'module/pages/home/controllers/home_controller.dart';
 import 'module/pages/login/view/login_view.dart';
 import 'routes/routes.dart';

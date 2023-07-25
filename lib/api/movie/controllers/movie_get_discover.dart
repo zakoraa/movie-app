@@ -8,7 +8,7 @@ class MovieController extends GetxController {
   RxList<Movie> trendingNowMovieList = <Movie>[].obs;
   RxList<Movie> carouselSliderMovieList = <Movie>[].obs;
   final GetMovie _getMovie = GetMovie();
-  var isLoading = true.obs;
+  RxBool isLoading = true.obs;
 
   Future<void> getData() async {
     var data = await _getMovie.getData();

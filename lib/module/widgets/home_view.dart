@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
-
-import '../../../../api/movieSerial/controllers/movie_serial_controller.dart';
+import 'package:movieapp/api/movieSerial/controllers/serial_movie_controller.dart';
 import '../pages/home/widgets/carousel_slider_widget.dart';
 import '../pages/home/widgets/drawer_widget.dart';
 import '../pages/home/widgets/header_widget.dart';
@@ -29,6 +27,9 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MovieController movieController = Get.find<MovieController>();
+    MovieSerialController movieSerialController =
+        Get.find<MovieSerialController>();
+    
     return Scaffold(
       drawer: const DrawerWidget(),
       body: SingleChildScrollView(
@@ -45,7 +46,7 @@ class HomeView extends StatelessWidget {
                   child: Image.asset("assets/Ellipse 1.png")),
             ),
             Obx(() {
-              return (movieController.isLoading.value)
+              return (movieController.isLoading.value || movieSerialController.isLoading.value)
                   ? SizedBox(
                       height: Get.size.height,
                       child: Center(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../api/movieSerial/controllers/movie_serial_controller.dart';
+import '../../../../api/movieSerial/controllers/serial_movie_controller.dart';
 import '../../../widgets/home_view.dart';
 
 class SerialMovieHomeView extends StatelessWidget {

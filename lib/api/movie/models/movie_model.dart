@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class Movie {
   final int? id;
   final dynamic rating;
@@ -17,10 +19,12 @@ class Movie {
     return Movie(
         id: json['id'],
         title: json['title'],
-        rating: json['vote_average'],
+        rating: NumberFormat("#.#").format(json["vote_average"]),
         releaseDate: json['release_date'].substring(0, 4),
-        poster: json['poster_path'] ?? "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png",
-        backdrop: json['backdrop_path'] ?? "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png",
+        poster: json['poster_path'] ??
+            "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png",
+        backdrop: json['backdrop_path'] ??
+            "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png",
         overview: json['overview']);
   }
 

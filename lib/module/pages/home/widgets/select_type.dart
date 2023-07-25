@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
 import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
 
-import '../../../../api/movieSerial/controllers/movie_serial_controller.dart';
+import '../../../../api/movieSerial/controllers/serial_movie_controller.dart';
 
 class SelectType extends StatelessWidget {
   const SelectType({
