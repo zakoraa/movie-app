@@ -6,8 +6,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
 import 'package:movieapp/firebase/auth_controller.dart';
-import 'package:movieapp/routes/route_name.dart';
-import 'package:movieapp/utils/loading.dart';
 import 'api/movieSerial/controllers/serial_movie_controller.dart';
 import 'module/pages/home/controllers/home_controller.dart';
 import 'module/pages/login/view/login_view.dart';
@@ -30,23 +28,22 @@ class MyApp extends StatelessWidget {
     HomeController homeController = Get.put(HomeController(), permanent: true);
     MovieSerialController movieSerialController =
         Get.put(MovieSerialController(), permanent: true);
-    final authController = Get.put(AuthController(), permanent: true); 
-            return GetMaterialApp(
-              debugShowCheckedModeBanner: false,
-              theme: ThemeData(
-                  dialogBackgroundColor: const Color(0xFF2C2C2C),
-                  scaffoldBackgroundColor: const Color(0xFF2C2C2C),
-                  iconTheme: const IconThemeData(color: Color(0xFFFFFFFF)),
-                  textTheme: TextTheme(
-                    bodyText2: GoogleFonts.poppins(
-                      color: const Color(0xFFFFFFFF),
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  )),
-              home: const LoginView(),
-              getPages: AppPage.pages,
-            );
-  
+    AuthController authController = Get.put(AuthController(), permanent: true);
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          dialogBackgroundColor: const Color(0xFF2C2C2C),
+          scaffoldBackgroundColor: const Color(0xFF2C2C2C),
+          iconTheme: const IconThemeData(color: Color(0xFFFFFFFF)),
+          textTheme: TextTheme(
+            bodyText2: GoogleFonts.poppins(
+              color: const Color(0xFFFFFFFF),
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+            ),
+          )),
+      home: const LoginView(),
+      getPages: AppPage.pages,
+    );
   }
 }

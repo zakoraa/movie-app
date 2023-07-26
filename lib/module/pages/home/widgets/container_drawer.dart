@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movieapp/module/pages/login/controllers/login_controller.dart';
 import 'package:movieapp/routes/route_name.dart';
 
 class ContainerDrawer extends StatelessWidget {
   const ContainerDrawer({super.key});
   @override
   Widget build(BuildContext context) {
+    LoginController loginController = Get.find<LoginController>();
     Map<dynamic, dynamic> drawerContentMap = {
       "Favorite Movies": Icons.favorite_outline,
       "Settings": Icons.settings,
@@ -28,7 +30,11 @@ class ContainerDrawer extends StatelessWidget {
                             ),
                             actions: [
                               GestureDetector(
-                                onTap: () => Get.offAllNamed(RouteName.loginView),
+                                onTap: () {
+                                  loginController.email!.text = "";
+                                  loginController.password!.text = "";
+                                  Get.offAllNamed(RouteName.loginView);
+                                },
                                 child: Container(
                                   margin: const EdgeInsets.all(10),
                                   height: 30,

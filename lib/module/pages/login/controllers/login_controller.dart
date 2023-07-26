@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:movieapp/firebase/auth_controller.dart';
 
 class LoginController extends GetxController {
-  AuthController authController = Get.put(AuthController());
+  AuthController authController = Get.find<AuthController>();
   RxBool isVisible = false.obs;
   RxBool obscureText = false.obs;
   TextEditingController? email = TextEditingController();
