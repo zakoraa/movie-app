@@ -1,6 +1,9 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/firebase/auth_controller.dart';
+import 'package:movieapp/utils/scaffold_messenger.dart';
 
 class LoginController extends GetxController {
   AuthController authController = Get.find<AuthController>();
@@ -14,35 +17,19 @@ class LoginController extends GetxController {
   }
 
   void loginWithFirebase(BuildContext context, routeName) {
-    if (email!.text.isEmpty && password!.text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        duration: Duration(seconds: 2),
-        content: Text(
-          "Your password is empty. Please fill it in!",
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
-        backgroundColor: Color(0xFF535353),
-      ));
+    if (email!.text.isEmpty || password!.text.isEmpty) {
+      ScaffoldMessengerUtils.showFloatingSnackBar(
+          context, "Your password is empty. Please fill it in!");
     } else {
       if (email!.text.isNotEmpty && password!.text.isNotEmpty) {
         if (email!.text.contains("@")) {
           print("email : ${email!.text}");
           print("password : ${password!.text}");
           authController.login(email!.text, password!.text).then((value) {
-            print("ini email : ${authController.acceptedEmail}");
+            print("accepted email : ${authController.acceptedEmail}");
             if (authController.acceptedEmail == null) {
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                duration: Duration(seconds: 2),
-                content: Text(
-                  "Your email or password is wrong!",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                backgroundColor: Colors.amber,
-              ));
+              ScaffoldMessengerUtils.showFloatingSnackBar(
+                  context, "Your email or password is wrong!");
             } else {
               Get.offAllNamed(routeName);
             }
