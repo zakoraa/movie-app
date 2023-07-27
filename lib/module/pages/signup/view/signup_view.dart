@@ -38,13 +38,15 @@ class SignupView extends StatelessWidget {
                     height: 40.0,
                   ),
                   TextFieldWidget(
-                      controller: signupController.email,
+                      selectedController: signupController,
+                      controller: signupController.username,
                       text: "Username",
                       icon: Icons.person),
                   const SizedBox(
                     height: 30.0,
                   ),
                   TextFieldWidget(
+                      selectedController: signupController,
                       controller: signupController.email,
                       text: "Email",
                       icon: Icons.email),
@@ -52,6 +54,7 @@ class SignupView extends StatelessWidget {
                     height: 30.0,
                   ),
                   TextFieldWidget(
+                    selectedController: signupController,
                     controller: signupController.password,
                     text: "Password",
                     icon: Icons.key,
@@ -62,8 +65,9 @@ class SignupView extends StatelessWidget {
                     height: 30.0,
                   ),
                   TextFieldWidget(
-                    controller: signupController.password,
-                    text: "Password",
+                    confirmPass: true,
+                    controller: signupController.confirmPassword,
+                    text: "Confirm Your Password",
                     icon: Icons.key,
                     suffixIcon: true,
                     obscureText: true,

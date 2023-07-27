@@ -7,17 +7,24 @@ import 'package:movieapp/utils/scaffold_messenger.dart';
 
 class LoginController extends GetxController {
   AuthController authController = Get.find<AuthController>();
-  RxBool isVisible = false.obs;
+  RxBool passwordIsVisible = true.obs;
   RxBool obscureText = false.obs;
   TextEditingController? email = TextEditingController();
   TextEditingController? password = TextEditingController();
 
   void visiblePass() {
-    isVisible.value = !isVisible.value;
+    passwordIsVisible.value = !passwordIsVisible.value;
   }
 
   void loginWithFirebase(BuildContext context, routeName) {
-    if (email!.text.isEmpty || password!.text.isEmpty) {
+    if (email!.text.isEmpty && password!.text.isEmpty) {
+      ScaffoldMessengerUtils.showFloatingSnackBar(
+          context, "Your email and password are empty. Please fill it in!");
+    }
+    else if (email!.text.isEmpty) {
+      ScaffoldMessengerUtils.showFloatingSnackBar(
+          context, "Your email is empty. Please fill it in!");
+    } else if (password!.text.isEmpty) {
       ScaffoldMessengerUtils.showFloatingSnackBar(
           context, "Your password is empty. Please fill it in!");
     } else {
@@ -34,6 +41,9 @@ class LoginController extends GetxController {
               Get.offAllNamed(routeName);
             }
           });
+        } else {
+          ScaffoldMessengerUtils.showFloatingSnackBar(
+              context, "email must contain @");
         }
       }
     }

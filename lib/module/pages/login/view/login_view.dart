@@ -40,13 +40,15 @@ class LoginView extends StatelessWidget {
                     height: 40.0,
                   ),
                   TextFieldWidget(
+                    selectedController: loginController,
                       controller: loginController.email,
-                      text: "Username",
-                      icon: Icons.person),
+                      text: "Email",
+                      icon: Icons.email),
                   const SizedBox(
                     height: 30.0,
                   ),
                   TextFieldWidget(
+                    selectedController: loginController,
                     controller: loginController.password,
                     text: "Password",
                     icon: Icons.key,

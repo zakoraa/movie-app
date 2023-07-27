@@ -33,7 +33,7 @@ class ContainerDrawer extends StatelessWidget {
                                 onTap: () {
                                   loginController.email!.text = "";
                                   loginController.password!.text = "";
-                                  loginController.isVisible.value = false;
+                                  loginController.passwordIsVisible.value = false;
                                   Get.offAllNamed(RouteName.loginView);
                                 },
                                 child: Container(

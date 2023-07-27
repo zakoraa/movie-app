@@ -5,12 +5,18 @@ import '../../../../firebase/auth_controller.dart';
 
 class SignupController extends GetxController {
   AuthController authController = Get.find<AuthController>();
-  RxBool isVisible = false.obs;
+  RxBool passwordIsVisible = true.obs;
+  RxBool confirmPasswordIsVisible = true.obs;
   RxBool obscureText = false.obs;
+  TextEditingController? username = TextEditingController();
   TextEditingController? email = TextEditingController();
   TextEditingController? password = TextEditingController();
+  TextEditingController? confirmPassword = TextEditingController();
 
   void visiblePass() {
-    isVisible.value = !isVisible.value;
+    passwordIsVisible.value = !passwordIsVisible.value;
+  }
+  void visibleConfirmPass() {
+    confirmPasswordIsVisible.value = !confirmPasswordIsVisible.value;
   }
 }

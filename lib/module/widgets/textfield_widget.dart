@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/module/pages/login/controllers/login_controller.dart';
+import 'package:movieapp/module/pages/signup/controllers/signup_controller.dart';
 
 class TextFieldWidget extends StatelessWidget {
   const TextFieldWidget(
@@ -9,17 +9,20 @@ class TextFieldWidget extends StatelessWidget {
       required this.icon,
       this.suffixIcon = false,
       this.obscureText = false,
+      this.confirmPass = false, 
+      this.selectedController = false,
       required this.controller})
       : super(key: key);
 
   final String text;
   final IconData icon;
-  final bool suffixIcon, obscureText;
+  final bool suffixIcon, obscureText,confirmPass;
   final controller;
+  final selectedController;
 
   @override
   Widget build(BuildContext context) {
-    LoginController loginController = Get.put(LoginController());
+    SignupController selectedController = Get.put(SignupController());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -42,8 +45,10 @@ class TextFieldWidget extends StatelessWidget {
                 cursorColor: Colors.grey,
                 style: const TextStyle(color: Colors.white, fontSize: 12),
                 obscureText: obscureText == false
-                    ? loginController.obscureText.value
-                    : !loginController.isVisible.value,
+                    ? selectedController.obscureText.value
+                    : confirmPass == false
+                        ? selectedController.passwordIsVisible.value
+                        : selectedController.confirmPasswordIsVisible.value,
                 decoration: InputDecoration(
                   hintText: text,
                   hintStyle: const TextStyle(
@@ -55,11 +60,18 @@ class TextFieldWidget extends StatelessWidget {
                   ),
                   suffixIcon: suffixIcon == true
                       ? GestureDetector(
-                          onTap: () => loginController.visiblePass(),
+                          onTap: () => confirmPass == false
+                              ? selectedController.visiblePass()
+                              : selectedController.visibleConfirmPass(),
                           child: Icon(
-                            loginController.isVisible.value
-                                ? Icons.visibility
-                                : Icons.visibility_off,
+                            confirmPass == false
+                                ? (!selectedController.passwordIsVisible.value
+                                    ? Icons.visibility
+                                    : Icons.visibility_off)
+                                : (!selectedController
+                                        .confirmPasswordIsVisible.value
+                                    ? Icons.visibility
+                                    : Icons.visibility_off),
                             color: Colors.grey,
                           ))
                       : const SizedBox.shrink(),

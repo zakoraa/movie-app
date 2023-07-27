@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ScaffoldMessengerUtils {
   static void showFloatingSnackBar(context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      margin: const EdgeInsets.only(bottom: 15, left: 20, right: 20),
+      margin: const EdgeInsets.only(bottom: 5, left: 10, right: 10),
       duration: const Duration(seconds: 2),
       behavior: SnackBarBehavior.floating,
       content: Text(
