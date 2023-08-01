@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:get/get.dart';
 import 'package:movieapp/models/movie_model.dart';
 
@@ -9,13 +11,15 @@ class MovieController extends GetxController {
   RxList<Movie> carouselSliderMovieList = <Movie>[].obs;
   final GetMovie _getMovie = GetMovie();
   RxBool isLoading = true.obs;
-
+  Random random = Random();
   Future<void> getData() async {
     var data = await _getMovie.getData();
     if (data.isNotEmpty) {
-      listViewMovieList.value = data;
-      trendingNowMovieList.value = data;
-      carouselSliderMovieList.value = data;
+      listViewMovieList.value = List.from(data);
+      listViewMovieList.shuffle(random);
+      trendingNowMovieList.value = List.from(data);
+      carouselSliderMovieList.value = List.from(data);
+      carouselSliderMovieList.shuffle(random);
     }
     isLoading.value = false;
   }

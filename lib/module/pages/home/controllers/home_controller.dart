@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movieapp/models/movie_model.dart';
 import 'dart:math';
 
 import '../../../../routes/route_name.dart';
@@ -8,16 +9,22 @@ import '../../login/controllers/login_controller.dart';
 class HomeController extends GetxController {
   LoginController loginController = Get.put(LoginController());
 
-  final Random random = Random();
-
   RxInt selectedIndex = 0.obs;
+
+  List moviesIn2023 = <Movie>[].obs;
+  List moviesBefore2023 = <Movie>[].obs;
+
+  void sortedByYear(List list) {
+    moviesIn2023 =
+        list.where((movie) => int.parse(movie.releaseDate) == 2023).toList();
+    moviesIn2023.sort((a, b) => a.title.compareTo(b.title));
+    moviesBefore2023 =
+        list.where((movie) => int.parse(movie.releaseDate) < 2023).toList();
+    moviesBefore2023.sort((a, b) => a.title.compareTo(b.title));
+  }
 
   void selectIndex(int index) {
     selectedIndex.value = index;
-  }
-
-  void randomList(RxList list) {
-    list.shuffle(random);
   }
 
   void sortedByRating(RxList list) {

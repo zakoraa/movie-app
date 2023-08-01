@@ -5,12 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movieapp/main_page.dart';
-import 'package:movieapp/module/pages/home/controllers/movie_get_discover.dart';
-import 'package:movieapp/auth/auth_controller.dart';
-import 'package:movieapp/module/widgets/home_view.dart';
-import 'module/pages/home/controllers/serial_movie_controller.dart';
-import 'module/pages/home/controllers/home_controller.dart';
-import 'module/pages/login/view/login_view.dart';
 import 'routes/routes.dart';
 
 void main() {
@@ -38,7 +32,7 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           )),
-      home: const LoginView(),
+      home: const MainPage(),
       getPages: AppPage.pages,
     );
   }

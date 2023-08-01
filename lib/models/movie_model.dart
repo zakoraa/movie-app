@@ -2,8 +2,8 @@ import 'package:intl/intl.dart';
 
 class Movie {
   final int? id;
-  final dynamic rating;
-  final String? title, poster, backdrop, releaseDate, overview;
+  final dynamic rating, releaseDate;
+  final String? title, poster, backdrop, overview;
 
   Movie({
     required this.id,

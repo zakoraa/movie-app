@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
 import 'package:movieapp/module/pages/home/controllers/movie_get_discover.dart';
 import 'package:movieapp/module/pages/home/controllers/serial_movie_controller.dart';
 import 'package:movieapp/utils/loading.dart';
@@ -29,6 +30,7 @@ class HomeView extends StatelessWidget {
     MovieController movieController = Get.find<MovieController>();
     MovieSerialController movieSerialController =
         Get.find<MovieSerialController>();
+    HomeController homeController = Get.find<HomeController>();
     return Scaffold(
       drawer: const DrawerWidget(),
       body: SizedBox(
@@ -51,6 +53,7 @@ class HomeView extends StatelessWidget {
                 )),
             //
             Obx(() {
+              homeController.sortedByYear(listViewMovieList);
               return (movieController.isLoading.value &&
                       movieSerialController.isLoading.value)
                   ? const LoadingView()
@@ -75,6 +78,7 @@ class HomeView extends StatelessWidget {
                                   carouselMovieList: carouselMovieList,
                                 ),
                                 ListViewWidget(
+                                  text: "For You",
                                   listViewMovieList: listViewMovieList,
                                 ),
                                 const SizedBox(
@@ -82,6 +86,16 @@ class HomeView extends StatelessWidget {
                                 ),
                                 TrendingNow(
                                   trendingNowMovieList: trendingNowMovieList,
+                                ),
+                                ListViewWidget(
+                                  text: "2023",
+                                  listViewMovieList:
+                                      homeController.moviesIn2023,
+                                ),
+                                ListViewWidget(
+                                  text: "Before 2023",
+                                  listViewMovieList:
+                                      homeController.moviesBefore2023,
                                 ),
                               ],
                             ),
