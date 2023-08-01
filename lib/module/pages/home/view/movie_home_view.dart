@@ -8,7 +8,7 @@ class MovieHomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MovieController movieController = Get.find<MovieController>();
+    MovieController movieController = Get.put(MovieController());
     return HomeView(carouselMovieList: movieController.carouselSliderMovieList,
     listViewMovieList: movieController.listViewMovieList,
     trendingNowMovieList: movieController.trendingNowMovieList,);

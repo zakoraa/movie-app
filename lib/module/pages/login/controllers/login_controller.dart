@@ -6,7 +6,7 @@ import 'package:movieapp/auth/auth_controller.dart';
 import 'package:movieapp/utils/scaffold_messenger.dart';
 
 class LoginController extends GetxController {
-  AuthController authController = Get.find<AuthController>();
+  AuthController authController = Get.put(AuthController());
   RxBool passwordIsVisible = true.obs;
   RxBool obscureText = false.obs;
   TextEditingController? email = TextEditingController();

@@ -9,7 +9,7 @@ class SerialMovieHomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MovieSerialController movieSerialController =
-        Get.find<MovieSerialController>();
+        Get.put(MovieSerialController());
     return HomeView(carouselMovieList: movieSerialController.carouselSliderMovieSerialList,
     listViewMovieList: movieSerialController.listMovieSerialList,
     trendingNowMovieList: movieSerialController.trendingNowMovieSerialList,);

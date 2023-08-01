@@ -7,8 +7,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:movieapp/main_page.dart';
 import 'package:movieapp/module/pages/home/controllers/movie_get_discover.dart';
 import 'package:movieapp/auth/auth_controller.dart';
+import 'package:movieapp/module/widgets/home_view.dart';
 import 'module/pages/home/controllers/serial_movie_controller.dart';
 import 'module/pages/home/controllers/home_controller.dart';
+import 'module/pages/login/view/login_view.dart';
 import 'routes/routes.dart';
 
 void main() {
@@ -23,12 +25,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MovieController movieController =
-        Get.put(MovieController(), permanent: true);
-    HomeController homeController = Get.put(HomeController(), permanent: true);
-    MovieSerialController movieSerialController =
-        Get.put(MovieSerialController(), permanent: true);
-    AuthController authController = Get.put(AuthController(), permanent: true);
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
