@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:get/get.dart';
 import 'package:movieapp/models/movie_model.dart';
 
-import '../../../../services/movie_service.dart';
+import '../../../services/movie_service.dart';
 
 class MovieController extends GetxController {
   RxList<Movie> listViewMovieList = <Movie>[].obs;

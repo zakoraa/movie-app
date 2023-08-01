@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/module/pages/login/controllers/login_controller.dart';
+import 'package:movieapp/module/login/controllers/login_controller.dart';
 import 'package:movieapp/routes/route_name.dart';
-import '../../../widgets/form_login_signup.dart';
-import '../../../widgets/textfield_widget.dart';
+import '../../../shared/widgets/form_login_signup.dart';
+import '../../../shared/widgets/textfield_widget.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});

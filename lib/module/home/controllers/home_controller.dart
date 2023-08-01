@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:movieapp/models/movie_model.dart';
 import 'dart:math';
 
-import '../../../../routes/route_name.dart';
+import '../../../routes/route_name.dart';
 import '../../login/controllers/login_controller.dart';
 
 class HomeController extends GetxController {

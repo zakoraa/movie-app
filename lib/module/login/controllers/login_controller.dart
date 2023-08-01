@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/auth/auth_controller.dart';
-import 'package:movieapp/utils/scaffold_messenger.dart';
+import 'package:movieapp/shared/utils/scaffold_messenger.dart';
 
 class LoginController extends GetxController {
   AuthController authController = Get.put(AuthController());

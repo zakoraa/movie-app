@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/module/pages/signup/controllers/signup_controller.dart';
+import 'package:movieapp/module/signup/controllers/signup_controller.dart';
 
 class TextFieldWidget extends StatelessWidget {
   const TextFieldWidget(

@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:movieapp/module/pages/home/controllers/movie_get_discover.dart';
+import 'package:movieapp/module/home/controllers/movie_get_discover.dart';
 import 'package:movieapp/routes/route_name.dart';
 
-import '../../../../utils/image_url_api.dart';
+import '../../../shared/utils/image_url_api.dart';
 import '../controllers/home_controller.dart';
 
 class TrendingNow extends StatelessWidget {

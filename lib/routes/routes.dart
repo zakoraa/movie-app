@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 import 'package:movieapp/main_page.dart';
-import 'package:movieapp/module/pages/home/view/movie_home_view.dart';
-import 'package:movieapp/module/pages/home/view/serial_movie_home_view.dart';
-import 'package:movieapp/module/pages/login/view/login_view.dart';
-import 'package:movieapp/module/pages/movieDetails/view/movie_details_view.dart';
-import 'package:movieapp/module/pages/signup/view/signup_view.dart';
+import 'package:movieapp/module/home/view/movie_home_view.dart';
+import 'package:movieapp/module/home/view/serial_movie_home_view.dart';
+import 'package:movieapp/module/login/view/login_view.dart';
+import 'package:movieapp/module/movieDetails/view/movie_details_view.dart';
+import 'package:movieapp/module/signup/view/signup_view.dart';
 import 'package:movieapp/routes/route_name.dart';
 
 class AppPage {

@@ -2,16 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
-import 'package:movieapp/module/pages/home/controllers/movie_get_discover.dart';
-import 'package:movieapp/module/pages/home/controllers/serial_movie_controller.dart';
-import 'package:movieapp/utils/loading.dart';
-import '../pages/home/widgets/carousel_slider_widget.dart';
-import '../pages/home/widgets/drawer_widget.dart';
-import '../pages/home/widgets/header_widget.dart';
-import '../pages/home/widgets/list_view_widget.dart';
-import '../pages/home/widgets/select_type.dart';
-import '../pages/home/widgets/trending_now.dart';
+import 'package:movieapp/module/home/controllers/home_controller.dart';
+import 'package:movieapp/module/home/controllers/movie_get_discover.dart';
+import 'package:movieapp/module/home/controllers/serial_movie_controller.dart';
+import 'package:movieapp/shared/utils/loading.dart';
+import '../../module/home/widgets/carousel_slider_widget.dart';
+import '../../module/home/widgets/drawer_widget.dart';
+import '../../module/home/widgets/header_widget.dart';
+import '../../module/home/widgets/list_view_widget.dart';
+import '../../module/home/widgets/select_type.dart';
+import '../../module/home/widgets/trending_now.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({

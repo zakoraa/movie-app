@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/module/pages/signup/controllers/signup_controller.dart';
-import 'package:movieapp/module/widgets/form_login_signup.dart';
+import 'package:movieapp/module/signup/controllers/signup_controller.dart';
+import 'package:movieapp/shared/widgets/form_login_signup.dart';
 
-import '../../../widgets/textfield_widget.dart';
+import '../../../shared/widgets/textfield_widget.dart';
 
 class SignupView extends StatelessWidget {
   const SignupView({super.key});

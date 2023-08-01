@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
-import 'package:movieapp/module/pages/login/controllers/login_controller.dart';
+import 'package:movieapp/module/home/controllers/home_controller.dart';
+import 'package:movieapp/module/login/controllers/login_controller.dart';
 import 'package:movieapp/routes/route_name.dart';
 
 class ContainerDrawer extends StatelessWidget {

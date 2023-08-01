@@ -3,9 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
+import 'package:movieapp/module/home/controllers/home_controller.dart';
 import 'package:movieapp/routes/route_name.dart';
-import '../../../../utils/image_url_api.dart';
+import '../../../shared/utils/image_url_api.dart';
 import '../controllers/movie_get_discover.dart';
 
 class ListViewWidget extends StatelessWidget {
