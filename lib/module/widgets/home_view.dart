@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/pages/home/controllers/movie_get_discover.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/module/pages/home/controllers/serial_movie_controller.dart';
 import 'package:movieapp/utils/loading.dart';
 import '../pages/home/widgets/carousel_slider_widget.dart';
@@ -30,52 +29,62 @@ class HomeView extends StatelessWidget {
     MovieController movieController = Get.find<MovieController>();
     MovieSerialController movieSerialController =
         Get.find<MovieSerialController>();
-
     return Scaffold(
       drawer: const DrawerWidget(),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
+      body: SizedBox(
+        height: Get.size.height,
+        width: Get.size.width,
         child: Stack(
           children: [
-            Positioned(top: 0, child: Image.asset("assets/Ellipse 2.png")),
-            Positioned(top: 225, child: Image.asset("assets/Ellipse 1.png")),
             Positioned(
-              bottom: 0,
-              child: Transform(
-                  alignment: Alignment.center,
-                  transform: Matrix4.identity()..scale(-1.0, 1.0, 1.0),
-                  child: Image.asset("assets/Ellipse 1.png")),
-            ),
+                top: 0,
+                right: 0,
+                child: Image.asset(
+                  "assets/Ellipse 2.png",
+                  scale: 1.5,
+                )),
+            Positioned(
+                bottom: 0,
+                child: Image.asset(
+                  "assets/Ellipse 1.png",
+                  scale: 1.5,
+                )),
+            //
             Obx(() {
               return (movieController.isLoading.value &&
                       movieSerialController.isLoading.value)
                   ? const LoadingView()
-                  : Padding(
-                      padding: const EdgeInsets.only(top: 50),
-                      child: SizedBox(
-                        width: Get.size.width,
-                        child: Center(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const HeaderWidget(),
-                              const SizedBox(
-                                height: 20.0,
-                              ),
-                              const SelectType(),
-                              const SizedBox(
-                                height: 30.0,
-                              ),
-                              CarouselSliderWidget(
-                                carouselMovieList: carouselMovieList,
-                              ),
-                              ListViewWidget(
-                                listViewMovieList: listViewMovieList,
-                              ),
-                              TrendingNow(
-                                trendingNowMovieList: trendingNowMovieList,
-                              ),
-                            ],
+                  : SingleChildScrollView(
+                      physics: const BouncingScrollPhysics(),
+                      child: SafeArea(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Center(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const HeaderWidget(),
+                                const SizedBox(
+                                  height: 20.0,
+                                ),
+                                const SelectType(),
+                                const SizedBox(
+                                  height: 30.0,
+                                ),
+                                CarouselSliderWidget(
+                                  carouselMovieList: carouselMovieList,
+                                ),
+                                ListViewWidget(
+                                  listViewMovieList: listViewMovieList,
+                                ),
+                                const SizedBox(
+                                  height: 20.0,
+                                ),
+                                TrendingNow(
+                                  trendingNowMovieList: trendingNowMovieList,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
