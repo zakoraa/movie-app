@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           )),
-      home: const MainPage(),
+      home: const LoginView(),
       getPages: AppPage.pages,
     );
   }

@@ -40,7 +40,7 @@ class LoginView extends StatelessWidget {
                     height: 40.0,
                   ),
                   TextFieldWidget(
-                    selectedController: loginController,
+                      selectedController: loginController,
                       controller: loginController.email,
                       text: "Email",
                       icon: Icons.email),
@@ -58,29 +58,30 @@ class LoginView extends StatelessWidget {
                   const SizedBox(
                     height: 40.0,
                   ),
-                  Material(
-                    color: Colors.transparent,
-                    elevation: 0.0,
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      borderRadius: BorderRadius.circular(15),
-                      onTap: () => loginController.loginWithFirebase(
-                          context, RouteName.mainPage),
-                      // Get.toNamed(RouteName.mainPage),
-                      child: Container(
-                        width: Get.size.width * 0.75,
-                        height: 40,
-                        decoration: BoxDecoration(
-                            color: const Color.fromARGB(176, 255, 193, 7),
-                            borderRadius: BorderRadius.circular(15)),
-                        child: const Center(
-                            child: Text(
-                          "Login",
-                          style: TextStyle(fontSize: 14),
-                        )),
-                      ),
-                    ),
-                  ),
+                  Obx(() => Material(
+                        color: Colors.transparent,
+                        elevation: 0.0,
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          borderRadius: BorderRadius.circular(15),               
+                          onTap: () => loginController.loginWithFirebase(
+                              context, RouteName.mainPage),
+                          child: Container(
+                            width: Get.size.width * 0.75,
+                            height: 40,
+                            decoration: BoxDecoration(
+                                color: const Color.fromARGB(176, 255, 193, 7),
+                                borderRadius: BorderRadius.circular(15)),
+                            child: Center(
+                                child: Text(
+                              loginController.isLoading.value
+                                  ? "Loading..."
+                                  : "Login",
+                              style: const TextStyle(fontSize: 14),
+                            )),
+                          ),
+                        ),
+                      )),
                   const SizedBox(
                     height: 15.0,
                   ),

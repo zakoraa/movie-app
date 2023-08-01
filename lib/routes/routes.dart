@@ -10,7 +10,10 @@ import 'package:movieapp/routes/route_name.dart';
 class AppPage {
   static final pages = [
     GetPage(name: RouteName.loginView, page: () => const LoginView()),
-    GetPage(name: RouteName.signupView, page: () => const SignupView()),
+    GetPage(
+        name: RouteName.signupView,
+        page: () => const SignupView(),
+        transition: Transition.fadeIn),
     GetPage(name: RouteName.mainPage, page: () => const MainPage()),
     GetPage(name: RouteName.movieHomeView, page: () => const MovieHomeView()),
     GetPage(

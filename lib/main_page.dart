@@ -1,4 +1,4 @@
-// ignore_for_file: implementation_imports, unused_import
+// ignore_for_file: implementation_imports, unused_import, unused_local_variable
 
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -6,8 +6,8 @@ import 'package:get/get.dart';
 import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
 import 'package:movieapp/module/pages/home/view/movie_home_view.dart';
 import 'package:movieapp/module/pages/home/view/serial_movie_home_view.dart';
-
 import 'module/pages/home/controllers/movie_get_discover.dart';
+import 'module/pages/home/controllers/serial_movie_controller.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
