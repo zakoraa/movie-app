@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 class FormLoginSignup extends StatelessWidget {
   const FormLoginSignup({super.key, required this.content});
-  
+
   final content;
 
   @override
@@ -41,13 +41,6 @@ class FormLoginSignup extends StatelessWidget {
                           fit: BoxFit.cover,
                         ),
                       ))),
-              Positioned(
-                  top: 0,
-                  right: 0,
-                  child: Image.asset(
-                    "assets/Ellipse 2.png",
-                    scale: 2,
-                  )),
               Positioned(
                   bottom: 0,
                   child: Image.asset(
