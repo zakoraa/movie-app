@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
-import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
+import 'package:movieapp/module/pages/home/controllers/movie_get_discover.dart';
 import 'package:movieapp/routes/route_name.dart';
-import '../../../../api/imageAPI/image_url_api.dart';
+import '../../../../utils/image_url_api.dart';
 
 class CarouselSliderWidget extends StatelessWidget {
   const CarouselSliderWidget({super.key, required this.carouselMovieList});

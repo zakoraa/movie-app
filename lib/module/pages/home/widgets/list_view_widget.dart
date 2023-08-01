@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/module/pages/home/controllers/home_controller.dart';
 import 'package:movieapp/routes/route_name.dart';
-import '../../../../api/imageAPI/image_url_api.dart';
-import '../../../../api/movie/controllers/movie_get_discover.dart';
+import '../../../../utils/image_url_api.dart';
+import '../controllers/movie_get_discover.dart';
 
 class ListViewWidget extends StatelessWidget {
   const ListViewWidget({Key? key, required this.listViewMovieList})

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../firebase/auth_controller.dart';
+import '../../../../auth/auth_controller.dart';
 
 class SignupController extends GetxController {
   AuthController authController = Get.find<AuthController>();

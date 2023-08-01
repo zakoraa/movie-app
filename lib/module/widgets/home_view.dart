@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
+import 'package:movieapp/module/pages/home/controllers/movie_get_discover.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:movieapp/api/movieSerial/controllers/serial_movie_controller.dart';
+import 'package:movieapp/module/pages/home/controllers/serial_movie_controller.dart';
 import 'package:movieapp/utils/loading.dart';
 import '../pages/home/widgets/carousel_slider_widget.dart';
 import '../pages/home/widgets/drawer_widget.dart';

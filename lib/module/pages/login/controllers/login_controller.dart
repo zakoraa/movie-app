@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/firebase/auth_controller.dart';
+import 'package:movieapp/auth/auth_controller.dart';
 import 'package:movieapp/utils/scaffold_messenger.dart';
 
 class LoginController extends GetxController {

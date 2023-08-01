@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movieapp/api/movie/controllers/movie_get_discover.dart';
-import 'package:movieapp/firebase/auth_controller.dart';
-import 'api/movieSerial/controllers/serial_movie_controller.dart';
+import 'package:movieapp/main_page.dart';
+import 'package:movieapp/module/pages/home/controllers/movie_get_discover.dart';
+import 'package:movieapp/auth/auth_controller.dart';
+import 'module/pages/home/controllers/serial_movie_controller.dart';
 import 'module/pages/home/controllers/home_controller.dart';
-import 'module/pages/login/view/login_view.dart';
 import 'routes/routes.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           )),
-      home: const LoginView(),
+      home: const MainPage(),
       getPages: AppPage.pages,
     );
   }

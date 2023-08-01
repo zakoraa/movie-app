@@ -2,7 +2,7 @@
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:movieapp/api/movie/models/movie_model.dart';
+import 'package:movieapp/models/movie_model.dart';
 
 class GetMovie {
   Future getData() async {

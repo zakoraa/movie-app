@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import '../../../../api/imageAPI/image_url_api.dart';
+import '../../../../utils/image_url_api.dart';
 import '../widgets/description_widget.dart';
 
 class MovieDetailsView extends StatelessWidget {

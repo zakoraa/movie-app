@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:movieapp/api/movieSerial/api/get_movie_serial.dart';
-import 'package:movieapp/api/movieSerial/models/serial_model.dart';
+import 'package:movieapp/services/serial_service.dart';
+import 'package:movieapp/models/serial_model.dart';
 
 class MovieSerialController extends GetxController {
   RxList<MovieSerial> listMovieSerialList = <MovieSerial>[].obs;

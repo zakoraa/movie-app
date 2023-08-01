@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:movieapp/api/movie/models/movie_model.dart';
+import 'package:movieapp/models/movie_model.dart';
 
-import '../api/get_movie.dart';
+import '../../../../services/movie_service.dart';
 
 class MovieController extends GetxController {
   RxList<Movie> listViewMovieList = <Movie>[].obs;
