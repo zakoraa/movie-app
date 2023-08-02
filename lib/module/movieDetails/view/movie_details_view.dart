@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import '../../../shared/utils/image_url_api.dart';
-import '../widgets/description_widget.dart';
+import '../widget/description_widget.dart';
 
 class MovieDetailsView extends StatelessWidget {
   MovieDetailsView({super.key});
@@ -45,7 +45,7 @@ class MovieDetailsView extends StatelessWidget {
                   child: GestureDetector(
                     onTap: () => Get.back(),
                     child: const Icon(
-                      Icons.arrow_back_ios,
+                      Icons.arrow_back,
                       size: 30,
                     ),
                   ),

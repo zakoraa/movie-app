@@ -6,12 +6,13 @@ import 'package:movieapp/module/home/controllers/home_controller.dart';
 import 'package:movieapp/module/home/controllers/movie_get_discover.dart';
 import 'package:movieapp/module/home/controllers/serial_movie_controller.dart';
 import 'package:movieapp/shared/utils/loading.dart';
-import '../../module/home/widgets/carousel_slider_widget.dart';
-import '../../module/home/widgets/drawer_widget.dart';
-import '../../module/home/widgets/header_widget.dart';
-import '../../module/home/widgets/list_view_widget.dart';
-import '../../module/home/widgets/select_type.dart';
-import '../../module/home/widgets/trending_now.dart';
+import 'package:movieapp/shared/utils/scaffold_background_template.dart';
+import 'carousel_slider_widget.dart';
+import 'drawer_widget.dart';
+import 'header_widget.dart';
+import 'list_view_widget.dart';
+import 'select_type.dart';
+import 'trending_now.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({
@@ -36,23 +37,8 @@ class HomeView extends StatelessWidget {
       body: SizedBox(
         height: Get.size.height,
         width: Get.size.width,
-        child: Stack(
-          children: [
-            Positioned(
-                top: 0,
-                right: 0,
-                child: Image.asset(
-                  "assets/Ellipse 2.png",
-                  scale: 1.5,
-                )),
-            Positioned(
-                bottom: 0,
-                child: Image.asset(
-                  "assets/Ellipse 1.png",
-                  scale: 1.5,
-                )),
-            //
-            Obx(() {
+        child: ScaffoldBackgroundTemplate(
+          child: Obx(() {
               homeController.sortedByYear(listViewMovieList);
               return (movieController.isLoading.value &&
                       movieSerialController.isLoading.value)
@@ -77,6 +63,9 @@ class HomeView extends StatelessWidget {
                                 CarouselSliderWidget(
                                   carouselMovieList: carouselMovieList,
                                 ),
+                                const SizedBox(
+                                  height: 20.0,
+                                ),
                                 ListViewWidget(
                                   text: "For You",
                                   listViewMovieList: listViewMovieList,
@@ -87,25 +76,28 @@ class HomeView extends StatelessWidget {
                                 TrendingNow(
                                   trendingNowMovieList: trendingNowMovieList,
                                 ),
-                                ListViewWidget(
-                                  text: "2023",
-                                  listViewMovieList:
-                                      homeController.moviesIn2023,
-                                ),
-                                ListViewWidget(
-                                  text: "Before 2023",
-                                  listViewMovieList:
-                                      homeController.moviesBefore2023,
-                                ),
+                                homeController.moviesIn2023.length <= 3
+                                    ? const SizedBox.shrink()
+                                    : ListViewWidget(
+                                        text: "2023",
+                                        listViewMovieList:
+                                            homeController.moviesIn2023,
+                                      ),
+                                homeController.moviesBefore2023.length <= 3
+                                    ? const SizedBox.shrink()
+                                    : ListViewWidget(
+                                        text: "Before 2023",
+                                        listViewMovieList:
+                                            homeController.moviesBefore2023,
+                                      ),
                               ],
                             ),
                           ),
                         ),
                       ),
                     );
-            })
-          ],
-        ),
+            }),
+        )
       ),
     );
   }

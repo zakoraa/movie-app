@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
+import 'package:movieapp/module/seeAll/view/see_all_view.dart';
 import 'package:movieapp/routes/route_name.dart';
 import '../../../shared/utils/image_url_api.dart';
 import '../controllers/movie_get_discover.dart';
@@ -27,8 +28,25 @@ class ListViewWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 20, top: 40, bottom: 30),
-                child: Text(text),
+                padding: const EdgeInsets.only(
+                    left: 20, top: 20, bottom: 30, right: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(text),
+                    GestureDetector(
+                      onTap: () => Get.to(()=> SeeAllView(movies: listViewMovieList, title : text)),
+                      child: const Text(
+                        "See all",
+                        style: TextStyle(
+                            color: Colors.amber,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: "normal",
+                            fontSize: 16),
+                      ),
+                    )
+                  ],
+                ),
               ),
               SizedBox(
                 height: 300,
