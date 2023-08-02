@@ -7,16 +7,12 @@ class LoadingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: SizedBox(
-          height: Get.size.height,
-          width: Get.size.width,
-          child: Center(
-            child: LoadingAnimationWidget.staggeredDotsWave(
-                color: Colors.white, size: 40),
-          ),
-        ),
+    return SizedBox(
+      height: Get.size.height,
+      width: Get.size.width,
+      child: Center(
+        child: LoadingAnimationWidget.staggeredDotsWave(
+            color: Colors.white, size: 40),
       ),
     );
   }

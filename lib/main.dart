@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movieapp/main_page.dart';
+import 'package:movieapp/module/home/widgets/home_view.dart';
+import 'package:movieapp/module/login/view/login_view.dart';
 import 'routes/routes.dart';
 
 void main() {
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           )),
-      home: const MainPage(),
+      home: const LoginView(),
       getPages: AppPage.pages,
     );
   }

@@ -32,73 +32,72 @@ class HomeView extends StatelessWidget {
     MovieSerialController movieSerialController =
         Get.find<MovieSerialController>();
     HomeController homeController = Get.find<HomeController>();
-    return Scaffold(
-      drawer: const DrawerWidget(),
-      body: SizedBox(
-        height: Get.size.height,
-        width: Get.size.width,
-        child: ScaffoldBackgroundTemplate(
-          child: Obx(() {
-              homeController.sortedByYear(listViewMovieList);
-              return (movieController.isLoading.value &&
-                      movieSerialController.isLoading.value)
-                  ? const LoadingView()
-                  : SingleChildScrollView(
-                      physics: const BouncingScrollPhysics(),
-                      child: SafeArea(
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 20),
-                          child: Center(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const HeaderWidget(),
-                                const SizedBox(
-                                  height: 20.0,
-                                ),
-                                const SelectType(),
-                                const SizedBox(
-                                  height: 30.0,
-                                ),
-                                CarouselSliderWidget(
-                                  carouselMovieList: carouselMovieList,
-                                ),
-                                const SizedBox(
-                                  height: 20.0,
-                                ),
-                                ListViewWidget(
-                                  text: "For You",
-                                  listViewMovieList: listViewMovieList,
-                                ),
-                                const SizedBox(
-                                  height: 20.0,
-                                ),
-                                TrendingNow(
-                                  trendingNowMovieList: trendingNowMovieList,
-                                ),
-                                homeController.moviesIn2023.length <= 3
-                                    ? const SizedBox.shrink()
-                                    : ListViewWidget(
-                                        text: "2023",
-                                        listViewMovieList:
-                                            homeController.moviesIn2023,
-                                      ),
-                                homeController.moviesBefore2023.length <= 3
-                                    ? const SizedBox.shrink()
-                                    : ListViewWidget(
-                                        text: "Before 2023",
-                                        listViewMovieList:
-                                            homeController.moviesBefore2023,
-                                      ),
-                              ],
-                            ),
+    return Obx(() {
+      homeController.sortedByYear(listViewMovieList);
+      return movieController.isLoading.value &&
+              movieSerialController.isLoading.value
+          ? const Scaffold(
+              body: ScaffoldBackgroundTemplate(child: LoadingView()))
+          : Scaffold(
+              drawer: const DrawerWidget(),
+              body: SizedBox(
+                  height: Get.size.height,
+                  width: Get.size.width,
+                  child: ScaffoldBackgroundTemplate(
+                      child: SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: SafeArea(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 20),
+                        child: Center(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const HeaderWidget(),
+                              const SizedBox(
+                                height: 20.0,
+                              ),
+                              const SelectType(),
+                              const SizedBox(
+                                height: 30.0,
+                              ),
+                              CarouselSliderWidget(
+                                carouselMovieList: carouselMovieList,
+                              ),
+                              const SizedBox(
+                                height: 20.0,
+                              ),
+                              ListViewWidget(
+                                text: "For You",
+                                listViewMovieList: listViewMovieList,
+                              ),
+                              const SizedBox(
+                                height: 20.0,
+                              ),
+                              TrendingNow(
+                                trendingNowMovieList: trendingNowMovieList,
+                              ),
+                              homeController.moviesIn2023.length <= 3
+                                  ? const SizedBox.shrink()
+                                  : ListViewWidget(
+                                      text: "2023",
+                                      listViewMovieList:
+                                          homeController.moviesIn2023,
+                                    ),
+                              homeController.moviesBefore2023.length <= 3
+                                  ? const SizedBox.shrink()
+                                  : ListViewWidget(
+                                      text: "Before 2023",
+                                      listViewMovieList:
+                                          homeController.moviesBefore2023,
+                                    ),
+                            ],
                           ),
                         ),
                       ),
-                    );
-            }),
-        )
-      ),
-    );
+                    ),
+                  ))),
+            );
+    });
   }
 }

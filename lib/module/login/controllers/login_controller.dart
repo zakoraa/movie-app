@@ -36,11 +36,12 @@ class LoginController extends GetxController {
           authController.login(email!.text, password!.text).then((value) {
             print("accepted email : ${authController.acceptedEmail}");
             if (authController.acceptedEmail == null) {
+              isLoading.value = false;
               ScaffoldMessengerUtils.showFloatingSnackBar(
                   context, "Your email or password is wrong!");
             } else {
               isLoading.value = false;
-              Get.offAllNamed(routeName);
+              Get.toNamed(routeName);
             }
           });
         } else {

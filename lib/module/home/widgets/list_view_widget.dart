@@ -35,14 +35,15 @@ class ListViewWidget extends StatelessWidget {
                   children: [
                     Text(text),
                     GestureDetector(
-                      onTap: () => Get.to(()=> SeeAllView(movies: listViewMovieList, title : text)),
+                      onTap: () => Get.to(() =>
+                          SeeAllView(movies: listViewMovieList, title: text), transition: Transition.rightToLeft),
                       child: const Text(
                         "See all",
                         style: TextStyle(
                             color: Colors.amber,
                             fontWeight: FontWeight.w400,
                             fontFamily: "normal",
-                            fontSize: 16),
+                            fontSize: 15),
                       ),
                     )
                   ],
