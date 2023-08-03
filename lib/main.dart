@@ -7,7 +7,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:movieapp/main_page.dart';
 import 'package:movieapp/module/home/widgets/home_view.dart';
 import 'package:movieapp/module/login/view/login_view.dart';
-import 'routes/routes.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,7 +34,6 @@ class MyApp extends StatelessWidget {
             ),
           )),
       home: const LoginView(),
-      getPages: AppPage.pages,
     );
   }
 }

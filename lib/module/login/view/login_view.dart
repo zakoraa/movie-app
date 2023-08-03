@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/login/controllers/login_controller.dart';
-import 'package:movieapp/routes/route_name.dart';
+import 'package:movieapp/module/signup/view/signup_view.dart';
 import '../../../shared/widgets/form_login_signup.dart';
 import '../../../shared/widgets/textfield_widget.dart';
 
@@ -63,9 +63,9 @@ class LoginView extends StatelessWidget {
                         elevation: 0.0,
                         child: InkWell(
                           splashColor: Colors.transparent,
-                          borderRadius: BorderRadius.circular(15),               
-                          onTap: () => loginController.loginWithFirebase(
-                              context, RouteName.mainPage),
+                          borderRadius: BorderRadius.circular(15),
+                          onTap: () =>
+                              loginController.loginWithFirebase(context),
                           child: Container(
                             width: Get.size.width * 0.75,
                             height: 40,
@@ -86,7 +86,8 @@ class LoginView extends StatelessWidget {
                     height: 15.0,
                   ),
                   GestureDetector(
-                    onTap: () => Get.toNamed(RouteName.signupView),
+                    onTap: () => Get.to(() => const SignupView(),
+                        transition: Transition.fadeIn),
                     child: const Text(
                       "Don't have an account?",
                       style: TextStyle(

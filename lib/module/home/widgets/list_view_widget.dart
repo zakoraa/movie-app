@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
 import 'package:movieapp/module/seeAll/view/see_all_view.dart';
-import 'package:movieapp/routes/route_name.dart';
 import '../../../shared/utils/image_url_api.dart';
+import '../../movieDetails/view/movie_details_view.dart';
 import '../controllers/movie_get_discover.dart';
 
 class ListViewWidget extends StatelessWidget {
@@ -63,8 +63,7 @@ class ListViewWidget extends StatelessWidget {
                           width: 20.0,
                         ),
                         GestureDetector(
-                          onTap: () => Get.toNamed(RouteName.movieDetailsView,
-                              arguments: listViewMovie[index]),
+                          onTap: () => Get.to(()=>MovieDetailsView(movie: listViewMovie[index]),transition: Transition.fade,popGesture: true),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [

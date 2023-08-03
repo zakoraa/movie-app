@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/models/movie_model.dart';
+import 'package:movieapp/module/login/view/login_view.dart';
 import 'dart:math';
-
-import '../../../routes/route_name.dart';
 import '../../login/controllers/login_controller.dart';
 
 class HomeController extends GetxController {
@@ -48,7 +47,7 @@ class HomeController extends GetxController {
                   loginController.email!.text = "";
                   loginController.password!.text = "";
                   loginController.passwordIsVisible.value = false;
-                  Get.offAllNamed(RouteName.loginView);
+                  Get.offAll(()=> LoginView());
                 },
                 child: Container(
                   margin: const EdgeInsets.all(10),

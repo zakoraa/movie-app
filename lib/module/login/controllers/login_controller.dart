@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/auth/auth_controller.dart';
+import 'package:movieapp/main_page.dart';
 import 'package:movieapp/shared/utils/scaffold_messenger.dart';
 
 class LoginController extends GetxController {
@@ -17,7 +18,7 @@ class LoginController extends GetxController {
     passwordIsVisible.value = !passwordIsVisible.value;
   }
 
-  void loginWithFirebase(BuildContext context, routeName) {
+  void loginWithFirebase(BuildContext context) {
     if (email!.text.isEmpty && password!.text.isEmpty) {
       ScaffoldMessengerUtils.showFloatingSnackBar(
           context, "Your email and password are empty. Please fill it in!");
@@ -41,7 +42,7 @@ class LoginController extends GetxController {
                   context, "Your email or password is wrong!");
             } else {
               isLoading.value = false;
-              Get.toNamed(routeName);
+              Get.offAll(() => const MainPage());
             }
           });
         } else {

@@ -7,8 +7,8 @@ import '../../../shared/utils/image_url_api.dart';
 import '../widget/description_widget.dart';
 
 class MovieDetailsView extends StatelessWidget {
-  MovieDetailsView({super.key});
-  final movie = Get.arguments;
+  MovieDetailsView({super.key, required this.movie});
+  final movie;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class MovieDetailsView extends StatelessWidget {
                     onTap: () => Get.back(),
                     child: const Icon(
                       Icons.arrow_back,
-                      size: 30,
+                      size: 35,
                     ),
                   ),
                 ),

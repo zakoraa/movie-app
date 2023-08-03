@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/module/home/controllers/movie_get_discover.dart';
-import 'package:movieapp/routes/route_name.dart';
 import 'package:movieapp/shared/widgets/list_tile_widget.dart';
 
 import '../../../shared/utils/image_url_api.dart';

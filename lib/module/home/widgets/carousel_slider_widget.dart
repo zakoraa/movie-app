@@ -8,8 +8,8 @@ import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
 import 'package:movieapp/module/home/controllers/movie_get_discover.dart';
-import 'package:movieapp/routes/route_name.dart';
 import '../../../shared/utils/image_url_api.dart';
+import '../../movieDetails/view/movie_details_view.dart';
 
 class CarouselSliderWidget extends StatelessWidget {
   const CarouselSliderWidget({super.key, required this.carouselMovieList});
@@ -36,7 +36,7 @@ class CarouselSliderWidget extends StatelessWidget {
             items: carouselListMovie.map((movie) {
               return GestureDetector(
                 onTap: (() =>
-                    Get.toNamed(RouteName.movieDetailsView, arguments: movie)),
+                    Get.to(()=>MovieDetailsView(movie: movie),transition: Transition.fade,popGesture: true)),
                 child: Container(
                   width: Get.size.width,
                   height: 225,

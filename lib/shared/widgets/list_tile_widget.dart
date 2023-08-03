@@ -5,8 +5,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-
-import '../../routes/route_name.dart';
+import 'package:movieapp/module/movieDetails/view/movie_details_view.dart';
 import '../utils/image_url_api.dart';
 
 class ListTileWidget extends StatelessWidget {
@@ -23,7 +22,7 @@ class ListTileWidget extends StatelessWidget {
             children: listMovie.map((movie) {
           return GestureDetector(
             onTap: () =>
-                Get.toNamed(RouteName.movieDetailsView, arguments: movie),
+                Get.to(()=>MovieDetailsView(movie: movie),transition: Transition.fade,popGesture: true),
             child: Column(
               children: [
                 Container(
