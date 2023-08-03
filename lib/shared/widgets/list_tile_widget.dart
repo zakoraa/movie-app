@@ -21,8 +21,8 @@ class ListTileWidget extends StatelessWidget {
         child: Column(
             children: listMovie.map((movie) {
           return GestureDetector(
-            onTap: () =>
-                Get.to(()=>MovieDetailsView(movie: movie),transition: Transition.fade,popGesture: true),
+            onTap: () => Get.to(() => MovieDetailsView(movie: movie),
+                transition: Transition.fade, popGesture: true),
             child: Column(
               children: [
                 Container(
@@ -46,7 +46,10 @@ class ListTileWidget extends StatelessWidget {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
                                     child: Image.network(
-                                      "${ImageUrlApi.imageUrlW500}${movie.poster}",
+                                      movie.poster ==
+                                              "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png"
+                                          ? "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png"
+                                          : "${ImageUrlApi.imageUrlW500}${movie.poster}",
                                       height: 120,
                                       loadingBuilder: (context, child,
                                               loadingProgress) =>

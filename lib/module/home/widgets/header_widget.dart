@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../auth/auth_controller.dart';
 import 'detail_profile_picture.dart';
 
 class HeaderWidget extends StatelessWidget {
@@ -10,6 +11,7 @@ class HeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthController authController = Get.put(AuthController());
     return Padding(
       padding: const EdgeInsets.only(right: 20, left: 20),
       child: SizedBox(
@@ -42,14 +44,15 @@ class HeaderWidget extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      "Hi Guinevere Beck,"
-                    ),
-                    SizedBox(
+                  children: [
+                    Text(authController.username == null ||
+                            authController.username! == ""
+                        ? "Hi ${authController.acceptedEmail!}"
+                        : "Hi ${authController.username!}"),
+                    const SizedBox(
                       height: 5.0,
                     ),
-                    Text(
+                    const Text(
                       "See Whats new Today",
                       style: TextStyle(
                           fontWeight: FontWeight.w100,
@@ -71,7 +74,10 @@ class HeaderWidget extends StatelessWidget {
                           height: 50,
                           width: 50,
                           child: Image.network(
-                            "https://pbs.twimg.com/media/FnQKQaWXoAADHK0.jpg",
+                            authController.profilePicture == null ||
+                                    authController.profilePicture == ""
+                                ? 'https://icon-library.com/images/default-profile-icon/default-profile-icon-6.jpg'
+                                : authController.profilePicture!,
                             fit: BoxFit.cover,
                           ),
                         )),

@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
-import 'package:movieapp/module/home/controllers/movie_get_discover.dart';
+import 'package:movieapp/module/home/controllers/movie_controller.dart';
 import 'package:movieapp/module/home/controllers/serial_movie_controller.dart';
 import 'package:movieapp/shared/utils/loading.dart';
 import 'package:movieapp/shared/utils/scaffold_background_template.dart';

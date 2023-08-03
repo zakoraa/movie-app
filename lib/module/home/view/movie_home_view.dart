@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/module/home/controllers/movie_get_discover.dart';
+import 'package:movieapp/module/home/controllers/movie_controller.dart';
 import '../widgets/home_view.dart';
 
 class MovieHomeView extends StatelessWidget {

@@ -7,7 +7,7 @@ import 'package:movieapp/module/home/controllers/home_controller.dart';
 import 'package:movieapp/module/seeAll/view/see_all_view.dart';
 import '../../../shared/utils/image_url_api.dart';
 import '../../movieDetails/view/movie_details_view.dart';
-import '../controllers/movie_get_discover.dart';
+import '../controllers/movie_controller.dart';
 
 class ListViewWidget extends StatelessWidget {
   const ListViewWidget(
@@ -35,8 +35,10 @@ class ListViewWidget extends StatelessWidget {
                   children: [
                     Text(text),
                     GestureDetector(
-                      onTap: () => Get.to(() =>
-                          SeeAllView(movies: listViewMovieList, title: text), transition: Transition.rightToLeft),
+                      onTap: () => Get.to(
+                          () => SeeAllView(
+                              movies: listViewMovieList, title: text),
+                          transition: Transition.rightToLeft),
                       child: const Text(
                         "See all",
                         style: TextStyle(
@@ -63,7 +65,11 @@ class ListViewWidget extends StatelessWidget {
                           width: 20.0,
                         ),
                         GestureDetector(
-                          onTap: () => Get.to(()=>MovieDetailsView(movie: listViewMovie[index]),transition: Transition.fade,popGesture: true),
+                          onTap: () => Get.to(
+                              () =>
+                                  MovieDetailsView(movie: listViewMovie[index]),
+                              transition: Transition.fade,
+                              popGesture: true),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -76,7 +82,10 @@ class ListViewWidget extends StatelessWidget {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(25),
                                   child: Image.network(
-                                    "${ImageUrlApi.imageUrlW500}${listViewMovie[index].poster}",
+                                    listViewMovie[index].poster ==
+                                            "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png"
+                                        ? "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png"
+                                        : "${ImageUrlApi.imageUrlW500}${listViewMovie[index].poster}",
                                     fit: BoxFit.cover,
                                     loadingBuilder: (context, child,
                                             loadingProgress) =>

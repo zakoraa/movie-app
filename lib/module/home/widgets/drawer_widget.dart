@@ -3,11 +3,14 @@ import 'package:get/get.dart';
 import 'package:movieapp/module/home/widgets/container_drawer.dart';
 import 'package:movieapp/module/home/widgets/detail_profile_picture.dart';
 
+import '../../auth/auth_controller.dart';
+
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    AuthController authController = Get.put(AuthController());
     return Drawer(
       backgroundColor: const Color(0xFF2C2C2C),
       child: Stack(
@@ -47,7 +50,10 @@ class DrawerWidget extends StatelessWidget {
                                   height: 100,
                                   width: 100,
                                   child: Image.network(
-                                    "https://pbs.twimg.com/media/FnQKQaWXoAADHK0.jpg",
+                                    authController.profilePicture == null ||
+                                            authController.profilePicture == ""
+                                        ? 'https://icon-library.com/images/default-profile-icon/default-profile-icon-6.jpg'
+                                        : authController.profilePicture!,
                                     fit: BoxFit.cover,
                                   ),
                                 )),
@@ -56,9 +62,13 @@ class DrawerWidget extends StatelessWidget {
                         const SizedBox(
                           height: 10.0,
                         ),
-                        const Text(
-                          "Guinevere Beck",
-                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        Text(
+                          authController.username == null ||
+                                  authController.username! == ""
+                              ? authController.acceptedEmail!
+                              : authController.username!,
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 15),
                         )
                       ],
                     ),

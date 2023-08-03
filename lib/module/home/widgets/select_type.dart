@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/module/home/controllers/movie_get_discover.dart';
+import 'package:movieapp/module/home/controllers/movie_controller.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
 
 import '../controllers/serial_movie_controller.dart';

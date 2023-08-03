@@ -65,7 +65,7 @@ class LoginView extends StatelessWidget {
                           splashColor: Colors.transparent,
                           borderRadius: BorderRadius.circular(15),
                           onTap: () =>
-                              loginController.loginWithFirebase(context),
+                              loginController.loginValidation(context),
                           child: Container(
                             width: Get.size.width * 0.75,
                             height: 40,

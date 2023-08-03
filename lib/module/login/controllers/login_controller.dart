@@ -2,8 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/auth/auth_controller.dart';
+import 'package:movieapp/module/auth/auth_controller.dart';
 import 'package:movieapp/main_page.dart';
+import 'package:movieapp/services/auth_service.dart';
 import 'package:movieapp/shared/utils/scaffold_messenger.dart';
 
 class LoginController extends GetxController {
@@ -18,7 +19,22 @@ class LoginController extends GetxController {
     passwordIsVisible.value = !passwordIsVisible.value;
   }
 
-  void loginWithFirebase(BuildContext context) {
+  void login(BuildContext context) {
+      isLoading.value = true;
+      authController.login(email!.text, password!.text).then((value) {
+        print("accepted email : ${authController.acceptedEmail}");
+        if (authController.acceptedEmail == null) {
+          isLoading.value = false;
+          ScaffoldMessengerUtils.showFloatingSnackBar(
+              context, "Your email or password is wrong!");
+        } else {
+          isLoading.value = false;
+          Get.offAll(() => const MainPage());
+        }
+      });
+    }
+
+  void loginValidation(BuildContext context) {
     if (email!.text.isEmpty && password!.text.isEmpty) {
       ScaffoldMessengerUtils.showFloatingSnackBar(
           context, "Your email and password are empty. Please fill it in!");
@@ -33,23 +49,12 @@ class LoginController extends GetxController {
         if (email!.text.contains("@")) {
           print("email : ${email!.text}");
           print("password : ${password!.text}");
-          isLoading.value = true;
-          authController.login(email!.text, password!.text).then((value) {
-            print("accepted email : ${authController.acceptedEmail}");
-            if (authController.acceptedEmail == null) {
-              isLoading.value = false;
-              ScaffoldMessengerUtils.showFloatingSnackBar(
-                  context, "Your email or password is wrong!");
-            } else {
-              isLoading.value = false;
-              Get.offAll(() => const MainPage());
-            }
-          });
+          login(context);
         } else {
           ScaffoldMessengerUtils.showFloatingSnackBar(
               context, "email must contain @");
         }
       }
-    }
+    }  
   }
 }

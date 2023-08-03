@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
-import 'package:movieapp/module/home/controllers/movie_get_discover.dart';
+import 'package:movieapp/module/home/controllers/movie_controller.dart';
 import '../../../shared/utils/image_url_api.dart';
 import '../../movieDetails/view/movie_details_view.dart';
 
@@ -48,7 +48,8 @@ class CarouselSliderWidget extends StatelessWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Image.network(
-                          "${ImageUrlApi.imageUrlOriginal}${movie.backdrop}",
+                          movie.backdrop == "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png"?
+                          "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png":"${ImageUrlApi.imageUrlOriginal}${movie.backdrop}",
                           fit: BoxFit.cover,
                           height: 225,
                           width: Get.size.width,

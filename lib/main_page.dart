@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
 import 'package:movieapp/module/home/view/movie_home_view.dart';
 import 'package:movieapp/module/home/view/serial_movie_home_view.dart';
-import 'module/home/controllers/movie_get_discover.dart';
+import 'module/home/controllers/movie_controller.dart';
 import 'module/home/controllers/serial_movie_controller.dart';
 
 class MainPage extends StatelessWidget {
