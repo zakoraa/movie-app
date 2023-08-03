@@ -9,20 +9,20 @@ class TextFieldWidget extends StatelessWidget {
       required this.icon,
       this.suffixIcon = false,
       this.obscureText = false,
-      this.confirmPass = false, 
+      this.confirmPass = false,
       this.selectedController = false,
       required this.controller})
       : super(key: key);
 
   final String text;
   final IconData icon;
-  final bool suffixIcon, obscureText,confirmPass;
+  final bool suffixIcon, obscureText, confirmPass;
   final controller;
   final selectedController;
 
   @override
   Widget build(BuildContext context) {
-    SignupController selectedController = Get.put(SignupController());
+    SignupController signupController = Get.put(SignupController());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -48,7 +48,7 @@ class TextFieldWidget extends StatelessWidget {
                     ? selectedController.obscureText.value
                     : confirmPass == false
                         ? selectedController.passwordIsVisible.value
-                        : selectedController.confirmPasswordIsVisible.value,
+                        : signupController.confirmPasswordIsVisible.value,
                 decoration: InputDecoration(
                   hintText: text,
                   hintStyle: const TextStyle(
@@ -62,13 +62,13 @@ class TextFieldWidget extends StatelessWidget {
                       ? GestureDetector(
                           onTap: () => confirmPass == false
                               ? selectedController.visiblePass()
-                              : selectedController.visibleConfirmPass(),
+                              : signupController.visibleConfirmPass(),
                           child: Icon(
                             confirmPass == false
                                 ? (!selectedController.passwordIsVisible.value
                                     ? Icons.visibility
                                     : Icons.visibility_off)
-                                : (!selectedController
+                                : (!signupController
                                         .confirmPasswordIsVisible.value
                                     ? Icons.visibility
                                     : Icons.visibility_off),

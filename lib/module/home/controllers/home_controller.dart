@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/models/movie_model.dart';
 import 'package:movieapp/module/login/view/login_view.dart';
-import 'dart:math';
 import '../../login/controllers/login_controller.dart';
 
 class HomeController extends GetxController {
@@ -46,8 +45,8 @@ class HomeController extends GetxController {
                 onTap: () {
                   loginController.email!.text = "";
                   loginController.password!.text = "";
-                  loginController.passwordIsVisible.value = false;
-                  Get.offAll(()=> LoginView());
+                  loginController.passwordIsVisible.value = true;
+                  Get.offAll(() => const LoginView());
                 },
                 child: Container(
                   margin: const EdgeInsets.all(10),
