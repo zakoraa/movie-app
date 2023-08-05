@@ -47,7 +47,7 @@ class HeaderWidget extends StatelessWidget {
                   children: [
                     Text(authController.username == null ||
                             authController.username! == ""
-                        ? "Hi ${authController.acceptedEmail!}"
+                        ? "Hi"
                         : "Hi ${authController.username!}"),
                     const SizedBox(
                       height: 5.0,

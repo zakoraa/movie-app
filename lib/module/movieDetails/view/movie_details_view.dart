@@ -47,7 +47,6 @@ class MovieDetailsView extends StatelessWidget {
                     onTap: () => Get.back(),
                     child: const Icon(
                       Icons.arrow_back,
-                      size: 35,
                     ),
                   ),
                 ),

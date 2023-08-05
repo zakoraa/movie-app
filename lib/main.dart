@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movieapp/main_page.dart';
-import 'package:movieapp/module/home/widgets/home_view.dart';
-import 'package:movieapp/module/login/view/login_view.dart';
+import 'package:movieapp/module/profileView/view/profile_view.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           dialogBackgroundColor: const Color(0xFF2C2C2C),
           scaffoldBackgroundColor: const Color(0xFF2C2C2C),
-          iconTheme: const IconThemeData(color: Color(0xFFFFFFFF)),
+          iconTheme: const IconThemeData(color: Color(0xFFFFFFFF), size: 35),
           textTheme: TextTheme(
             bodyText2: GoogleFonts.poppins(
               color: const Color(0xFFFFFFFF),
@@ -33,7 +31,7 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           )),
-      home: const LoginView(),
+      home: const ProfileView(),
     );
   }
 }

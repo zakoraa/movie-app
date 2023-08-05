@@ -3,14 +3,16 @@ import 'package:get/get.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
 import 'package:movieapp/module/login/controllers/login_controller.dart';
 
+import '../../profileView/view/profile_view.dart';
+
 class ContainerDrawer extends StatelessWidget {
   const ContainerDrawer({super.key});
   @override
   Widget build(BuildContext context) {
     HomeController homeController = Get.find<HomeController>();
     Map<dynamic, dynamic> drawerContentMap = {
+      "Profile": Icons.person,
       "Favorite Movies": Icons.favorite_outline,
-      "Settings": Icons.settings,
       "Logout": Icons.logout,
     };
     return Column(
@@ -18,7 +20,9 @@ class ContainerDrawer extends StatelessWidget {
             .map(
               (e) => GestureDetector(
                 onTap: () {
-                  if (e.key == "Logout") {
+                  if (e.key == "Profile") {
+                    Get.to(() => const ProfileView());
+                  } else if (e.key == "Logout") {
                     homeController.confirmLogout(context);
                   }
                 },

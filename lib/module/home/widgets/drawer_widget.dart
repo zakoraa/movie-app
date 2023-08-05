@@ -65,7 +65,7 @@ class DrawerWidget extends StatelessWidget {
                         Text(
                           authController.username == null ||
                                   authController.username! == ""
-                              ? authController.acceptedEmail!
+                              ? ""
                               : authController.username!,
                           style: const TextStyle(
                               color: Colors.white, fontSize: 15),
