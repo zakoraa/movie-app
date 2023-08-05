@@ -104,25 +104,39 @@ class ProfileView extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Row(
-                                  children: [
-                                    Icon(
-                                      settingOptions.values.elementAt(index),
-                                      size: 25,
-                                      color: Colors.grey,
-                                    ),
-                                    const SizedBox(
-                                      width: 10.0,
-                                    ),
-                                    Text(
-                                      settingOptions.keys.elementAt(index),
-                                      style: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.grey,
-                                          fontFamily: "normal"),
-                                    ),
-                                  ],
+                                SizedBox(
+                                  width: Get.width * 0.3,
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        settingOptions.values.elementAt(index),
+                                        size: 25,
+                                        color: Colors.grey,
+                                      ),
+                                      const SizedBox(
+                                        width: 10.0,
+                                      ),
+                                      Text(
+                                        settingOptions.keys.elementAt(index),
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.grey,
+                                            fontFamily: "normal"),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: Get.width * 0.3,
+                                  child: const Text(
+                                    "haahhahahahahahah",
+                                    style: TextStyle(
+                                        color: Colors.grey,
+                                        overflow: TextOverflow.ellipsis,
+                                        fontFamily: "normal",
+                                        fontSize: 16),
+                                  ),
                                 ),
                                 const Icon(
                                   Icons.keyboard_arrow_right,

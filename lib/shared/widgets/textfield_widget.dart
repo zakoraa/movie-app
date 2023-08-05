@@ -11,12 +11,13 @@ class TextFieldWidget extends StatelessWidget {
       this.obscureText = false,
       this.confirmPass = false,
       this.selectedController = false,
+      this.loginSignup = true,
       required this.controller})
       : super(key: key);
 
   final String text;
   final IconData icon;
-  final bool suffixIcon, obscureText, confirmPass;
+  final bool suffixIcon, obscureText, confirmPass, loginSignup;
   final controller;
   final selectedController;
 
@@ -26,24 +27,31 @@ class TextFieldWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 20),
-          child: Text(
-            text,
-            style: const TextStyle(
-                color: Colors.grey, fontSize: 14, fontWeight: FontWeight.w400),
-          ),
-        ),
+        loginSignup == false
+            ? const SizedBox.shrink()
+            : Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: Text(
+                  text,
+                  style: const TextStyle(
+                      color: Colors.grey,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400),
+                ),
+              ),
         const SizedBox(
           height: 10.0,
         ),
         Obx(() {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
+            padding:
+                EdgeInsets.symmetric(horizontal: loginSignup == false ? 0 : 25),
             child: TextField(
                 controller: controller,
                 cursorColor: Colors.grey,
-                style: const TextStyle(color: Colors.white, fontSize: 12),
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: loginSignup == false ? 18 : 12),
                 obscureText: obscureText == false
                     ? selectedController.obscureText.value
                     : confirmPass == false
@@ -77,15 +85,18 @@ class TextFieldWidget extends StatelessWidget {
                       : const SizedBox.shrink(),
                   fillColor: const Color.fromARGB(67, 158, 158, 158),
                   filled: true,
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  contentPadding: EdgeInsets.symmetric(
+                      horizontal: loginSignup == false ? 20 : 10,
+                      vertical: loginSignup == false ? 20 : 10),
                   enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius:
+                          BorderRadius.circular(loginSignup == false ? 5 : 10),
                       borderSide: const BorderSide(
                         color: Colors.transparent,
                       )),
                   focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius:
+                          BorderRadius.circular(loginSignup == false ? 5 : 10),
                       borderSide: const BorderSide(
                         color: Colors.transparent,
                       )),

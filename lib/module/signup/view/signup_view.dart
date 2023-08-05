@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/signup/controllers/signup_controller.dart';
+import 'package:movieapp/shared/widgets/button_widget.dart';
 import 'package:movieapp/shared/widgets/form_login_signup.dart';
 
 import '../../../shared/widgets/textfield_widget.dart';
@@ -75,29 +76,13 @@ class SignupView extends StatelessWidget {
                   const SizedBox(
                     height: 40.0,
                   ),
-                  Material(
-                    color: Colors.transparent,
-                    elevation: 0.0,
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      borderRadius: BorderRadius.circular(15),
+                  ButtonWidget(
+                      width: Get.size.width * 0.75,
+                      height: 40,
+                      fontSize: 14,
                       onTap: () => signupController.signupValidation(context),
-                      child: Container(
-                        width: Get.size.width * 0.75,
-                        height: 40,
-                        decoration: BoxDecoration(
-                            color: const Color.fromARGB(176, 255, 193, 7),
-                            borderRadius: BorderRadius.circular(15)),
-                        child: Center(
-                            child: Obx(() => Text(
-                                  signupController.isLoading.value == true
-                                      ? "Loading..."
-                                      : "Signup",
-                                  style: const TextStyle(fontSize: 14),
-                                ))),
-                      ),
-                    ),
-                  ),
+                      controller: signupController,
+                      text: "Signup"),
                   const SizedBox(
                     height: 15.0,
                   ),

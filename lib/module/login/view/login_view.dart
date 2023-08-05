@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/login/controllers/login_controller.dart';
 import 'package:movieapp/module/signup/view/signup_view.dart';
+import 'package:movieapp/shared/widgets/button_widget.dart';
 import '../../../shared/widgets/form_login_signup.dart';
 import '../../../shared/widgets/textfield_widget.dart';
 
@@ -58,30 +59,13 @@ class LoginView extends StatelessWidget {
                   const SizedBox(
                     height: 40.0,
                   ),
-                  Obx(() => Material(
-                        color: Colors.transparent,
-                        elevation: 0.0,
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          borderRadius: BorderRadius.circular(15),
-                          onTap: () =>
-                              loginController.loginValidation(context),
-                          child: Container(
-                            width: Get.size.width * 0.75,
-                            height: 40,
-                            decoration: BoxDecoration(
-                                color: const Color.fromARGB(176, 255, 193, 7),
-                                borderRadius: BorderRadius.circular(15)),
-                            child: Center(
-                                child: Text(
-                              loginController.isLoading.value
-                                  ? "Loading..."
-                                  : "Login",
-                              style: const TextStyle(fontSize: 14),
-                            )),
-                          ),
-                        ),
-                      )),
+                  ButtonWidget(
+                      fontSize: 14,
+                      width: Get.size.width * 0.75,
+                      height: 40,
+                      text: "Login",
+                      onTap: () => loginController.loginValidation(context),
+                      controller: loginController),
                   const SizedBox(
                     height: 15.0,
                   ),

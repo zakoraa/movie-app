@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
-import 'package:movieapp/module/login/controllers/login_controller.dart';
 
-import '../../profileView/view/profile_view.dart';
+import '../../profile/view/profile_view.dart';
 
 class ContainerDrawer extends StatelessWidget {
   const ContainerDrawer({super.key});
@@ -11,7 +10,7 @@ class ContainerDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     HomeController homeController = Get.find<HomeController>();
     Map<dynamic, dynamic> drawerContentMap = {
-      "Profile": Icons.person,
+      "Profile": Icons.person_outline,
       "Favorite Movies": Icons.favorite_outline,
       "Logout": Icons.logout,
     };
