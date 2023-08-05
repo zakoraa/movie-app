@@ -81,19 +81,20 @@ class SignupView extends StatelessWidget {
                     child: InkWell(
                       splashColor: Colors.transparent,
                       borderRadius: BorderRadius.circular(15),
-                      // onTap: () => signupController.loginWithFirebase(
-                      //     context, RouteName.loginView),
+                      onTap: () => signupController.signupValidation(context),
                       child: Container(
                         width: Get.size.width * 0.75,
                         height: 40,
                         decoration: BoxDecoration(
                             color: const Color.fromARGB(176, 255, 193, 7),
                             borderRadius: BorderRadius.circular(15)),
-                        child: const Center(
-                            child: Text(
-                          "Signup",
-                          style: TextStyle(fontSize: 14),
-                        )),
+                        child: Center(
+                            child: Obx(() => Text(
+                                  signupController.isLoading.value == true
+                                      ? "Loading..."
+                                      : "Signup",
+                                  style: const TextStyle(fontSize: 14),
+                                ))),
                       ),
                     ),
                   ),

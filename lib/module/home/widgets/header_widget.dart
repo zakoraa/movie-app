@@ -39,7 +39,7 @@ class HeaderWidget extends StatelessWidget {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -71,8 +71,8 @@ class HeaderWidget extends StatelessWidget {
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(50),
                         child: SizedBox(
-                          height: 50,
-                          width: 50,
+                          height: 65,
+                          width: 65,
                           child: Image.network(
                             authController.profilePicture == null ||
                                     authController.profilePicture == ""
