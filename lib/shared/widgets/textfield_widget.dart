@@ -12,7 +12,7 @@ class TextFieldWidget extends StatelessWidget {
       this.confirmPass = false,
       this.selectedController = false,
       this.loginSignup = true,
-      required this.controller})
+       this.controller})
       : super(key: key);
 
   final String text;

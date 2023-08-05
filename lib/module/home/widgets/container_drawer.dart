@@ -5,7 +5,10 @@ import 'package:movieapp/module/home/controllers/home_controller.dart';
 import '../../profile/view/profile_view.dart';
 
 class ContainerDrawer extends StatelessWidget {
-  const ContainerDrawer({super.key});
+  const ContainerDrawer({super.key, required this.profilePicture, required this.username, required this.email, required this.password});
+
+  final String? profilePicture, username, email, password;
+
   @override
   Widget build(BuildContext context) {
     HomeController homeController = Get.find<HomeController>();
@@ -20,7 +23,8 @@ class ContainerDrawer extends StatelessWidget {
               (e) => GestureDetector(
                 onTap: () {
                   if (e.key == "Profile") {
-                    Get.to(() => const ProfileView());
+                    Get.to(() => ProfileView(
+                       profilePicture: profilePicture!,username: username!, email: email!, password: password!));
                   } else if (e.key == "Logout") {
                     homeController.confirmLogout(context);
                   }

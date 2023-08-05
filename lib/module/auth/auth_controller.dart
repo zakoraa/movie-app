@@ -6,14 +6,13 @@ import 'package:movieapp/services/auth_service.dart';
 class AuthController extends GetxController {
   AuthService authService = Get.put(AuthService());
 
-  String? acceptedEmail;
+  String? acceptedEmail, username, profilePicture, acceptedPassword;
   RxBool emailDuplication = false.obs;
-  String? username;
-  String? profilePicture;
 
   Future<void> login(String email, String password) async {
     try {
       var data = await authService.login(email, password);
+      acceptedPassword = authService.acceptedPassword!;
       if (data.keys.toString() == '(error)') {
         acceptedEmail = null;
       } else {

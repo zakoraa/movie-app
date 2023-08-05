@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class AuthService {
+  String? acceptedPassword;
   login(String email, String password) async {
     Uri url = Uri.parse(
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBaIL03Dw0RwkmNONPTJrd2qV-iHKs4J54");
@@ -15,6 +16,8 @@ class AuthService {
         }));
 
     var data = json.decode(response.body);
+    acceptedPassword = password;
+    print("pass: ${acceptedPassword}");
     return data;
   }
 

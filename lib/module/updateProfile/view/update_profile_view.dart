@@ -6,7 +6,17 @@ import 'package:movieapp/shared/widgets/button_widget.dart';
 import 'package:movieapp/shared/widgets/textfield_widget.dart';
 
 class UpdateProfileView extends StatelessWidget {
-  const UpdateProfileView({super.key});
+  const UpdateProfileView(
+      {super.key,
+      this.controller,
+      required this.textData,
+      required this.userInfo,
+      required this.password,
+      required this.iconData});
+
+  final controller;
+  final String textData, userInfo, password;
+  final iconData;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +29,7 @@ class UpdateProfileView extends StatelessWidget {
             width: Get.width * 0.9,
             child: SafeArea(
                 child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(
                   height: 10.0,
@@ -30,36 +41,55 @@ class UpdateProfileView extends StatelessWidget {
                       width: 35,
                       child: Center(
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () => Get.back(),
                           child: const Icon(Icons.arrow_back),
                         ),
                       ),
                     ),
-                    const Text(
-                      "Update Your Username",
-                      style: TextStyle(fontSize: 18),
+                    SizedBox(
+                      width: Get.width * 0.5,
+                      child: Center(
+                        child: Text(
+                          "Update Your $textData",
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(fontSize: 18),
+                        ),
+                      ),
                     ),
                     const SizedBox(
-                      width: 5.0,
+                      width: 35.0,
                     ),
                   ],
                 ),
                 const SizedBox(
-                  height: 30.0,
+                  height: 60.0,
+                ),
+                Text(
+                  userInfo == "********"
+                      ? "New password can't be the same as old password"
+                      : "Previous $textData : $userInfo",
+                  style: const TextStyle(
+                      color: Colors.grey,
+                      fontFamily: "normal",
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400),
+                ),
+                const SizedBox(
+                  height: 10.0,
                 ),
                 TextFieldWidget(
                   loginSignup: false,
-                  text: "Username",
-                  icon: Icons.person,
-                  controller: controller.username,
+                  text: textData,
+                  icon: iconData,
+                  // controller: controller,
                   selectedController: controller,
                 ),
                 const SizedBox(
-                  height: 20.0,
+                  height: 40.0,
                 ),
                 ButtonWidget(
                     fontSize: 16,
-                    height: 50,
+                    height: 45,
                     width: Get.width * 0.9,
                     onTap: () {},
                     controller: controller,

@@ -76,7 +76,15 @@ class DrawerWidget extends StatelessWidget {
               const SizedBox(
                 height: 30.0,
               ),
-              const ContainerDrawer(),
+              ContainerDrawer(
+                profilePicture: authController.profilePicture == null ||
+                        authController.profilePicture == ""
+                    ? 'https://icon-library.com/images/default-profile-icon/default-profile-icon-6.jpg'
+                    : authController.profilePicture,
+                username: authController.username!,
+                email: authController.acceptedEmail!,
+                password: authController.acceptedPassword!,
+              ),
             ],
           ),
         ],

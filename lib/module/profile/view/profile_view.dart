@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/main_page.dart';
+import 'package:movieapp/module/updateProfile/view/update_profile_view.dart';
 import 'package:movieapp/shared/utils/scaffold_background_template.dart';
 
 import '../../home/widgets/detail_profile_picture.dart';
 
 class ProfileView extends StatelessWidget {
-  const ProfileView({super.key});
+  const ProfileView(
+      {super.key,
+      required this.profilePicture,
+      required this.username,
+      required this.email,
+      required this.password});
+
+  final String profilePicture, username, email, password;
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +23,8 @@ class ProfileView extends StatelessWidget {
       "Email": Icons.email,
       "Password": Icons.key,
     };
+
+    List<String> userInfo = [username, email, "********"];
     return Scaffold(
       body: SizedBox(
           width: Get.width,
@@ -49,7 +59,7 @@ class ProfileView extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(
-                        height: 30.0,
+                        height: 50.0,
                       ),
                       Stack(children: [
                         GestureDetector(
@@ -63,9 +73,10 @@ class ProfileView extends StatelessWidget {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(150),
                                 child: Image.network(
-                                  'https://icon-library.com/images/default-profile-icon/default-profile-icon-6.jpg',
+                                  profilePicture,
                                   height: 150,
                                   width: 150,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                             )),
@@ -87,7 +98,7 @@ class ProfileView extends StatelessWidget {
                             ))
                       ]),
                       const SizedBox(
-                        height: 50.0,
+                        height: 70.0,
                       ),
                       Column(
                           children: List.generate(
@@ -129,19 +140,28 @@ class ProfileView extends StatelessWidget {
                                 ),
                                 SizedBox(
                                   width: Get.width * 0.3,
-                                  child: const Text(
-                                    "haahhahahahahahah",
-                                    style: TextStyle(
+                                  child: Text(
+                                    userInfo[index],
+                                    style: const TextStyle(
                                         color: Colors.grey,
+                                        fontWeight: FontWeight.w400,
                                         overflow: TextOverflow.ellipsis,
                                         fontFamily: "normal",
                                         fontSize: 16),
                                   ),
                                 ),
-                                const Icon(
-                                  Icons.keyboard_arrow_right,
-                                  color: Colors.grey,
-                                  size: 40,
+                                GestureDetector(
+                                  onTap: () => Get.to(() => UpdateProfileView(
+                                      textData:
+                                          settingOptions.keys.elementAt(index),
+                                      iconData: settingOptions.values
+                                          .elementAt(index),
+                                      userInfo: userInfo[index],password : password)),
+                                  child: const Icon(
+                                    Icons.keyboard_arrow_right,
+                                    color: Colors.grey,
+                                    size: 40,
+                                  ),
                                 )
                               ],
                             ),
