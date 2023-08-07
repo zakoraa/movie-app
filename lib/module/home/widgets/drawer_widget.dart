@@ -81,9 +81,22 @@ class DrawerWidget extends StatelessWidget {
                         authController.profilePicture == ""
                     ? 'https://icon-library.com/images/default-profile-icon/default-profile-icon-6.jpg'
                     : authController.profilePicture,
-                username: authController.username!,
-                email: authController.acceptedEmail!,
-                password: authController.acceptedPassword!,
+                username: authController.username == null ||
+                        authController.username == ""
+                    ? ""
+                    : authController.username!,
+                email: authController.acceptedEmail == null ||
+                        authController.acceptedEmail == ""
+                    ? ""
+                    : authController.acceptedEmail!,
+                password: authController.acceptedPassword == null ||
+                        authController.acceptedPassword == ""
+                    ? ""
+                    : authController.acceptedPassword!,
+                idToken: authController.idToken == null ||
+                        authController.idToken == ""
+                    ? ""
+                    : authController.idToken!,
               ),
             ],
           ),

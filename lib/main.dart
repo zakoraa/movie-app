@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movieapp/module/login/view/login_view.dart';
-import 'package:movieapp/module/updateProfile/view/update_profile_view.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

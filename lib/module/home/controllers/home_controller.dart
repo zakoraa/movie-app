@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/models/movie_model.dart';
 import 'package:movieapp/module/login/view/login_view.dart';
+import 'package:movieapp/shared/utils/alert_dialog.dart';
 import '../../login/controllers/login_controller.dart';
 
 class HomeController extends GetxController {
@@ -32,39 +33,33 @@ class HomeController extends GetxController {
   }
 
   void confirmLogout(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text(
-              "Do you want to Logout?",
-              style: TextStyle(color: Colors.white, fontSize: 14),
-            ),
-            actions: [
-              GestureDetector(
-                onTap: () {
-                  loginController.email!.text = "";
-                  loginController.password!.text = "";
-                  loginController.passwordIsVisible.value = true;
-                  Get.offAll(() => const LoginView());
-                },
-                child: Container(
-                  margin: const EdgeInsets.all(10),
-                  height: 30,
-                  width: 50,
-                  decoration: BoxDecoration(
-                      color: Colors.amber,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: const Center(
-                    child: Text(
-                      "OK",
-                      style: TextStyle(fontSize: 13),
-                    ),
-                  ),
+    AlertDialogUtils.showDialogUtils(context,
+        title: const Text(
+          "Do you want to Logout?",
+          style: TextStyle(color: Colors.white, fontSize: 14),
+        ),
+        actions: [
+          GestureDetector(
+            onTap: () {
+              loginController.email!.text = "";
+              loginController.password!.text = "";
+              loginController.passwordIsVisible.value = true;
+              Get.offAll(() => const LoginView());
+            },
+            child: Container(
+              margin: const EdgeInsets.all(10),
+              height: 30,
+              width: 50,
+              decoration: BoxDecoration(
+                  color: Colors.amber, borderRadius: BorderRadius.circular(5)),
+              child: const Center(
+                child: Text(
+                  "OK",
+                  style: TextStyle(fontSize: 13),
                 ),
-              )
-            ],
-          );
-        });
+              ),
+            ),
+          )
+        ]);
   }
 }

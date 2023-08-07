@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/updateProfile/controller/update_profile_controller.dart';
@@ -10,12 +12,17 @@ class UpdateProfileView extends StatelessWidget {
       {super.key,
       this.controller,
       required this.textData,
-      required this.userInfo,
+      this.userInfo,
       required this.password,
+      this.hintText,
+      this.isNotPrevious = false,
+      required this.idToken,
       required this.iconData});
 
   final controller;
-  final String textData, userInfo, password;
+  final bool isNotPrevious;
+  final String textData, password, idToken;
+  final String? hintText, userInfo;
   final iconData;
 
   @override
@@ -62,16 +69,18 @@ class UpdateProfileView extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 60.0,
+                  height: 30.0,
                 ),
                 Text(
-                  userInfo == "********"
-                      ? "New password can't be the same as old password"
-                      : "Previous $textData : $userInfo",
+                  textData == "Profile Picture"
+                      ? "Url link format must end in .jpg .jpeg or .png"
+                      : textData == "Password"
+                          ? "New password can't be the same as old password"
+                          : "Previous $textData : $userInfo",
                   style: const TextStyle(
                       color: Colors.grey,
                       fontFamily: "normal",
-                      fontSize: 14,
+                      fontSize: 12,
                       fontWeight: FontWeight.w400),
                 ),
                 const SizedBox(
@@ -85,11 +94,11 @@ class UpdateProfileView extends StatelessWidget {
                   selectedController: controller,
                 ),
                 const SizedBox(
-                  height: 40.0,
+                  height: 30.0,
                 ),
                 ButtonWidget(
-                    fontSize: 16,
-                    height: 45,
+                    fontSize: 14,
+                    height: 40,
                     width: Get.width * 0.9,
                     onTap: () {},
                     controller: controller,

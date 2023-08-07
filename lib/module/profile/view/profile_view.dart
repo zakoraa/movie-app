@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/main_page.dart';
+import 'package:movieapp/module/profile/controller/profille_controller.dart';
 import 'package:movieapp/module/updateProfile/view/update_profile_view.dart';
 import 'package:movieapp/shared/utils/scaffold_background_template.dart';
 
@@ -12,12 +13,15 @@ class ProfileView extends StatelessWidget {
       required this.profilePicture,
       required this.username,
       required this.email,
+      required this.idToken,
       required this.password});
 
-  final String profilePicture, username, email, password;
+  final String profilePicture, username, email, password, idToken;
 
   @override
   Widget build(BuildContext context) {
+    ProfileController controller = Get.put(ProfileController());
+
     Map<String, dynamic> settingOptions = {
       "Username": Icons.person,
       "Email": Icons.email,
@@ -83,16 +87,21 @@ class ProfileView extends StatelessWidget {
                         Positioned(
                             bottom: 0,
                             right: 0,
-                            child: Container(
-                              height: 40,
-                              width: 40,
-                              decoration: BoxDecoration(
-                                  color: const Color(0xFFFFB039),
-                                  borderRadius: BorderRadius.circular(40)),
-                              child: const Center(
-                                child: Icon(
-                                  Icons.edit,
-                                  size: 25,
+                            child: GestureDetector(
+                              onTap: () {
+                                controller.showImageUploadOption(context);
+                              },
+                              child: Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                    color: const Color(0xFFFFB039),
+                                    borderRadius: BorderRadius.circular(40)),
+                                child: const Center(
+                                  child: Icon(
+                                    Icons.edit,
+                                    size: 25,
+                                  ),
                                 ),
                               ),
                             ))
@@ -156,7 +165,9 @@ class ProfileView extends StatelessWidget {
                                           settingOptions.keys.elementAt(index),
                                       iconData: settingOptions.values
                                           .elementAt(index),
-                                      userInfo: userInfo[index],password : password)),
+                                      userInfo: userInfo[index],
+                                      password: password,
+                                      idToken: idToken)),
                                   child: const Icon(
                                     Icons.keyboard_arrow_right,
                                     color: Colors.grey,

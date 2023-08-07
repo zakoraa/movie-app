@@ -33,10 +33,10 @@ class SignupController extends GetxController {
 
   void signup(context) async {
     isLoading.value = true;
-    if (authController.emailDuplication.value == false) {
-      authController
-          .signup(username!.text, email!.text, password!.text)
-          .then((value) {
+    authController
+        .signup(username!.text, email!.text, password!.text)
+        .then((value) {
+      if (authController.emailDuplication.value == false) {
         isLoading.value = false;
         Get.back();
         username!.text = "";
@@ -44,12 +44,12 @@ class SignupController extends GetxController {
         password!.text = "";
         confirmPassword!.text = "";
         ScaffoldMessengerUtils.showFloatingSnackBar(context, "Signup success");
-      });
-    } else {
-      isLoading.value = false;
-      ScaffoldMessengerUtils.showFloatingSnackBar(
-          context, "Email already exists");
-    }
+      } else {
+        isLoading.value = false;
+        ScaffoldMessengerUtils.showFloatingSnackBar(
+            context, "Email already exists");
+      }
+    });
   }
 
   void signupValidation(BuildContext context) {

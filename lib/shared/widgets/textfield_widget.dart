@@ -12,7 +12,7 @@ class TextFieldWidget extends StatelessWidget {
       this.confirmPass = false,
       this.selectedController = false,
       this.loginSignup = true,
-       this.controller})
+      this.controller})
       : super(key: key);
 
   final String text;
@@ -51,7 +51,7 @@ class TextFieldWidget extends StatelessWidget {
                 cursorColor: Colors.grey,
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: loginSignup == false ? 18 : 12),
+                    fontSize: loginSignup == false ? 14 : 12),
                 obscureText: obscureText == false
                     ? selectedController.obscureText.value
                     : confirmPass == false
@@ -86,8 +86,8 @@ class TextFieldWidget extends StatelessWidget {
                   fillColor: const Color.fromARGB(67, 158, 158, 158),
                   filled: true,
                   contentPadding: EdgeInsets.symmetric(
-                      horizontal: loginSignup == false ? 20 : 10,
-                      vertical: loginSignup == false ? 20 : 10),
+                      horizontal: loginSignup == false ? 15 : 10,
+                      vertical: loginSignup == false ? 15 : 10),
                   enabledBorder: OutlineInputBorder(
                       borderRadius:
                           BorderRadius.circular(loginSignup == false ? 5 : 10),
