@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movieapp/module/profile/view/profile_view.dart';
 import 'package:movieapp/module/updateProfile/controller/update_profile_controller.dart';
 import 'package:movieapp/shared/utils/scaffold_background_template.dart';
 import 'package:movieapp/shared/widgets/button_widget.dart';
@@ -14,6 +15,9 @@ class UpdateProfileView extends StatelessWidget {
       required this.textData,
       this.userInfo,
       required this.password,
+      this.profilePicture,
+      this.email,
+      this.username,
       this.hintText,
       this.isNotPrevious = false,
       required this.idToken,
@@ -22,7 +26,7 @@ class UpdateProfileView extends StatelessWidget {
   final controller;
   final bool isNotPrevious;
   final String textData, password, idToken;
-  final String? hintText, userInfo;
+  final String? hintText, userInfo, email, username, profilePicture;
   final iconData;
 
   @override
@@ -90,7 +94,7 @@ class UpdateProfileView extends StatelessWidget {
                   loginSignup: false,
                   text: textData,
                   icon: iconData,
-                  // controller: controller,
+                  controller: controller.username,
                   selectedController: controller,
                 ),
                 const SizedBox(
@@ -100,7 +104,11 @@ class UpdateProfileView extends StatelessWidget {
                     fontSize: 14,
                     height: 40,
                     width: Get.width * 0.9,
-                    onTap: () {},
+                    onTap: () {
+                      if (textData == "Username") {
+                        controller.updateUsername(context, idToken);
+                      }
+                    },
                     controller: controller,
                     text: "Save")
               ],

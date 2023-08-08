@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/models/movie_model.dart';
+import 'package:movieapp/module/auth/auth_controller.dart';
+import 'package:movieapp/module/home/controllers/movie_controller.dart';
+import 'package:movieapp/module/home/controllers/serial_movie_controller.dart';
 import 'package:movieapp/module/login/view/login_view.dart';
 import 'package:movieapp/shared/utils/alert_dialog.dart';
 import '../../login/controllers/login_controller.dart';
 
 class HomeController extends GetxController {
   LoginController loginController = Get.put(LoginController());
+  AuthController authController = Get.put(AuthController());
+  MovieController movieController = Get.put(MovieController());
+  MovieSerialController movieSerialController =
+      Get.put(MovieSerialController());
 
   RxInt selectedIndex = 0.obs;
+  RxBool isLoading = false.obs;
 
   List moviesIn2023 = <Movie>[].obs;
   List moviesBefore2023 = <Movie>[].obs;
@@ -61,5 +69,17 @@ class HomeController extends GetxController {
             ),
           )
         ]);
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    movieSerialController.getData();
+    movieController.getData();
+  }
+
+  Future<void> onRefresh() async {
+    movieSerialController.getData();
+    movieController.getData();
   }
 }

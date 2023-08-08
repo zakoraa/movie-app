@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movieapp/module/home/controllers/home_controller.dart';
 
 import '../../auth/auth_controller.dart';
 import 'detail_profile_picture.dart';

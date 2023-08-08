@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
+import 'package:movieapp/module/auth/auth_controller.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
 import 'package:movieapp/module/home/controllers/movie_controller.dart';
 import 'package:movieapp/module/home/controllers/serial_movie_controller.dart';
@@ -44,59 +46,68 @@ class HomeView extends StatelessWidget {
                   height: Get.size.height,
                   width: Get.size.width,
                   child: ScaffoldBackgroundTemplate(
-                      child: SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    child: SafeArea(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: Center(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const HeaderWidget(),
-                              const SizedBox(
-                                height: 20.0,
+                      child: LiquidPullToRefresh(
+                          onRefresh: homeController.onRefresh,
+                          backgroundColor: Colors.white,
+                          showChildOpacityTransition: false,
+                          springAnimationDurationInMilliseconds: 500,
+                          color: Colors.grey,
+                          child: SingleChildScrollView(
+                            physics: const BouncingScrollPhysics(),
+                            child: SafeArea(
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 20),
+                                child: Center(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const HeaderWidget(),
+                                      const SizedBox(
+                                        height: 20.0,
+                                      ),
+                                      const SelectType(),
+                                      const SizedBox(
+                                        height: 30.0,
+                                      ),
+                                      CarouselSliderWidget(
+                                        carouselMovieList: carouselMovieList,
+                                      ),
+                                      const SizedBox(
+                                        height: 20.0,
+                                      ),
+                                      ListViewWidget(
+                                        text: "For You",
+                                        listViewMovieList: listViewMovieList,
+                                      ),
+                                      const SizedBox(
+                                        height: 20.0,
+                                      ),
+                                      TrendingNow(
+                                        trendingNowMovieList:
+                                            trendingNowMovieList,
+                                      ),
+                                      homeController.moviesIn2023.length <= 3
+                                          ? const SizedBox.shrink()
+                                          : ListViewWidget(
+                                              text: "2023",
+                                              listViewMovieList:
+                                                  homeController.moviesIn2023,
+                                            ),
+                                      homeController.moviesBefore2023.length <=
+                                              3
+                                          ? const SizedBox.shrink()
+                                          : ListViewWidget(
+                                              text: "Before 2023",
+                                              listViewMovieList: homeController
+                                                  .moviesBefore2023,
+                                            ),
+                                    ],
+                                  ),
+                                ),
                               ),
-                              const SelectType(),
-                              const SizedBox(
-                                height: 30.0,
-                              ),
-                              CarouselSliderWidget(
-                                carouselMovieList: carouselMovieList,
-                              ),
-                              const SizedBox(
-                                height: 20.0,
-                              ),
-                              ListViewWidget(
-                                text: "For You",
-                                listViewMovieList: listViewMovieList,
-                              ),
-                              const SizedBox(
-                                height: 20.0,
-                              ),
-                              TrendingNow(
-                                trendingNowMovieList: trendingNowMovieList,
-                              ),
-                              homeController.moviesIn2023.length <= 3
-                                  ? const SizedBox.shrink()
-                                  : ListViewWidget(
-                                      text: "2023",
-                                      listViewMovieList:
-                                          homeController.moviesIn2023,
-                                    ),
-                              homeController.moviesBefore2023.length <= 3
-                                  ? const SizedBox.shrink()
-                                  : ListViewWidget(
-                                      text: "Before 2023",
-                                      listViewMovieList:
-                                          homeController.moviesBefore2023,
-                                    ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ))),
+                            ),
+                          )))),
             );
     });
   }
