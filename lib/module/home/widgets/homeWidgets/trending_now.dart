@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:movieapp/module/home/controllers/movie_controller.dart';
 import 'package:movieapp/shared/widgets/list_tile_widget.dart';
 
-import '../controllers/home_controller.dart';
+import '../../controllers/home_controller.dart';
 
 class TrendingNow extends StatelessWidget {
   const TrendingNow({super.key, required this.trendingNowMovieList});

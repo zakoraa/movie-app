@@ -5,7 +5,7 @@ import 'package:movieapp/module/profile/controller/profille_controller.dart';
 import 'package:movieapp/module/updateProfile/view/update_profile_view.dart';
 import 'package:movieapp/shared/utils/scaffold_background_template.dart';
 
-import '../../home/widgets/detail_profile_picture.dart';
+import '../../home/widgets/homeWidgets/detail_profile_picture.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView(

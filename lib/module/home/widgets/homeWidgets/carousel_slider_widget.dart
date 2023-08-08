@@ -8,8 +8,8 @@ import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
 import 'package:movieapp/module/home/controllers/movie_controller.dart';
-import '../../../shared/utils/image_url_api.dart';
-import '../../movieDetails/view/movie_details_view.dart';
+import '../../../../shared/utils/image_url_api.dart';
+import '../../../movieDetails/view/movie_details_view.dart';
 
 class CarouselSliderWidget extends StatelessWidget {
   const CarouselSliderWidget({super.key, required this.carouselMovieList});

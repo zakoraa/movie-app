@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/module/home/widgets/container_drawer.dart';
-import 'package:movieapp/module/home/widgets/detail_profile_picture.dart';
+import 'package:movieapp/module/home/widgets/drawer/container_drawer.dart';
+import 'package:movieapp/module/home/widgets/homeWidgets/detail_profile_picture.dart';
 
-import '../../auth/auth_controller.dart';
+import '../../../auth/auth_controller.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});

@@ -79,7 +79,10 @@ class HomeController extends GetxController {
   }
 
   Future<void> onRefresh() async {
+    movieController.isLoading.value = true;
+    movieSerialController.isLoading.value = true;
     movieSerialController.getData();
     movieController.getData();
+    print("NAME : ${authController.username}");
   }
 }

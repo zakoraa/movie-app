@@ -10,13 +10,13 @@ import 'package:movieapp/module/home/controllers/serial_movie_controller.dart';
 import 'package:movieapp/shared/utils/loading.dart';
 import 'package:movieapp/shared/utils/scaffold_background_template.dart';
 import 'carousel_slider_widget.dart';
-import 'drawer_widget.dart';
+import '../drawer/drawer_widget.dart';
 import 'header_widget.dart';
 import 'list_view_widget.dart';
 import 'select_type.dart';
 import 'trending_now.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({
     super.key,
     required this.carouselMovieList,
@@ -29,13 +29,19 @@ class HomeView extends StatelessWidget {
   final trendingNowMovieList;
 
   @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  @override
   Widget build(BuildContext context) {
     MovieController movieController = Get.find<MovieController>();
     MovieSerialController movieSerialController =
         Get.find<MovieSerialController>();
     HomeController homeController = Get.find<HomeController>();
+    AuthController authController = Get.put(AuthController());
     return Obx(() {
-      homeController.sortedByYear(listViewMovieList);
+      homeController.sortedByYear(widget.listViewMovieList);
       return movieController.isLoading.value &&
               movieSerialController.isLoading.value
           ? const Scaffold(
@@ -51,7 +57,7 @@ class HomeView extends StatelessWidget {
                           backgroundColor: Colors.white,
                           showChildOpacityTransition: false,
                           springAnimationDurationInMilliseconds: 500,
-                          color: Colors.grey,
+                          color: const Color.fromARGB(255, 253, 185, 82),
                           child: SingleChildScrollView(
                             physics: const BouncingScrollPhysics(),
                             child: SafeArea(
@@ -71,21 +77,23 @@ class HomeView extends StatelessWidget {
                                         height: 30.0,
                                       ),
                                       CarouselSliderWidget(
-                                        carouselMovieList: carouselMovieList,
+                                        carouselMovieList:
+                                            widget.carouselMovieList,
                                       ),
                                       const SizedBox(
                                         height: 20.0,
                                       ),
                                       ListViewWidget(
                                         text: "For You",
-                                        listViewMovieList: listViewMovieList,
+                                        listViewMovieList:
+                                            widget.listViewMovieList,
                                       ),
                                       const SizedBox(
                                         height: 20.0,
                                       ),
                                       TrendingNow(
                                         trendingNowMovieList:
-                                            trendingNowMovieList,
+                                            widget.trendingNowMovieList,
                                       ),
                                       homeController.moviesIn2023.length <= 3
                                           ? const SizedBox.shrink()

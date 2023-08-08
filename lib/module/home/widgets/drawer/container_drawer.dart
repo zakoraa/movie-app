@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
 
-import '../../profile/view/profile_view.dart';
+import '../../../profile/view/profile_view.dart';
 
 class ContainerDrawer extends StatelessWidget {
   const ContainerDrawer(
