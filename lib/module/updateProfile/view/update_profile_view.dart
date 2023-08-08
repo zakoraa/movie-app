@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/module/profile/view/profile_view.dart';
 import 'package:movieapp/module/updateProfile/controller/update_profile_controller.dart';
 import 'package:movieapp/shared/utils/scaffold_background_template.dart';
 import 'package:movieapp/shared/widgets/button_widget.dart';
@@ -52,7 +51,10 @@ class UpdateProfileView extends StatelessWidget {
                       width: 35,
                       child: Center(
                         child: GestureDetector(
-                          onTap: () => Get.back(),
+                          onTap: () {
+                            Get.back();
+                            Get.forceAppUpdate();
+                          },
                           child: const Icon(Icons.arrow_back),
                         ),
                       ),

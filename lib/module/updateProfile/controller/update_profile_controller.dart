@@ -10,15 +10,16 @@ class UpdateProfileController extends GetxController {
   TextEditingController? username = TextEditingController();
   RxBool obscureText = false.obs;
   RxBool isLoading = false.obs;
+  String? newUsername;
 
   void updateUsername(BuildContext context, idToken) {
-    print("username : ${username}");
     if (username!.text == "") {
       ScaffoldMessengerUtils.showFloatingSnackBar(
           context, "You must fill out this form!");
     } else {
       isLoading.value = true;
       authController.updateUsername(idToken, username!.text).then((value) {
+        newUsername = username!.text;
         username!.text = "";
         isLoading.value = false;
         ScaffoldMessengerUtils.showFloatingSnackBar(

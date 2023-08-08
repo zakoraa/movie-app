@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/auth/auth_controller.dart';
+import 'package:movieapp/module/updateProfile/controller/update_profile_controller.dart';
 import 'package:movieapp/module/updateProfile/view/update_profile_view.dart';
 import 'package:movieapp/shared/utils/alert_dialog.dart';
 
