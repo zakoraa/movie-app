@@ -21,6 +21,7 @@ class UpdateProfileController extends GetxController {
       authController.updateUsername(idToken, username!.text).then((value) {
         newUsername = username!.text;
         username!.text = "";
+        Get.forceAppUpdate();
         isLoading.value = false;
         ScaffoldMessengerUtils.showFloatingSnackBar(
             context, "Update username success");

@@ -51,10 +51,7 @@ class UpdateProfileView extends StatelessWidget {
                       width: 35,
                       child: Center(
                         child: GestureDetector(
-                          onTap: () {
-                            Get.back();
-                            Get.forceAppUpdate();
-                          },
+                          onTap: () => Get.back(),
                           child: const Icon(Icons.arrow_back),
                         ),
                       ),

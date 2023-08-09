@@ -45,10 +45,13 @@ class HeaderWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(authController.username == null ||
-                            authController.username! == ""
-                        ? "Hi"
-                        : "Hi ${authController.username!}"),
+                    SizedBox(
+                      width: Get.width * 0.6,
+                      child: Text(authController.username == null ||
+                              authController.username! == ""
+                          ? "Hi"
+                          : "Hi ${authController.username!}"),
+                    ),
                     const SizedBox(
                       height: 5.0,
                     ),
