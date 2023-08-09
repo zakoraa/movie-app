@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_typing_uninitialized_variables, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,7 +8,7 @@ import 'package:movieapp/shared/widgets/button_widget.dart';
 import 'package:movieapp/shared/widgets/textfield_widget.dart';
 
 class UpdateProfileView extends StatelessWidget {
-  const UpdateProfileView(
+  UpdateProfileView(
       {super.key,
       this.controller,
       required this.textData,
@@ -24,7 +24,8 @@ class UpdateProfileView extends StatelessWidget {
 
   final controller;
   final bool isNotPrevious;
-  final String textData, password, idToken;
+  final String textData, password;
+  String idToken;
   final String? hintText, userInfo, email, username, profilePicture;
   final iconData;
 
@@ -51,7 +52,10 @@ class UpdateProfileView extends StatelessWidget {
                       width: 35,
                       child: Center(
                         child: GestureDetector(
-                          onTap: () => Get.back(),
+                          onTap: () {
+                            Get.back();
+                            controller.textEditingController!.clear();
+                          },
                           child: const Icon(Icons.arrow_back),
                         ),
                       ),
@@ -93,7 +97,7 @@ class UpdateProfileView extends StatelessWidget {
                   loginSignup: false,
                   text: textData,
                   icon: iconData,
-                  controller: controller.username,
+                  controller: controller.textEditingController,
                   selectedController: controller,
                 ),
                 const SizedBox(
@@ -103,9 +107,15 @@ class UpdateProfileView extends StatelessWidget {
                     fontSize: 14,
                     height: 40,
                     width: Get.width * 0.9,
-                    onTap: () {
+                    onTap: () async {
                       if (textData == "Username") {
                         controller.updateUsername(context, idToken);
+                      } else if (textData == "Email") {
+                        await controller.updateEmail(context, idToken);
+                        idToken = controller.newIdToken!;
+                      } else if (textData == "Password") {
+                        controller.updatePassword(context, idToken);
+                        idToken = controller.newIdToken!;
                       }
                     },
                     controller: controller,

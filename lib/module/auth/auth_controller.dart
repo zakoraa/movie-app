@@ -8,8 +8,14 @@ class AuthController extends GetxController {
   AuthService authService = Get.put(AuthService());
   final GetStorage storage = GetStorage();
 
-  String? acceptedEmail, username, profilePicture, acceptedPassword, idToken;
+  String? acceptedEmail,
+      username,
+      profilePicture,
+      acceptedPassword,
+      idToken,
+      newIdToken;
   RxBool emailDuplication = false.obs;
+  RxBool updateSuccess = false.obs;
 
   @override
   void onInit() {
@@ -71,8 +77,58 @@ class AuthController extends GetxController {
     try {
       var data = await authService.updateUsername(idToken, username);
       this.username = data["displayName"];
-      update();
+      if (data.keys.toString() != '(error)') {
+        updateSuccess.value = true;
+      }
       print("username : ${this.username}");
+      print("data : ${data}");
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future<void> updateEmail(String idToken, String email) async {
+    try {
+      var data = await authService.updateEmail(idToken, email);
+      acceptedEmail = data["email"];
+      if (data.keys.toString() != '(error)') {
+        newIdToken = data["idToken"];
+        updateSuccess.value = true;
+      }
+      print("newIdTokenAUTH : ${newIdToken}");
+      print("email : ${acceptedEmail}");
+      print("data : ${data}");
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future<void> updatePassword(String idToken, String password) async {
+    try {
+      var data = await authService.updatePassword(idToken, password);
+      acceptedPassword = data["password"];
+      if (data.keys.toString() != '(error)') {
+        newIdToken = data["idToken"];
+        updateSuccess.value = true;
+      }
+      print("password : ${acceptedPassword}");
+      print("data : ${data}");
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future<void> updateProfilePicture(
+      String idToken, String profilePicture) async {
+    try {
+      var data =
+          await authService.updateProfilePicture(idToken, profilePicture);
+      this.profilePicture = data["profilePicture"];
+      if (data.keys.toString() != '(error)') {
+        newIdToken = data["idToken"];
+        updateSuccess.value = true;
+      }
+      print("profilePicture : ${profilePicture}");
       print("data : ${data}");
     } catch (e) {
       print(e.toString());

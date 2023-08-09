@@ -75,8 +75,7 @@ class AuthService {
         "https://identitytoolkit.googleapis.com/v1/accounts:update?key=${apiKey}");
     var response = await http.post(url,
         body: jsonEncode(
-            {"idToken": idToken, "email": email, "returnSecureToken": false}));
-
+            {"idToken": idToken, "email": email, "returnSecureToken": true}));
     final data = jsonDecode(response.body);
     print("data : ${data}");
     return data;
