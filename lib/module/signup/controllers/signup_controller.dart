@@ -31,7 +31,7 @@ class SignupController extends GetxController {
     return emailRegExp.hasMatch(email);
   }
 
-  void signup(context) async {
+  void signup(context) {
     isLoading.value = true;
     authController
         .signup(username!.text, email!.text, password!.text)

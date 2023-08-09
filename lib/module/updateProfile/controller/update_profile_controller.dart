@@ -12,7 +12,12 @@ class UpdateProfileController extends GetxController {
   TextEditingController? textEditingController = TextEditingController();
   RxBool obscureText = false.obs;
   RxBool isLoading = false.obs;
-  String? newUsername, newEmail, newProfilePicture, newPassword, newIdToken;
+  String? newUsername,
+      newEmail,
+      newProfilePicture,
+      newPassword,
+      newIdToken,
+      checkEmail;
 
   Future<void> updateUsername(BuildContext context, idToken) async {
     if (textEditingController!.text == "") {
@@ -20,20 +25,30 @@ class UpdateProfileController extends GetxController {
           context, "You must fill out this form!");
     } else {
       isLoading.value = true;
-      authController
-          .updateUsername(idToken, textEditingController!.text)
-          .then((value) {
-        if (authController.updateSuccess.value == true) {
-          newIdToken = authController.newIdToken;
-          newUsername = textEditingController!.text;
-          ScaffoldMessengerUtils.showFloatingSnackBar(
-              context, "Update username success");
-          isLoading.value = false;
-        }
+      if (authController.username != textEditingController!.text) {
+        await authController
+            .updateUsername(idToken, textEditingController!.text)
+            .then((value) {
+          if (authController.updateSuccess.value == true) {
+            newUsername = textEditingController!.text;
+            newIdToken = authController.newIdToken;
+            textEditingController!.text = "";
+            ScaffoldMessengerUtils.showFloatingSnackBar(
+                context, "Update Username success");
+            isLoading.value = false;
+            Get.forceAppUpdate();
+          } else {
+            textEditingController!.text = "";
+            ScaffoldMessengerUtils.showFloatingSnackBar(
+                context, "Your Update time has expired, please login again!");
+            isLoading.value = false;
+          }
+        });
+      } else {
+        ScaffoldMessengerUtils.showFloatingSnackBar(
+            context, "Username is in use!");
         isLoading.value = false;
-        textEditingController!.text = "";
-        Get.forceAppUpdate();
-      });
+      }
     }
   }
 
@@ -43,53 +58,63 @@ class UpdateProfileController extends GetxController {
           context, "You must fill out this form!");
     } else {
       isLoading.value = true;
-      await authController
-          .updateEmail(idToken, textEditingController!.text)
-          .then((value) {
-        if (authController.updateSuccess.value == true) {
-          newEmail = textEditingController!.text;
-          newIdToken = authController.newIdToken;
-          textEditingController!.text = "";
-          ScaffoldMessengerUtils.showFloatingSnackBar(
-              context, "Update email success");
-          isLoading.value = false;
-          Get.forceAppUpdate();
-        } else {
-          textEditingController!.text = "";
-          ScaffoldMessengerUtils.showFloatingSnackBar(
-              context, "Your Update time has expired, please login again");
-          isLoading.value = false;
-          Get.forceAppUpdate();
-        }
-      });
+      if (authController.acceptedEmail != textEditingController!.text) {
+        await authController
+            .updateEmail(idToken, textEditingController!.text)
+            .then((value) {
+          if (authController.updateSuccess.value == true) {
+            newEmail = textEditingController!.text;
+            newIdToken = authController.newIdToken;
+            textEditingController!.text = "";
+            ScaffoldMessengerUtils.showFloatingSnackBar(
+                context, "Update email success");
+            isLoading.value = false;
+            Get.forceAppUpdate();
+          } else {
+            textEditingController!.text = "";
+            ScaffoldMessengerUtils.showFloatingSnackBar(
+                context, "Your Update time has expired, please login again!");
+            isLoading.value = false;
+          }
+        });
+      } else {
+        ScaffoldMessengerUtils.showFloatingSnackBar(
+            context, "Email is in use!");
+        isLoading.value = false;
+      }
     }
   }
 
- Future <void> updatePassword(BuildContext context, idToken) async{
+  Future<void> updatePassword(BuildContext context, idToken) async {
     if (textEditingController!.text == "") {
       ScaffoldMessengerUtils.showFloatingSnackBar(
           context, "You must fill out this form!");
     } else {
       isLoading.value = true;
-      await authController
-          .updatePassword(idToken, textEditingController!.text)
-          .then((value) {
-        if (authController.updateSuccess.value == true) {
-          newPassword = textEditingController!.text;
-          newIdToken = authController.newIdToken;
-          textEditingController!.text = "";
-          ScaffoldMessengerUtils.showFloatingSnackBar(
-              context, "Update password success");
-          isLoading.value = false;
-          Get.forceAppUpdate();
-        } else {
-          textEditingController!.text = "";
-          ScaffoldMessengerUtils.showFloatingSnackBar(
-              context, "Your Update time has expired, please login again");
-          isLoading.value = false;
-          Get.forceAppUpdate();
-        }
-      });
+      if (authController.acceptedPassword != textEditingController!.text) {
+        await authController
+            .updatePassword(idToken, textEditingController!.text)
+            .then((value) {
+          if (authController.updateSuccess.value == true) {
+            newPassword = textEditingController!.text;
+            newIdToken = authController.newIdToken;
+            textEditingController!.text = "";
+            ScaffoldMessengerUtils.showFloatingSnackBar(
+                context, "Update Password success");
+            isLoading.value = false;
+            Get.forceAppUpdate();
+          } else {
+            textEditingController!.text = "";
+            ScaffoldMessengerUtils.showFloatingSnackBar(
+                context, "Your Update time has expired, please login again!");
+            isLoading.value = false;
+          }
+        });
+      } else {
+        ScaffoldMessengerUtils.showFloatingSnackBar(
+            context, "Password is in use!");
+        isLoading.value = false;
+      }
     }
   }
 
@@ -106,7 +131,7 @@ class UpdateProfileController extends GetxController {
           newIdToken = authController.newIdToken;
           newProfilePicture = textEditingController!.text;
           ScaffoldMessengerUtils.showFloatingSnackBar(
-              context, "Update username success");
+              context, "Update profile success");
           isLoading.value = false;
         }
         textEditingController!.text = "";

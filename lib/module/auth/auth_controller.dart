@@ -64,8 +64,6 @@ class AuthController extends GetxController {
       var data = await authService.signup(username, email, password);
       if (data.keys.toString() == '(error)') {
         emailDuplication.value = true;
-      } else {
-        emailDuplication.value = false;
       }
       print("data : ${data}");
     } catch (e) {
@@ -79,6 +77,8 @@ class AuthController extends GetxController {
       this.username = data["displayName"];
       if (data.keys.toString() != '(error)') {
         updateSuccess.value = true;
+      } else {
+        emailDuplication.value = false;
       }
       print("username : ${this.username}");
       print("data : ${data}");
@@ -93,10 +93,15 @@ class AuthController extends GetxController {
       acceptedEmail = data["email"];
       if (data.keys.toString() != '(error)') {
         newIdToken = data["idToken"];
+      print("newIdTokenAUTHSUCCESS : ${newIdToken}");
         updateSuccess.value = true;
+        emailDuplication.value = true;
+      } else {
+      print("newIdTokenAUTHFAIL : ${data["idToken"]}");
+        updateSuccess.value = false;
+        emailDuplication.value = false;
       }
-      print("newIdTokenAUTH : ${newIdToken}");
-      print("email : ${acceptedEmail}");
+      // print("email : ${acceptedEmail}");
       print("data : ${data}");
     } catch (e) {
       print(e.toString());

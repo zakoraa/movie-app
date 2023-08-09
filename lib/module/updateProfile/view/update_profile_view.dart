@@ -109,13 +109,20 @@ class UpdateProfileView extends StatelessWidget {
                     width: Get.width * 0.9,
                     onTap: () async {
                       if (textData == "Username") {
-                        controller.updateUsername(context, idToken);
+                        controller.newIdToken == null
+                            ? await controller.updateUsername(context, idToken)
+                            : await controller.updateUsername(
+                                context, controller.newIdToken);
                       } else if (textData == "Email") {
-                        await controller.updateEmail(context, idToken);
-                        idToken = controller.newIdToken!;
+                        controller.newIdToken == null
+                            ? await controller.updateEmail(context, idToken)
+                            : await controller.updateEmail(
+                                context, controller.newIdToken);
                       } else if (textData == "Password") {
-                        controller.updatePassword(context, idToken);
-                        idToken = controller.newIdToken!;
+                        controller.newIdToken == null
+                            ? await controller.updatePassword(context, idToken)
+                            : await controller.updatePassword(
+                                context, controller.newIdToken);
                       }
                     },
                     controller: controller,
