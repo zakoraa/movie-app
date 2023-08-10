@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/home/widgets/drawer/container_drawer.dart';
-import 'package:movieapp/module/home/widgets/homeWidgets/detail_profile_picture.dart';
+import 'package:movieapp/module/updateProfile/controller/update_profile_controller.dart';
 
+import '../../../../shared/widgets/profile_picture_widget.dart';
 import '../../../auth/auth_controller.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -11,6 +12,8 @@ class DrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AuthController authController = Get.put(AuthController());
+    UpdateProfileController updateProfileController =
+        Get.put(UpdateProfileController());
     return Drawer(
       backgroundColor: const Color(0xFF2C2C2C),
       child: Stack(
@@ -36,28 +39,9 @@ class DrawerWidget extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        GestureDetector(
-                          onTap: () => Get.to(
-                              () => const DetailProfilePicture(),
-                              opaque: false,
-                              fullscreenDialog: true,
-                              transition: Transition.circularReveal),
-                          child: Hero(
-                            tag: "imageDrawerTag",
-                            child: ClipRRect(
-                                borderRadius: BorderRadius.circular(100),
-                                child: SizedBox(
-                                  height: 100,
-                                  width: 100,
-                                  child: Image.network(
-                                    authController.profilePicture == null ||
-                                            authController.profilePicture == ""
-                                        ? 'https://icon-library.com/images/default-profile-icon/default-profile-icon-6.jpg'
-                                        : authController.profilePicture!,
-                                    fit: BoxFit.cover,
-                                  ),
-                                )),
-                          ),
+                        const ProfilePictureWidget(
+                          size: 100,
+                          tag: "Drawer",
                         ),
                         const SizedBox(
                           height: 10.0,

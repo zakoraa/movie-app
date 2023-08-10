@@ -95,7 +95,7 @@ class UpdateProfileView extends StatelessWidget {
                 ),
                 TextFieldWidget(
                   loginSignup: false,
-                  text: textData,
+                  text: textData == "Profile Picture" ? "Url Link" : textData,
                   icon: iconData,
                   controller: controller.textEditingController,
                   selectedController: controller,
@@ -122,6 +122,12 @@ class UpdateProfileView extends StatelessWidget {
                         controller.newIdToken == null
                             ? await controller.updatePassword(context, idToken)
                             : await controller.updatePassword(
+                                context, controller.newIdToken);
+                      } else if (textData == "Profile Picture") {
+                        controller.newIdToken == null
+                            ? await controller.updateProfilePictureWUrl(
+                                context, idToken)
+                            : await controller.updateProfilePictureWUrl(
                                 context, controller.newIdToken);
                       }
                     },

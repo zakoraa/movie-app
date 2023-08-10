@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_init_to_null, avoid_print, unnecessary_brace_in_string_interps
 
 import 'dart:convert';
+import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -40,13 +41,28 @@ class AuthService {
     return data;
   }
 
-  updateProfilePicture(String idToken, String profilePicture) async {
+  updateProfilePictureWUrl(String idToken, String profilePicture) async {
     Uri url = Uri.parse(
         "https://identitytoolkit.googleapis.com/v1/accounts:update?key=${apiKey}");
     var response = await http.post(url,
         body: jsonEncode({
           "idToken": idToken,
           "photoUrl": profilePicture,
+          "returnSecureToken": false
+        }));
+
+    final data = jsonDecode(response.body);
+    print("data : ${data}");
+    return data;
+  }
+
+  updateProfilePictureWGallery(String idToken, File profilePicture) async {
+    Uri url = Uri.parse(
+        "https://identitytoolkit.googleapis.com/v1/accounts:update?key=${apiKey}");
+    var response = await http.post(url,
+        body: jsonEncode({
+          "idToken": idToken,
+          "photoUrl": profilePicture.toString(),
           "returnSecureToken": false
         }));
 
@@ -75,7 +91,7 @@ class AuthService {
         "https://identitytoolkit.googleapis.com/v1/accounts:update?key=${apiKey}");
     var response = await http.post(url,
         body: jsonEncode(
-            {"idToken": idToken, "email": email, "returnSecureToken": true}));
+            {"idToken": idToken, "email": email, "returnSecureToken": false}));
     final data = jsonDecode(response.body);
     print("data : ${data}");
     return data;

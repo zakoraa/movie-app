@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print, unnecessary_brace_in_string_interps
 
+import 'dart:io';
+
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:movieapp/services/auth_service.dart';
@@ -123,11 +125,27 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<void> updateProfilePicture(
+  Future<void> updateProfilePictureWUrl(
       String idToken, String profilePicture) async {
     try {
       var data =
-          await authService.updateProfilePicture(idToken, profilePicture);
+          await authService.updateProfilePictureWUrl(idToken, profilePicture);
+      this.profilePicture = data["profilePicture"];
+      if (data.keys.toString() != '(error)') {
+        newIdToken = data["idToken"];
+        updateSuccess.value = true;
+      }
+      print("profilePicture : ${profilePicture}");
+      print("data : ${data}");
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+  Future<void> updateProfilePictureWGallery(
+      String idToken, File profilePicture) async {
+    try {
+      var data =
+          await authService.updateProfilePictureWGallery(idToken, profilePicture);
       this.profilePicture = data["profilePicture"];
       if (data.keys.toString() != '(error)') {
         newIdToken = data["idToken"];

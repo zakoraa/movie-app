@@ -45,6 +45,7 @@ dependencies:
   liquid_pull_to_refresh: ^3.0.1
   get_storage: ^2.1.1
   flutter_dotenv: ^5.1.0
+  image_picker: ^1.0.2
 
 dev_dependencies:
   flutter_test:

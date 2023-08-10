@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movieapp/module/updateProfile/controller/update_profile_controller.dart';
+import 'package:movieapp/shared/widgets/profile_picture_widget.dart';
 
 import '../../../auth/auth_controller.dart';
-import 'detail_profile_picture.dart';
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({
@@ -12,6 +13,8 @@ class HeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AuthController authController = Get.put(AuthController());
+    UpdateProfileController updateProfileController =
+        Get.put(UpdateProfileController());
     return Padding(
       padding: const EdgeInsets.only(right: 20, left: 20),
       child: SizedBox(
@@ -64,28 +67,7 @@ class HeaderWidget extends StatelessWidget {
                     )
                   ],
                 ),
-                GestureDetector(
-                  onTap: () => Get.to(() => const DetailProfilePicture(),
-                      opaque: false,
-                      fullscreenDialog: true,
-                      transition: Transition.circularReveal),
-                  child: Hero(
-                    tag: "imageTag",
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(50),
-                        child: SizedBox(
-                          height: 65,
-                          width: 65,
-                          child: Image.network(
-                            authController.profilePicture == null ||
-                                    authController.profilePicture == ""
-                                ? 'https://icon-library.com/images/default-profile-icon/default-profile-icon-6.jpg'
-                                : authController.profilePicture!,
-                            fit: BoxFit.cover,
-                          ),
-                        )),
-                  ),
-                )
+                const ProfilePictureWidget(size: 65, tag: "Home")
               ],
             )
           ],

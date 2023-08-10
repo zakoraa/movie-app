@@ -43,10 +43,10 @@ class SignupController extends GetxController {
         email!.text = "";
         password!.text = "";
         confirmPassword!.text = "";
-        ScaffoldMessengerUtils.showFloatingSnackBar(context, "Signup success");
+        ScaffoldMessengerUtils.showSuccessedFloatingSnackBar(context, "Signup success");
       } else {
         isLoading.value = false;
-        ScaffoldMessengerUtils.showFloatingSnackBar(
+        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
             context, "Email already exists");
       }
     });
@@ -57,16 +57,16 @@ class SignupController extends GetxController {
         password!.text.isEmpty ||
         username!.text.isEmpty ||
         confirmPassword!.text.isEmpty) {
-      ScaffoldMessengerUtils.showFloatingSnackBar(
+      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
           context, "You must fill out this form!");
     } else if (email!.text.length < 6) {
-      ScaffoldMessengerUtils.showFloatingSnackBar(
+      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
           context, "Email can't be less than 6 character");
     } else if (password!.text.length < 6) {
-      ScaffoldMessengerUtils.showFloatingSnackBar(
+      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
           context, "Password can't be less than 6 character");
     } else if (password!.text != confirmPassword!.text) {
-      ScaffoldMessengerUtils.showFloatingSnackBar(
+      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
           context, "Password and confirm password must be the same!");
     } else {
       if (email!.text.isNotEmpty && password!.text.isNotEmpty) {
@@ -76,7 +76,7 @@ class SignupController extends GetxController {
           print("password : ${password!.text}");
           signup(context);
         } else {
-          ScaffoldMessengerUtils.showFloatingSnackBar(
+          ScaffoldMessengerUtils.showFailedFloatingSnackBar(
               context, "Incorrect email format. e.g. : user@example.com");
         }
       }

@@ -7,7 +7,9 @@ import 'package:movieapp/shared/utils/alert_dialog.dart';
 
 class ProfileController extends GetxController {
   AuthController authController = Get.put(AuthController());
-  showImageUploadOption(BuildContext context) {
+  UpdateProfileController updateProfileController =
+      Get.put(UpdateProfileController());
+  showImageUploadOption(BuildContext context, String idToken) {
     AlertDialogUtils.showDialogUtils(context,
         title: const Text(
           "Select the option to upload image",
@@ -18,34 +20,38 @@ class ProfileController extends GetxController {
               fontFamily: "normal"),
         ),
         actions: [
-          Container(
-            width: Get.width,
-            height: 50,
-            decoration: BoxDecoration(
-                color: const Color.fromARGB(46, 144, 143, 143),
-                borderRadius: BorderRadius.circular(5)),
-            child: Center(
-                child: Row(
-              children: const [
-                SizedBox(
-                  width: 10.0,
-                ),
-                Icon(
-                  Icons.image,
-                  size: 25,
-                ),
-                SizedBox(
-                  width: 5.0,
-                ),
-                Text(
-                  "Upload From Gallery",
-                  style: TextStyle(
-                    fontFamily: "normal",
-                    fontSize: 16,
+          GestureDetector(
+            onTap: () =>
+                updateProfileController.updateProfilePictureWGallery(idToken),
+            child: Container(
+              width: Get.width,
+              height: 50,
+              decoration: BoxDecoration(
+                  color: const Color.fromARGB(46, 144, 143, 143),
+                  borderRadius: BorderRadius.circular(5)),
+              child: Center(
+                  child: Row(
+                children: const [
+                  SizedBox(
+                    width: 10.0,
                   ),
-                ),
-              ],
-            )),
+                  Icon(
+                    Icons.image,
+                    size: 25,
+                  ),
+                  SizedBox(
+                    width: 5.0,
+                  ),
+                  Text(
+                    "Upload From Gallery",
+                    style: TextStyle(
+                      fontFamily: "normal",
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              )),
+            ),
           ),
           const SizedBox(
             height: 15.0,

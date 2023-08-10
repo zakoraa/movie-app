@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:movieapp/module/profile/controller/profile_controller.dart';
 import 'package:movieapp/module/updateProfile/view/update_profile_view.dart';
 import 'package:movieapp/shared/utils/scaffold_background_template.dart';
+import 'package:movieapp/shared/widgets/profile_picture_widget.dart';
 
-import '../../home/widgets/homeWidgets/detail_profile_picture.dart';
 import '../../updateProfile/controller/update_profile_controller.dart';
 
 class ProfileView extends StatelessWidget {
@@ -80,31 +80,21 @@ class ProfileView extends StatelessWidget {
                               height: 50.0,
                             ),
                             Stack(children: [
-                              GestureDetector(
-                                  onTap: () => Get.to(
-                                      () => const DetailProfilePicture(),
-                                      opaque: false,
-                                      fullscreenDialog: true,
-                                      transition: Transition.circularReveal),
-                                  child: Hero(
-                                    tag: "profileImage",
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(150),
-                                      child: Image.network(
-                                        profilePicture,
-                                        height: 150,
-                                        width: 150,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  )),
+                              const ProfilePictureWidget(
+                                  size: 150, tag: "Profile"),
                               Positioned(
                                   bottom: 0,
                                   right: 0,
                                   child: GestureDetector(
-                                    onTap: () {
-                                      controller.showImageUploadOption(context);
-                                    },
+                                    onTap: () =>
+                                        controller.showImageUploadOption(
+                                            context,
+                                            updateProfileController
+                                                        .newIdToken ==
+                                                    null
+                                                ? idToken
+                                                : updateProfileController
+                                                    .newIdToken!),
                                     child: Container(
                                       height: 40,
                                       width: 40,

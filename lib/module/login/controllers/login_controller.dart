@@ -29,7 +29,7 @@ class LoginController extends GetxController {
       print("accepted email : ${authController.acceptedEmail}");
       if (authController.acceptedEmail == null) {
         isLoading.value = false;
-        ScaffoldMessengerUtils.showFloatingSnackBar(
+        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
             context, "Your email or password is wrong!");
       } else {
         isLoading.value = false;
@@ -40,13 +40,13 @@ class LoginController extends GetxController {
 
   void loginValidation(BuildContext context) {
     if (email!.text.isEmpty && password!.text.isEmpty) {
-      ScaffoldMessengerUtils.showFloatingSnackBar(
+      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
           context, "You must fill out this form!");
     } else if (email!.text.length < 6) {
-      ScaffoldMessengerUtils.showFloatingSnackBar(
+      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
           context, "Email can't be less than 6 character");
     } else if (password!.text.length < 6) {
-      ScaffoldMessengerUtils.showFloatingSnackBar(
+      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
           context, "Password can't be less than 6 character");
     } else {
       if (email!.text.isNotEmpty && password!.text.isNotEmpty) {
@@ -55,7 +55,7 @@ class LoginController extends GetxController {
           print("password : ${password!.text}");
           login(context);
         } else {
-          ScaffoldMessengerUtils.showFloatingSnackBar(
+          ScaffoldMessengerUtils.showFailedFloatingSnackBar(
               context, "Incorrect email format. e.g. : user@example.com");
         }
       }
