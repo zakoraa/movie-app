@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/auth/auth_controller.dart';
@@ -17,6 +19,26 @@ class ProfilePictureWidget extends StatelessWidget {
     UpdateProfileController updateProfileController =
         Get.put(UpdateProfileController());
     AuthController authController = Get.put(AuthController());
+    bool isImageAdded = authController.acceptedProfilePicture != "" ||
+        authController.acceptedProfilePicture != null;
+    String? newImageUrl = updateProfileController.newProfilePictureUrl;
+    File? newImageGallery = updateProfileController.newProfilePictureGallery;
+    bool isImageGallery = newImageGallery != null
+        ? true
+        : isImageAdded
+            ? authController.acceptedProfilePicture.split("'").length == 3
+            : false;
+    bool isImageGalleryUpdated =
+        updateProfileController.newProfilePictureGallery != null;
+    bool isImageUrlUpdated =
+        updateProfileController.newProfilePictureUrl != null;
+    dynamic imageGallery = newImageGallery != null
+        ? true
+        : isImageGallery == false
+            ? null
+            : File(isImageAdded
+                ? authController.acceptedProfilePicture.split("'")[1]
+                : "");
     return GestureDetector(
       onTap: () => Get.to(() => const DetailProfilePicture(),
           opaque: false,
@@ -32,22 +54,39 @@ class ProfilePictureWidget extends StatelessWidget {
               decoration: BoxDecoration(
                   color: Colors.black,
                   borderRadius: BorderRadius.circular(size)),
-              child: updateProfileController.newProfilePictureUrl == null && updateProfileController.newProfilePictureGallery != null
-                  ? Image.file(
-                      updateProfileController.newProfilePictureGallery!,
-                      fit: BoxFit.cover,
-                    )
-                  : Image.network(
-                      updateProfileController.newProfilePictureUrl != null
-                          ? updateProfileController.newProfilePictureUrl!
-                          : authController.profilePicture == null ||
-                                  authController.profilePicture == ""
-                              ? 'https://icon-library.com/images/default-profile-icon/default-profile-icon-6.jpg'
-                              : authController.profilePicture!,
-                      fit: BoxFit.cover,
-                    ),
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Image.network(
+                    'https://icon-library.com/images/default-profile-icon/default-profile-icon-6.jpg',
+                    fit: BoxFit.cover,
+                  ),
+                  !isImageGallery &&
+                          isImageAdded &&
+                          imageGallery == null &&
+                          !isImageGalleryUpdated
+                      ? Image.network(
+                          isImageUrlUpdated
+                              ? newImageUrl!
+                              : authController.acceptedProfilePicture
+                                  .toString(),
+                          fit: BoxFit.cover,
+                        )
+                      : const SizedBox.shrink(),
+                  isImageAdded && imageGallery != null
+                      ? Image.file(
+                          isImageGalleryUpdated
+                              ? newImageGallery
+                              : imageGallery,
+                          fit: BoxFit.cover,
+                        )
+                      : const SizedBox.shrink(),
+                ],
+              ),
             )),
       ),
     );
   }
 }
+
+// YEEEE WALAUPUN CODE SAYA SANGAT TIDAK CLEAN!!!

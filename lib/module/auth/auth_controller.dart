@@ -10,14 +10,10 @@ class AuthController extends GetxController {
   AuthService authService = Get.put(AuthService());
   final GetStorage storage = GetStorage();
 
-  String? acceptedEmail,
-      username,
-      profilePicture,
-      acceptedPassword,
-      idToken,
-      newIdToken;
+  String? acceptedEmail, username, acceptedPassword, idToken, newIdToken;
   RxBool emailDuplication = false.obs;
   RxBool updateSuccess = false.obs;
+  String acceptedProfilePicture = "";
 
   @override
   void onInit() {
@@ -37,7 +33,7 @@ class AuthController extends GetxController {
       }
 
       if (savedProfilePicture != null) {
-        profilePicture = savedProfilePicture;
+        acceptedProfilePicture = savedProfilePicture;
       }
     }
   }
@@ -51,7 +47,7 @@ class AuthController extends GetxController {
       } else {
         acceptedEmail = data["email"];
         username = data["displayName"];
-        profilePicture = data["profilePicture"];
+        acceptedProfilePicture = data["profilePicture"];
         idToken = data["idToken"];
       }
       print("data : ${data}");
@@ -95,15 +91,15 @@ class AuthController extends GetxController {
       acceptedEmail = data["email"];
       if (data.keys.toString() != '(error)') {
         newIdToken = data["idToken"];
-      print("newIdTokenAUTHSUCCESS : ${newIdToken}");
+        print("newIdTokenAUTHSUCCESS : ${newIdToken}");
         updateSuccess.value = true;
         emailDuplication.value = true;
       } else {
-      print("newIdTokenAUTHFAIL : ${data["idToken"]}");
+        print("newIdTokenAUTHFAIL : ${data["idToken"]}");
         updateSuccess.value = false;
         emailDuplication.value = false;
       }
-      // print("email : ${acceptedEmail}");
+      print("email : ${acceptedEmail}");
       print("data : ${data}");
     } catch (e) {
       print(e.toString());
@@ -130,24 +126,26 @@ class AuthController extends GetxController {
     try {
       var data =
           await authService.updateProfilePictureWUrl(idToken, profilePicture);
-      this.profilePicture = data["profilePicture"];
       if (data.keys.toString() != '(error)') {
+        acceptedProfilePicture = data["profilePicture"] ?? "";
         newIdToken = data["idToken"];
         updateSuccess.value = true;
       }
+      print("success :${updateSuccess.value}");
       print("profilePicture : ${profilePicture}");
       print("data : ${data}");
     } catch (e) {
       print(e.toString());
     }
   }
+
   Future<void> updateProfilePictureWGallery(
       String idToken, File profilePicture) async {
     try {
-      var data =
-          await authService.updateProfilePictureWGallery(idToken, profilePicture);
-      this.profilePicture = data["profilePicture"];
+      var data = await authService.updateProfilePictureWGallery(
+          idToken, profilePicture);
       if (data.keys.toString() != '(error)') {
+        acceptedProfilePicture = data["profilePicture"] ?? "";
         newIdToken = data["idToken"];
         updateSuccess.value = true;
       }

@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -13,6 +14,26 @@ class DetailProfilePicture extends StatelessWidget {
     AuthController authController = Get.put(AuthController());
     UpdateProfileController updateProfileController =
         Get.put(UpdateProfileController());
+    bool isImageAdded = authController.acceptedProfilePicture != "" ||
+        authController.acceptedProfilePicture != null;
+    String? newImageUrl = updateProfileController.newProfilePictureUrl;
+    File? newImageGallery = updateProfileController.newProfilePictureGallery;
+    bool isImageGallery = newImageGallery != null
+        ? true
+        : isImageAdded
+            ? authController.acceptedProfilePicture.split("'").length == 3
+            : false;
+    bool isImageGalleryUpdated =
+        updateProfileController.newProfilePictureGallery != null;
+    bool isImageUrlUpdated =
+        updateProfileController.newProfilePictureUrl != null;
+    dynamic imageGallery = newImageGallery != null
+        ? true
+        : isImageGallery == false
+            ? null
+            : File(isImageAdded
+                ? authController.acceptedProfilePicture.split("'")[1]
+                : "");
     return GestureDetector(
       onTap: () => Get.back(),
       child: Scaffold(
@@ -33,14 +54,34 @@ class DetailProfilePicture extends StatelessWidget {
                     child: SizedBox(
                       height: 250,
                       width: 250,
-                      child: Image.network(
-                        updateProfileController.newProfilePictureUrl != null
-                            ? updateProfileController.newProfilePictureUrl!
-                            : authController.profilePicture == null ||
-                                    authController.profilePicture == ""
-                                ? 'https://icon-library.com/images/default-profile-icon/default-profile-icon-6.jpg'
-                                : authController.profilePicture!,
-                        fit: BoxFit.cover,
+                      child: Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          Image.network(
+                            'https://icon-library.com/images/default-profile-icon/default-profile-icon-6.jpg',
+                            fit: BoxFit.cover,
+                          ),
+                          !isImageGallery &&
+                                  isImageAdded &&
+                                  imageGallery == null &&
+                                  !isImageGalleryUpdated
+                              ? Image.network(
+                                  isImageUrlUpdated
+                                      ? newImageUrl!
+                                      : authController.acceptedProfilePicture
+                                          .toString(),
+                                  fit: BoxFit.cover,
+                                )
+                              : const SizedBox.shrink(),
+                          isImageAdded && imageGallery != null
+                              ? Image.file(
+                                  isImageGalleryUpdated
+                                      ? newImageGallery
+                                      : imageGallery,
+                                  fit: BoxFit.cover,
+                                )
+                              : const SizedBox.shrink(),
+                        ],
                       ),
                     )),
               ),

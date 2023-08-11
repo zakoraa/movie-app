@@ -156,8 +156,7 @@ class UpdateProfileController extends GetxController {
         context,
         "Profile picture must be more than 10 characters!",
       );
-    } else if (textEditingController!.text == "" ||
-        textEditingController!.text.substring(
+    } else if (textEditingController!.text.substring(
                 textEditingController!.text.length - 4,
                 textEditingController!.text.length) ==
             ".png" ||
@@ -179,13 +178,15 @@ class UpdateProfileController extends GetxController {
         textEditingController!.text.contains("image?") ||
         textEditingController!.text.contains("images?")) {
       isLoading.value = true;
-      if (authController.profilePicture != textEditingController!.text) {
+      if (authController.acceptedProfilePicture !=
+          textEditingController!.text) {
         await authController
             .updateProfilePictureWUrl(idToken, textEditingController!.text)
             .then((value) {
+          print("ATUH UPDATE : ${authController.updateSuccess.value}");
           if (authController.updateSuccess.value == true) {
-            newProfilePictureGallery = null;
             newProfilePictureUrl = textEditingController!.text;
+            newProfilePictureGallery = null;
             newIdToken = authController.newIdToken;
             textEditingController!.text = "";
             ScaffoldMessengerUtils.showSuccessedFloatingSnackBar(
@@ -201,7 +202,7 @@ class UpdateProfileController extends GetxController {
         });
       } else {
         ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-            context, "ProfilePicture is in use!");
+            context, "Profile Picture is in use!");
         isLoading.value = false;
       }
     } else {

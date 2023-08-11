@@ -22,7 +22,7 @@ class ProfileController extends GetxController {
         actions: [
           GestureDetector(
             onTap: () =>
-                updateProfileController.updateProfilePictureWGallery(idToken),
+            updateProfileController.updateProfilePictureWGallery(idToken),
             child: Container(
               width: Get.width,
               height: 50,
