@@ -14,8 +14,7 @@ class DetailProfilePicture extends StatelessWidget {
     AuthController authController = Get.put(AuthController());
     UpdateProfileController updateProfileController =
         Get.put(UpdateProfileController());
-    bool isImageAdded = authController.acceptedProfilePicture != "" ||
-        authController.acceptedProfilePicture != null;
+    bool isImageAdded = authController.acceptedProfilePicture != "";
     String? newImageUrl = updateProfileController.newProfilePictureUrl;
     File? newImageGallery = updateProfileController.newProfilePictureGallery;
     bool isImageGallery = newImageGallery != null
