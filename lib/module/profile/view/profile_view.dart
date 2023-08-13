@@ -64,6 +64,14 @@ class ProfileView extends StatelessWidget {
                                       child: GestureDetector(
                                         onTap: () {
                                           Get.back();
+                                          if (updateProfileController
+                                                  .isSavedImage.value ==
+                                              false) {
+                                            updateProfileController
+                                                    .newProfilePictureGallery =
+                                                null;
+                                            Get.forceAppUpdate();
+                                          }
                                           updateProfileController
                                               .showCheck.value = false;
                                         },
@@ -103,16 +111,15 @@ class ProfileView extends StatelessWidget {
                                   bottom: 0,
                                   right: 0,
                                   child: GestureDetector(
-                                    onTap: () async => await controller
-                                        .showImageUploadOption(
+                                    onTap: () =>
+                                        controller.showImageUploadOption(
                                             context,
                                             updateProfileController
                                                         .newIdToken ==
                                                     null
                                                 ? idToken
                                                 : updateProfileController
-                                                    .newIdToken!)
-                                        .then((value) => Get.forceAppUpdate()),
+                                                    .newIdToken!),
                                     child: Container(
                                       height: 40,
                                       width: 40,

@@ -9,8 +9,8 @@ class ProfileController extends GetxController {
   AuthController authController = Get.put(AuthController());
   UpdateProfileController updateProfileController =
       Get.put(UpdateProfileController());
-   Future showImageUploadOption(BuildContext context, String idToken) async {
-     AlertDialogUtils.showDialogUtils(context,
+  Future showImageUploadOption(BuildContext context, String idToken) async {
+    AlertDialogUtils.showDialogUtils(context,
         title: const Text(
           "Select the option to upload image",
           style: TextStyle(
@@ -21,9 +21,10 @@ class ProfileController extends GetxController {
         ),
         actions: [
           GestureDetector(
-            onTap: () {
+            onTap: () async {
               updateProfileController.showCheck.value == true;
-              updateProfileController.openGallery();
+              await updateProfileController.openGallery();
+              Get.forceAppUpdate();
             },
             child: Container(
               width: Get.width,
