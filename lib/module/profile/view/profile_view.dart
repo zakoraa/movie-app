@@ -20,7 +20,8 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ProfileController controller = Get.put(ProfileController());
+    ProfileController controller =
+        Get.put(ProfileController(), permanent: true);
     UpdateProfileController updateProfileController =
         Get.put(UpdateProfileController());
     Map<String, dynamic> settingOptions = {
@@ -38,6 +39,7 @@ class ProfileView extends StatelessWidget {
           : email,
       "********"
     ];
+    print(updateProfileController.showCheck.value);
     return Scaffold(
       body: SizedBox(
           width: Get.width,
@@ -53,29 +55,44 @@ class ProfileView extends StatelessWidget {
                         physics: const BouncingScrollPhysics(),
                         children: [
                           Column(children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  width: 30.0,
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Get.back();
-                                    },
-                                    child: const Icon(
-                                      Icons.arrow_back,
+                            Obx(() => Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: 30.0,
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          Get.back();
+                                          updateProfileController
+                                              .showCheck.value = false;
+                                        },
+                                        child: const Icon(
+                                          Icons.arrow_back,
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                                const Text(
-                                  "Profile",
-                                  style: TextStyle(fontSize: 20),
-                                ),
-                                const SizedBox(
-                                  width: 30.0,
-                                ),
-                              ],
-                            ),
+                                    const Text(
+                                      "Profile",
+                                      style: TextStyle(fontSize: 20),
+                                    ),
+                                    updateProfileController.showCheck.value ==
+                                            true
+                                        ? GestureDetector(
+                                            onTap: () => updateProfileController
+                                                .updateProfilePictureWGallery(
+                                                    idToken),
+                                            child: const Icon(
+                                              Icons.check,
+                                              color: Colors.amber,
+                                              size: 30,
+                                            ),
+                                          )
+                                        : const SizedBox(
+                                            width: 30.0,
+                                          ),
+                                  ],
+                                )),
                             const SizedBox(
                               height: 50.0,
                             ),
@@ -86,15 +103,16 @@ class ProfileView extends StatelessWidget {
                                   bottom: 0,
                                   right: 0,
                                   child: GestureDetector(
-                                    onTap: () =>
-                                        controller.showImageUploadOption(
+                                    onTap: () async => await controller
+                                        .showImageUploadOption(
                                             context,
                                             updateProfileController
                                                         .newIdToken ==
                                                     null
                                                 ? idToken
                                                 : updateProfileController
-                                                    .newIdToken!),
+                                                    .newIdToken!)
+                                        .then((value) => Get.forceAppUpdate()),
                                     child: Container(
                                       height: 40,
                                       width: 40,

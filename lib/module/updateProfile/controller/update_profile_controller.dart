@@ -23,7 +23,8 @@ class UpdateProfileController extends GetxController {
       newIdToken,
       checkEmail;
   File? newProfilePictureGallery;
-
+  RxBool saveImage = false.obs;
+  RxBool showCheck = false.obs;
   bool isValidEmail(String email) {
     final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     return emailRegExp.hasMatch(email);
@@ -212,17 +213,27 @@ class UpdateProfileController extends GetxController {
     }
   }
 
+  var imageGallery;
+
+  Future openGallery() async {
+    showCheck.value = true;
+    imageGallery = await ImagePicker().pickImage(source: ImageSource.gallery);
+  }
+
   Future updateProfilePictureWGallery(String idToken) async {
-    var imageGallery =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
     if (imageGallery == null) {
       return;
     } else {
       newProfilePictureUrl = null;
       newProfilePictureGallery = File(imageGallery.path);
-      await authController
-          .updateProfilePictureWGallery(idToken, newProfilePictureGallery!)
-          .then((value) => Get.forceAppUpdate());
+      if (showCheck.value == true) {
+        await authController
+            .updateProfilePictureWGallery(idToken, newProfilePictureGallery!)
+            .then((value) {
+          showCheck.value = false;
+          Get.forceAppUpdate();
+        });
+      }
     }
   }
 }

@@ -13,7 +13,9 @@ class DrawerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     AuthController authController = Get.put(AuthController());
     UpdateProfileController updateProfileController =
-        Get.put(UpdateProfileController());
+        Get.put(UpdateProfileController(), permanent: true);
+    print(updateProfileController.showCheck.value);
+
     return Drawer(
       backgroundColor: const Color(0xFF2C2C2C),
       child: Stack(
@@ -61,8 +63,7 @@ class DrawerWidget extends StatelessWidget {
                 height: 30.0,
               ),
               ContainerDrawer(
-                profilePicture: authController.acceptedProfilePicture == null ||
-                        authController.acceptedProfilePicture == ""
+                profilePicture: authController.acceptedProfilePicture == ""
                     ? 'https://icon-library.com/images/default-profile-icon/default-profile-icon-6.jpg'
                     : authController.acceptedProfilePicture,
                 username: authController.username == null ||
