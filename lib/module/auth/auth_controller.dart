@@ -13,6 +13,7 @@ class AuthController extends GetxController {
   String? acceptedEmail, username, acceptedPassword, idToken, newIdToken;
   RxBool emailDuplication = false.obs;
   RxBool updateSuccess = false.obs;
+  RxBool loginSuccess = false.obs;
   String acceptedProfilePicture = "";
 
   @override
@@ -43,15 +44,16 @@ class AuthController extends GetxController {
       var data = await authService.login(email, password);
       acceptedPassword = authService.acceptedPassword!;
       if (data.keys.toString() == '(error)') {
-        acceptedEmail = null;
+        loginSuccess.value = false;
       } else {
+        loginSuccess.value = true;
         acceptedEmail = data["email"];
         username = data["displayName"];
-        acceptedProfilePicture = data["profilePicture"];
+        acceptedProfilePicture = data["profilePicture"] ?? "";
         idToken = data["idToken"];
       }
-      print("data : ${data}");
-      print("idToken: ${data["idToken"]}");
+      print("data: ${data}");
+      print("id: ${data["idToken"]}");
     } catch (e) {
       print(e.toString());
     }

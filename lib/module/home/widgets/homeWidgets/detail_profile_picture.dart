@@ -13,25 +13,34 @@ class DetailProfilePicture extends StatelessWidget {
     AuthController authController = Get.put(AuthController());
     UpdateProfileController updateProfileController =
         Get.put(UpdateProfileController());
-    bool isImageAdded = authController.acceptedProfilePicture != "";
     String? newImageUrl = updateProfileController.newProfilePictureUrl;
     File? newImageGallery = updateProfileController.newProfilePictureGallery;
-    bool isImageGallery = newImageGallery != null
+
+    // bool
+    bool isImageAdded = authController.acceptedProfilePicture !=
+        ""; // If account already have image
+    bool isImageGalleryUpdated =
+        newImageGallery != null; // if image gallery is updated
+    bool isImageUrlUpdated = newImageUrl != null; // if image url is updated
+    bool isImageGallery = isImageGalleryUpdated
         ? true
         : isImageAdded
             ? authController.acceptedProfilePicture.split("'").length == 3
-            : false;
-    bool isImageGalleryUpdated =
-        updateProfileController.newProfilePictureGallery != null;
-    bool isImageUrlUpdated =
-        updateProfileController.newProfilePictureUrl != null;
-    dynamic imageGallery = newImageGallery != null
-        ? true
+            : false; // if image is gallery
+
+    // dynamic
+    dynamic imageGallery = isImageGalleryUpdated
+        ? newImageGallery
         : isImageGallery == false
-            ? null
+            ? ""
             : File(isImageAdded
                 ? authController.acceptedProfilePicture.split("'")[1]
-                : "");
+                : ""); // if image gallery is updated , show newImage
+
+    dynamic imageUrl = isImageUrlUpdated
+        ? newImageUrl
+        : authController.acceptedProfilePicture
+            .toString(); // if image url is updated, show newImage
     return GestureDetector(
       onTap: () => Get.back(),
       child: Scaffold(
@@ -60,22 +69,16 @@ class DetailProfilePicture extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                           !isImageGallery &&
-                                  isImageAdded &&
-                                  imageGallery == null &&
+                                  imageGallery == "" &&
                                   !isImageGalleryUpdated
                               ? Image.network(
-                                  isImageUrlUpdated
-                                      ? newImageUrl!
-                                      : authController.acceptedProfilePicture
-                                          .toString(),
+                                  imageUrl,
                                   fit: BoxFit.cover,
                                 )
                               : const SizedBox.shrink(),
-                          isImageAdded && imageGallery != null
+                          imageGallery != ""
                               ? Image.file(
-                                  isImageGalleryUpdated
-                                      ? newImageGallery
-                                      : imageGallery,
+                                  imageGallery,
                                   fit: BoxFit.cover,
                                 )
                               : const SizedBox.shrink(),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/auth/auth_controller.dart';
 import 'package:movieapp/main_page.dart';
+import 'package:movieapp/shared/utils/check_form.dart';
 import 'package:movieapp/shared/utils/scaffold_messenger.dart';
 
 class LoginController extends GetxController {
@@ -18,16 +19,10 @@ class LoginController extends GetxController {
     passwordIsVisible.value = !passwordIsVisible.value;
   }
 
-  bool isValidEmail(String email) {
-    final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-    return emailRegExp.hasMatch(email);
-  }
-
-  void login(BuildContext context) {
+  Future<void> login(BuildContext context) async {
     isLoading.value = true;
-    authController.login(email!.text, password!.text).then((value) {
-      print("accepted email : ${authController.acceptedEmail}");
-      if (authController.acceptedEmail == null) {
+    await authController.login(email!.text, password!.text).then((value) {
+      if (authController.loginSuccess.value == false) {
         isLoading.value = false;
         ScaffoldMessengerUtils.showFailedFloatingSnackBar(
             context, "Your email or password is wrong!");
@@ -38,7 +33,7 @@ class LoginController extends GetxController {
     });
   }
 
-  void loginValidation(BuildContext context) {
+  Future<void> loginValidation(BuildContext context) async {
     if (email!.text.isEmpty && password!.text.isEmpty) {
       ScaffoldMessengerUtils.showFailedFloatingSnackBar(
           context, "You must fill out this form!");
@@ -50,10 +45,8 @@ class LoginController extends GetxController {
           context, "Password can't be less than 6 character");
     } else {
       if (email!.text.isNotEmpty && password!.text.isNotEmpty) {
-        if (isValidEmail(email!.text)) {
-          print("email : ${email!.text}");
-          print("password : ${password!.text}");
-          login(context);
+        if (CheckForm.isValidEmail(email!.text)) {
+          await login(context);
         } else {
           ScaffoldMessengerUtils.showFailedFloatingSnackBar(
               context, "Incorrect email format. e.g. : user@example.com");

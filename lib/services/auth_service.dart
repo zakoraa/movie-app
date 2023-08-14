@@ -15,12 +15,13 @@ class AuthService {
         body: json.encode({
           "email": email,
           "password": password,
-          "returnSecureToken": false,
+          "returnSecureToken": true,
         }));
 
     var data = json.decode(response.body);
     acceptedPassword = password;
-    print("pass: ${acceptedPassword}");
+    print("data : $data");
+    print("id : ${data["idToken"]}");
     return data;
   }
 
@@ -33,7 +34,7 @@ class AuthService {
           "email": email,
           "password": password,
           "displayName": username,
-          "returnSecureToken": false
+          "returnSecureToken": true
         }));
 
     var data = jsonDecode(response.body);
@@ -48,7 +49,7 @@ class AuthService {
         body: jsonEncode({
           "idToken": idToken,
           "photoUrl": profilePicture,
-          "returnSecureToken": false
+          "returnSecureToken": true
         }));
 
     final data = jsonDecode(response.body);
@@ -63,7 +64,7 @@ class AuthService {
         body: jsonEncode({
           "idToken": idToken,
           "photoUrl": profilePicture.toString(),
-          "returnSecureToken": false
+          "returnSecureToken": true
         }));
 
     final data = jsonDecode(response.body);
@@ -78,7 +79,7 @@ class AuthService {
         body: jsonEncode({
           "idToken": idToken,
           "displayName": username,
-          "returnSecureToken": false
+          "returnSecureToken": true
         }));
 
     final data = jsonDecode(response.body);
@@ -91,7 +92,7 @@ class AuthService {
         "https://identitytoolkit.googleapis.com/v1/accounts:update?key=${apiKey}");
     var response = await http.post(url,
         body: jsonEncode(
-            {"idToken": idToken, "email": email, "returnSecureToken": false}));
+            {"idToken": idToken, "email": email, "returnSecureToken": true}));
     final data = jsonDecode(response.body);
     print("data : ${data}");
     return data;
@@ -104,7 +105,7 @@ class AuthService {
         body: jsonEncode({
           "idToken": idToken,
           "password": password,
-          "returnSecureToken": false
+          "returnSecureToken": true
         }));
 
     final data = jsonDecode(response.body);

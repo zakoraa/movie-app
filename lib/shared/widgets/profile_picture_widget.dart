@@ -19,26 +19,34 @@ class ProfilePictureWidget extends StatelessWidget {
     UpdateProfileController updateProfileController =
         Get.put(UpdateProfileController());
     AuthController authController = Get.put(AuthController());
-    bool isImageAdded = authController.acceptedProfilePicture != "" ||
-        authController.acceptedProfilePicture != null;
     String? newImageUrl = updateProfileController.newProfilePictureUrl;
     File? newImageGallery = updateProfileController.newProfilePictureGallery;
-    bool isImageGallery = newImageGallery != null
+
+    // bool
+    bool isImageAdded = authController.acceptedProfilePicture !=
+        ""; // If account already have image
+    bool isImageGalleryUpdated =
+        newImageGallery != null; // if image gallery is updated
+    bool isImageUrlUpdated = newImageUrl != null; // if image url is updated
+    bool isImageGallery = isImageGalleryUpdated
         ? true
         : isImageAdded
             ? authController.acceptedProfilePicture.split("'").length == 3
-            : false;
-    bool isImageGalleryUpdated =
-        updateProfileController.newProfilePictureGallery != null;
-    bool isImageUrlUpdated =
-        updateProfileController.newProfilePictureUrl != null;
-    dynamic imageGallery = newImageGallery != null
-        ? true
+            : false; // if image is gallery
+
+    // dynamic
+    dynamic imageGallery = isImageGalleryUpdated
+        ? newImageGallery
         : isImageGallery == false
-            ? null
+            ? ""
             : File(isImageAdded
                 ? authController.acceptedProfilePicture.split("'")[1]
-                : "");
+                : ""); // if image gallery is updated , show newImage
+
+    dynamic imageUrl = isImageUrlUpdated
+        ? newImageUrl
+        : authController.acceptedProfilePicture
+            .toString(); // if image url is updated, show newImage
     return GestureDetector(
       onTap: () => Get.to(() => const DetailProfilePicture(),
           opaque: false,
@@ -61,23 +69,18 @@ class ProfilePictureWidget extends StatelessWidget {
                     'https://icon-library.com/images/default-profile-icon/default-profile-icon-6.jpg',
                     fit: BoxFit.cover,
                   ),
-                  !isImageGallery &&
-                          isImageAdded &&
-                          imageGallery == null &&
+                  imageUrl != "" &&
+                          !isImageGallery &&
+                          imageGallery == "" &&
                           !isImageGalleryUpdated
                       ? Image.network(
-                          isImageUrlUpdated
-                              ? newImageUrl!
-                              : authController.acceptedProfilePicture
-                                  .toString(),
+                          imageUrl,
                           fit: BoxFit.cover,
                         )
                       : const SizedBox.shrink(),
-                  isImageAdded && imageGallery != null
+                  imageGallery != ""
                       ? Image.file(
-                          isImageGalleryUpdated
-                              ? newImageGallery
-                              : imageGallery,
+                          imageGallery,
                           fit: BoxFit.cover,
                         )
                       : const SizedBox.shrink(),
