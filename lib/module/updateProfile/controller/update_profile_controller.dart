@@ -170,7 +170,7 @@ class UpdateProfileController extends GetxController {
             newIdToken = authController.newIdToken;
             textEditingController!.text = "";
             ScaffoldMessengerUtils.showSuccessedFloatingSnackBar(
-                context, "Update ProfilePicture success");
+                context, "Update ProfilePicture Success");
             isLoading.value = false;
             Get.forceAppUpdate();
           } else {
@@ -202,7 +202,8 @@ class UpdateProfileController extends GetxController {
     print(newProfilePictureGallery);
   }
 
-  Future updateProfilePictureWGallery(String idToken) async {
+  Future updateProfilePictureWGallery(
+      BuildContext context, String idToken) async {
     print(imageGallery);
     if (imageGallery == null) {
       return;
@@ -214,6 +215,8 @@ class UpdateProfileController extends GetxController {
         await authController
             .updateProfilePictureWGallery(idToken, newProfilePictureGallery!)
             .then((value) {
+          ScaffoldMessengerUtils.showSuccessedFloatingSnackBar(
+              context, "Update ProfilePicture Success");
           showCheck.value = false;
           Get.forceAppUpdate();
         });
