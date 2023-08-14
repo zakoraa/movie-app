@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, prefer_typing_uninitialized_variables
 
 import 'dart:io';
 
@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:movieapp/module/auth/auth_controller.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
+import 'package:movieapp/shared/utils/check_form.dart';
 import 'package:movieapp/shared/utils/scaffold_messenger.dart';
 
 class UpdateProfileController extends GetxController {
@@ -26,10 +27,7 @@ class UpdateProfileController extends GetxController {
   File? temporaryProfilePictureGallery;
   RxBool isSavedImage = false.obs;
   RxBool showCheck = false.obs;
-  bool isValidEmail(String email) {
-    final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-    return emailRegExp.hasMatch(email);
-  }
+  var imageGallery;
 
   Future<void> updateUsername(BuildContext context, idToken) async {
     if (textEditingController!.text == "") {
@@ -76,7 +74,7 @@ class UpdateProfileController extends GetxController {
       );
     } else {
       isLoading.value = true;
-      if (isValidEmail(textEditingController!.text)) {
+      if (CheckForm.isValidEmail(textEditingController!.text)) {
         if (authController.acceptedEmail != textEditingController!.text) {
           await authController
               .updateEmail(idToken, textEditingController!.text)
@@ -158,27 +156,7 @@ class UpdateProfileController extends GetxController {
         context,
         "Profile picture must be more than 10 characters!",
       );
-    } else if (textEditingController!.text.substring(
-                textEditingController!.text.length - 4,
-                textEditingController!.text.length) ==
-            ".png" ||
-        textEditingController!.text.substring(
-                textEditingController!.text.length - 4,
-                textEditingController!.text.length) ==
-            ".jpg" ||
-        textEditingController!.text.substring(
-                textEditingController!.text.length - 5,
-                textEditingController!.text.length) ==
-            ".jpeg" ||
-        textEditingController!.text.substring(
-                textEditingController!.text.length - 4,
-                textEditingController!.text.length) ==
-            "=CAU" ||
-        textEditingController!.text.contains(".jpg") ||
-        textEditingController!.text.contains(".jpeg") ||
-        textEditingController!.text.contains(".png") ||
-        textEditingController!.text.contains("image?") ||
-        textEditingController!.text.contains("images?")) {
+    } else if (CheckForm.isImageUrl(textEditingController)) {
       isLoading.value = true;
       if (authController.acceptedProfilePicture !=
           textEditingController!.text) {
@@ -213,8 +191,6 @@ class UpdateProfileController extends GetxController {
       isLoading.value = false;
     }
   }
-
-  var imageGallery;
 
   Future openGallery() async {
     showCheck.value = true;

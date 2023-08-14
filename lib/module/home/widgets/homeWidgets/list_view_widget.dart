@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
 import 'package:movieapp/module/seeAll/view/see_all_view.dart';
+import 'package:movieapp/shared/theme/colors.dart';
 import '../../../../shared/utils/image_url_api.dart';
 import '../../../movieDetails/view/movie_details_view.dart';
 import '../../controllers/movie_controller.dart';
@@ -42,7 +43,7 @@ class ListViewWidget extends StatelessWidget {
                       child: const Text(
                         "See all",
                         style: TextStyle(
-                            color: Colors.amber,
+                            color: CustomColor.secondaryBgColor,
                             fontWeight: FontWeight.w400,
                             fontFamily: "normal",
                             fontSize: 15),

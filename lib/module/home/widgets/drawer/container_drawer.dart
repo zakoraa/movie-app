@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
+import 'package:movieapp/shared/theme/colors.dart';
 
 import '../../../profile/view/profile_view.dart';
 
@@ -46,12 +47,14 @@ class ContainerDrawer extends StatelessWidget {
                     height: 50,
                     decoration: const BoxDecoration(
                         border: Border(
-                            bottom: BorderSide(color: Colors.amber, width: 1))),
+                            bottom: BorderSide(
+                                color: CustomColor.secondaryBgColor,
+                                width: 1))),
                     child: Row(
                       children: [
                         Icon(
                           e.value,
-                          color: Colors.amber,
+                          color: CustomColor.secondaryBgColor,
                           size: 20,
                         ),
                         const SizedBox(

@@ -1,7 +1,10 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/home/widgets/drawer/container_drawer.dart';
 import 'package:movieapp/module/updateProfile/controller/update_profile_controller.dart';
+import 'package:movieapp/shared/theme/colors.dart';
 
 import '../../../../shared/widgets/profile_picture_widget.dart';
 import '../../../auth/auth_controller.dart';
@@ -13,9 +16,7 @@ class DrawerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     AuthController authController = Get.put(AuthController());
     UpdateProfileController updateProfileController =
-        Get.put(UpdateProfileController(), permanent: true);
-    print(updateProfileController.showCheck.value);
-
+        Get.put(UpdateProfileController());
     return Drawer(
       backgroundColor: const Color(0xFF2C2C2C),
       child: Stack(
@@ -36,7 +37,7 @@ class DrawerWidget extends StatelessWidget {
                     height: 40,
                     width: Get.size.width,
                     decoration: const BoxDecoration(
-                      color: Color(0xFFFFB039),
+                      color: CustomColor.secondaryBgColor,
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/profile/controller/profile_controller.dart';
 import 'package:movieapp/module/updateProfile/view/update_profile_view.dart';
+import 'package:movieapp/shared/theme/colors.dart';
 import 'package:movieapp/shared/utils/scaffold_background_template.dart';
 import 'package:movieapp/shared/widgets/profile_picture_widget.dart';
 
@@ -39,7 +40,6 @@ class ProfileView extends StatelessWidget {
           : email,
       "********"
     ];
-    print(updateProfileController.showCheck.value);
     return Scaffold(
       body: SizedBox(
           width: Get.width,
@@ -92,7 +92,8 @@ class ProfileView extends StatelessWidget {
                                                     idToken),
                                             child: const Icon(
                                               Icons.check,
-                                              color: Colors.amber,
+                                              color:
+                                                  CustomColor.secondaryBgColor,
                                               size: 30,
                                             ),
                                           )
@@ -124,7 +125,7 @@ class ProfileView extends StatelessWidget {
                                       height: 40,
                                       width: 40,
                                       decoration: BoxDecoration(
-                                          color: const Color(0xFFFFB039),
+                                          color: CustomColor.secondaryBgColor,
                                           borderRadius:
                                               BorderRadius.circular(40)),
                                       child: const Center(

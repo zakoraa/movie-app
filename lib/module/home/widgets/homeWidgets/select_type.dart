@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/home/controllers/movie_controller.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
+import 'package:movieapp/shared/theme/colors.dart';
 
 import '../../controllers/serial_movie_controller.dart';
 
@@ -33,7 +34,7 @@ class SelectType extends StatelessWidget {
                   width: 75,
                   decoration: BoxDecoration(
                       color: (homeController.selectedIndex.value == index)
-                          ? const Color(0xFFFFAC4A)
+                          ? CustomColor.secondaryBgColor
                           : const Color.fromARGB(46, 144, 143, 143),
                       borderRadius: BorderRadius.circular(10)),
                   margin: const EdgeInsets.only(right: 10),
