@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movieapp/module/search/view/search_view.dart';
 import 'package:movieapp/module/updateProfile/controller/update_profile_controller.dart';
 import 'package:movieapp/shared/widgets/profile_picture_widget.dart';
 
@@ -33,9 +34,12 @@ class HeaderWidget extends StatelessWidget {
                     size: 30,
                   ),
                 ),
-                const Icon(
-                  Icons.search,
-                  size: 30,
+                GestureDetector(
+                  onTap: () => Get.to(() => const SearchView()),
+                  child: const Icon(
+                    Icons.search,
+                    size: 30,
+                  ),
                 )
               ],
             ),

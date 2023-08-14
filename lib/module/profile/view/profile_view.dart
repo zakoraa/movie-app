@@ -4,6 +4,7 @@ import 'package:movieapp/module/profile/controller/profile_controller.dart';
 import 'package:movieapp/module/updateProfile/view/update_profile_view.dart';
 import 'package:movieapp/shared/theme/colors.dart';
 import 'package:movieapp/shared/utils/scaffold_background_template.dart';
+import 'package:movieapp/shared/widgets/app_bar_custom.dart';
 import 'package:movieapp/shared/widgets/profile_picture_widget.dart';
 
 import '../../updateProfile/controller/update_profile_controller.dart';
@@ -55,52 +56,36 @@ class ProfileView extends StatelessWidget {
                         physics: const BouncingScrollPhysics(),
                         children: [
                           Column(children: [
-                            Obx(() => Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    SizedBox(
-                                      width: 30.0,
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          Get.back();
-                                          if (updateProfileController
-                                                  .isSavedImage.value ==
-                                              false) {
-                                            updateProfileController
-                                                    .newProfilePictureGallery =
-                                                null;
-                                            Get.forceAppUpdate();
-                                          }
-                                          updateProfileController
-                                              .showCheck.value = false;
-                                        },
-                                        child: const Icon(
-                                          Icons.arrow_back,
-                                        ),
-                                      ),
-                                    ),
-                                    const Text(
-                                      "Profile",
-                                      style: TextStyle(fontSize: 20),
-                                    ),
-                                    updateProfileController.showCheck.value ==
-                                            true
-                                        ? GestureDetector(
-                                            onTap: () => updateProfileController
-                                                .updateProfilePictureWGallery(
-                                                    context, idToken),
-                                            child: const Icon(
-                                              Icons.check,
-                                              color:
-                                                  CustomColor.secondaryBgColor,
-                                              size: 30,
-                                            ),
-                                          )
-                                        : const SizedBox(
-                                            width: 30.0,
+                            Obx(() => AppBarCustom(
+                                  onTap: () {
+                                    Get.back();
+                                    if (updateProfileController
+                                            .isSavedImage.value ==
+                                        false) {
+                                      updateProfileController
+                                          .newProfilePictureGallery = null;
+                                      Get.forceAppUpdate();
+                                    }
+                                    updateProfileController.showCheck.value =
+                                        false;
+                                  },
+                                  title: "Profile",
+                                  checkIcon: updateProfileController
+                                              .showCheck.value ==
+                                          true
+                                      ? GestureDetector(
+                                          onTap: () => updateProfileController
+                                              .updateProfilePictureWGallery(
+                                                  context, idToken),
+                                          child: const Icon(
+                                            Icons.check,
+                                            color: CustomColor.secondaryBgColor,
+                                            size: 30,
                                           ),
-                                  ],
+                                        )
+                                      : const SizedBox(
+                                          width: 30.0,
+                                        ),
                                 )),
                             const SizedBox(
                               height: 50.0,
@@ -142,84 +127,94 @@ class ProfileView extends StatelessWidget {
                             ),
                             Column(
                                 children: List.generate(
-                              settingOptions.length,
-                              (index) => Container(
-                                margin: const EdgeInsets.only(bottom: 20),
-                                height: 60,
-                                width: Get.width,
-                                decoration: BoxDecoration(
-                                    color: const Color.fromARGB(
-                                        110, 113, 113, 113),
-                                    borderRadius: BorderRadius.circular(5)),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      SizedBox(
-                                        width: Get.width * 0.3,
-                                        child: Row(
-                                          children: [
-                                            Icon(
-                                              settingOptions.values
-                                                  .elementAt(index),
-                                              size: 25,
-                                              color: Colors.grey,
+                                    settingOptions.length,
+                                    (index) => GestureDetector(
+                                          onTap: () => Get.to(() =>
+                                              UpdateProfileView(
+                                                  profilePicture:
+                                                      profilePicture,
+                                                  email: email,
+                                                  username: username,
+                                                  textData: settingOptions.keys
+                                                      .elementAt(index),
+                                                  iconData: settingOptions
+                                                      .values
+                                                      .elementAt(index),
+                                                  userInfo: userInfo[index],
+                                                  password: password,
+                                                  idToken: idToken)),
+                                          child: Container(
+                                            margin: const EdgeInsets.only(
+                                                bottom: 20),
+                                            height: 60,
+                                            width: Get.width,
+                                            decoration: BoxDecoration(
+                                                color: const Color.fromARGB(
+                                                    110, 113, 113, 113),
+                                                borderRadius:
+                                                    BorderRadius.circular(5)),
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 20),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  SizedBox(
+                                                    width: Get.width * 0.3,
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          settingOptions.values
+                                                              .elementAt(index),
+                                                          size: 25,
+                                                          color: Colors.grey,
+                                                        ),
+                                                        const SizedBox(
+                                                          width: 10.0,
+                                                        ),
+                                                        Text(
+                                                          settingOptions.keys
+                                                              .elementAt(index),
+                                                          style:
+                                                              const TextStyle(
+                                                                  fontSize: 16,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                  color: Colors
+                                                                      .grey,
+                                                                  fontFamily:
+                                                                      "normal"),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: Get.width * 0.3,
+                                                    child: Text(
+                                                      userInfo[index],
+                                                      style: const TextStyle(
+                                                          color: Colors.grey,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                          fontFamily: "normal",
+                                                          fontSize: 16),
+                                                    ),
+                                                  ),
+                                                  const Icon(
+                                                    Icons.keyboard_arrow_right,
+                                                    color: Colors.grey,
+                                                    size: 40,
+                                                  ),
+                                                ],
+                                              ),
                                             ),
-                                            const SizedBox(
-                                              width: 10.0,
-                                            ),
-                                            Text(
-                                              settingOptions.keys
-                                                  .elementAt(index),
-                                              style: const TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.grey,
-                                                  fontFamily: "normal"),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: Get.width * 0.3,
-                                        child: Text(
-                                          userInfo[index],
-                                          style: const TextStyle(
-                                              color: Colors.grey,
-                                              fontWeight: FontWeight.w400,
-                                              overflow: TextOverflow.ellipsis,
-                                              fontFamily: "normal",
-                                              fontSize: 16),
-                                        ),
-                                      ),
-                                      GestureDetector(
-                                        onTap: () => Get.to(() =>
-                                            UpdateProfileView(
-                                                profilePicture: profilePicture,
-                                                email: email,
-                                                username: username,
-                                                textData:
-                                                    settingOptions
-                                                        .keys
-                                                        .elementAt(index),
-                                                iconData: settingOptions.values
-                                                    .elementAt(index),
-                                                userInfo: userInfo[index],
-                                                password: password,
-                                                idToken: idToken)),
-                                        child: const Icon(
-                                          Icons.keyboard_arrow_right,
-                                          color: Colors.grey,
-                                          size: 40,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ).toList()),
+                                          ),
+                                        )).toList()),
                           ]),
                         ]),
                   ),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/updateProfile/controller/update_profile_controller.dart';
 import 'package:movieapp/shared/utils/scaffold_background_template.dart';
+import 'package:movieapp/shared/widgets/app_bar_custom.dart';
 import 'package:movieapp/shared/widgets/button_widget.dart';
 import 'package:movieapp/shared/widgets/textfield_widget.dart';
 
@@ -45,36 +46,12 @@ class UpdateProfileView extends StatelessWidget {
                 const SizedBox(
                   height: 10.0,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      width: 35,
-                      child: Center(
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.back();
-                            controller.textEditingController!.clear();
-                          },
-                          child: const Icon(Icons.arrow_back),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: Get.width * 0.5,
-                      child: Center(
-                        child: Text(
-                          "Update Your $textData",
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(fontSize: 18),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 35.0,
-                    ),
-                  ],
-                ),
+                AppBarCustom(
+                    onTap: () {
+                      Get.back();
+                      controller.textEditingController!.clear();
+                    },
+                    title: "Update Your $textData"),
                 const SizedBox(
                   height: 30.0,
                 ),

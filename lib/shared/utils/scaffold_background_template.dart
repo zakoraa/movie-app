@@ -26,7 +26,7 @@ class ScaffoldBackgroundTemplate extends StatelessWidget {
               "assets/Ellipse 1.png",
               scale: 1.5,
             )),
-            child
+        child
       ],
     );
   }

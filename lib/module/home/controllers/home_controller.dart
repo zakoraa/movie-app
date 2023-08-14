@@ -20,6 +20,7 @@ class HomeController extends GetxController {
 
   List moviesIn2023 = <Movie>[].obs;
   List moviesBefore2023 = <Movie>[].obs;
+  List allMovies = [];
 
   void sortedByYear(List list) {
     moviesIn2023 =
@@ -72,10 +73,12 @@ class HomeController extends GetxController {
   }
 
   @override
-  void onInit() {
+  Future<void> onInit() async {
     super.onInit();
-    movieSerialController.getData();
-    movieController.getData();
+    await movieSerialController.getData();
+    await movieController.getData();
+    allMovies.addAll(movieController.listViewMovieList);
+    allMovies.addAll(movieSerialController.listViewMovieSerialList);
   }
 
   Future<void> onRefresh() async {
