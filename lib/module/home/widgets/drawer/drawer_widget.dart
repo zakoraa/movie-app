@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/home/widgets/drawer/container_drawer.dart';
 import 'package:movieapp/module/updateProfile/controller/update_profile_controller.dart';
+import 'package:movieapp/module/user/user_controller.dart';
 import 'package:movieapp/shared/theme/colors.dart';
 
 import '../../../../shared/widgets/profile_picture_widget.dart';
@@ -15,6 +16,7 @@ class DrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AuthController authController = Get.put(AuthController());
+    UserController userController = Get.put(UserController());
     UpdateProfileController updateProfileController =
         Get.put(UpdateProfileController());
     return Drawer(
@@ -50,10 +52,10 @@ class DrawerWidget extends StatelessWidget {
                           height: 10.0,
                         ),
                         Text(
-                          authController.username == null ||
-                                  authController.username! == ""
+                          userController.username == null ||
+                                  userController.username! == ""
                               ? ""
-                              : authController.username!,
+                              : userController.username!,
                           style: const TextStyle(
                               color: Colors.white, fontSize: 15),
                         )

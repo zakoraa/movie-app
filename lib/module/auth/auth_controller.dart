@@ -1,7 +1,5 @@
 // ignore_for_file: avoid_print, unnecessary_brace_in_string_interps
 
-import 'dart:io';
-
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:movieapp/services/auth_service.dart';
@@ -52,7 +50,7 @@ class AuthController extends GetxController {
         idToken = data["idToken"];
       }
       print("data: ${data}");
-      print("id: ${data["idToken"]}");
+      print("idToken: ${data["idToken"]}");
     } catch (e) {
       print(e.toString());
     }
@@ -69,6 +67,4 @@ class AuthController extends GetxController {
       print(e.toString());
     }
   }
-
-  
 }

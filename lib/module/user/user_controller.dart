@@ -4,16 +4,23 @@ import 'dart:io';
 
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:movieapp/module/auth/auth_controller.dart';
 import 'package:movieapp/services/user_service.dart';
 
 class UserController {
   UserService userService = Get.put(UserService());
+  AuthController authController = Get.put(AuthController());
   final GetStorage storage = GetStorage();
 
   String? acceptedEmail, username, acceptedPassword, idToken, newIdToken;
   RxBool emailDuplication = false.obs;
   RxBool updateSuccess = false.obs;
   String acceptedProfilePicture = "";
+
+  void getUsernameFromAuth() {
+    username = authController.username;
+  }
+
   Future<void> updateUsername(String idToken, String username) async {
     try {
       var data = await userService.updateUsername(idToken, username);

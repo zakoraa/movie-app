@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movieapp/module/movieDetails/controller/movie_details_controller.dart';
+import 'package:movieapp/shared/theme/colors.dart';
 
 class Description extends StatelessWidget {
   const Description({
@@ -15,6 +17,7 @@ class Description extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MovieDetailsController controller = Get.put(MovieDetailsController());
     return Container(
         width: Get.size.width,
         height: Get.size.height,
@@ -48,10 +51,18 @@ class Description extends StatelessWidget {
                           fontWeight: FontWeight.w500),
                     ),
                   ),
-                  const Icon(
-                    Icons.favorite_outline,
-                    size: 30,
-                  )
+                  Obx(() => GestureDetector(
+                      onTap: () => controller.handleLike(),
+                      child: controller.isLiked.value
+                          ? const Icon(
+                              Icons.favorite,
+                              color: CustomColor.secondaryBgColor,
+                              size: 30,
+                            )
+                          : const Icon(
+                              Icons.favorite_outline,
+                              size: 30,
+                            )))
                 ],
               ),
               const SizedBox(

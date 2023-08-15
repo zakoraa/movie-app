@@ -31,7 +31,6 @@ class SearchView extends StatelessWidget {
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        vertical: 2.0,
                         horizontal: 12.0,
                       ),
                       decoration: BoxDecoration(
@@ -87,7 +86,7 @@ class SearchView extends StatelessWidget {
                                 "No Result",
                                 style: TextStyle(
                                     color: Colors.grey,
-                                    fontSize: 16,
+                                    fontSize: 15,
                                     fontFamily: "normal",
                                     fontWeight: FontWeight.w400),
                               ),
