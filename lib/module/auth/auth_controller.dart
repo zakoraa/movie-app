@@ -8,7 +8,12 @@ class AuthController extends GetxController {
   AuthService authService = Get.put(AuthService());
   final GetStorage storage = GetStorage();
 
-  String? acceptedEmail, username, acceptedPassword, idToken, newIdToken;
+  String? acceptedEmail,
+      username,
+      acceptedPassword,
+      idToken,
+      newIdToken,
+      userId;
   RxBool emailDuplication = false.obs;
   RxBool loginSuccess = false.obs;
   String acceptedProfilePicture = "";
@@ -44,6 +49,7 @@ class AuthController extends GetxController {
         loginSuccess.value = false;
       } else {
         loginSuccess.value = true;
+        userId = data["localId"];
         acceptedEmail = data["email"];
         username = data["displayName"];
         acceptedProfilePicture = data["profilePicture"] ?? "";
@@ -51,6 +57,7 @@ class AuthController extends GetxController {
       }
       print("data: ${data}");
       print("idToken: ${data["idToken"]}");
+      print("movieId: ${data["movieId"]}");
     } catch (e) {
       print(e.toString());
     }

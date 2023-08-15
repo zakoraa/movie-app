@@ -6,17 +6,36 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class FavoriteMoviesServices {
-  Future<void> addFavoriteMovies(String idToken, String movieId) async {
-    String? apiKey = dotenv.env['FIREBASE_API_KEY'];
-
+  String? apiKey = dotenv.env['FAV_MOVIES_API_KEY'];
+  addFavoriteMovies(String userId, List movieIdList) async {
+    print("movie List : $movieIdList");
+    print("user id : $userId");
     Uri url = Uri.parse(
-        "https://identitytoolkit.googleapis.com/v1/accounts:update?key=$apiKey");
-
+        "https://$apiKey.asia-southeast1.firebasedatabase.app/users.json");
     var response = await http.post(url,
-        body: jsonEncode({"idToken": idToken, "movieId": movieId}));
+        body: jsonEncode({
+          "userId": userId, 
+          "movieId": movieIdList
+          }));
 
     final data = jsonDecode(response.body);
-    print("data: $data");
+    print("dataService:$data");
+    return data;
+  }
+
+  removeFavoriteMovies(String userId, List movieIdList) async {
+    print("movie List : $movieIdList");
+    print("user id : $userId");
+    Uri url = Uri.parse(
+        "https://$apiKey.asia-southeast1.firebasedatabase.app/users.json");
+    var response = await http.post(url,
+        body: jsonEncode({
+          "userId": userId, 
+          "movieId": movieIdList
+          }));
+
+    final data = jsonDecode(response.body);
+    print("dataService:$data");
     return data;
   }
 }

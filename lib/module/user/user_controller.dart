@@ -12,14 +12,11 @@ class UserController {
   AuthController authController = Get.put(AuthController());
   final GetStorage storage = GetStorage();
 
-  String? acceptedEmail, username, acceptedPassword, idToken, newIdToken;
+  String? acceptedEmail, acceptedPassword, idToken, newIdToken;
   RxBool emailDuplication = false.obs;
   RxBool updateSuccess = false.obs;
   String acceptedProfilePicture = "";
-
-  void getUsernameFromAuth() {
-    username = authController.username;
-  }
+  String? username = AuthController().username;
 
   Future<void> updateUsername(String idToken, String username) async {
     try {
