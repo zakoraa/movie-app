@@ -35,21 +35,45 @@ class LoginController extends GetxController {
 
   Future<void> loginValidation(BuildContext context) async {
     if (email!.text.isEmpty && password!.text.isEmpty) {
-      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-          context, "You must fill out this form!");
+      isLoading.value = true;
+      await Future.delayed(const Duration(seconds: 2)).then((value) {
+        isLoading.value = false;
+        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+          context,
+          "You must fill out this form!",
+        );
+      });
     } else if (email!.text.length < 6) {
-      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-          context, "Email can't be less than 6 character");
+      isLoading.value = true;
+      await Future.delayed(const Duration(seconds: 2)).then((value) {
+        isLoading.value = false;
+        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+          context,
+          "Email can't be less than 6 character",
+        );
+      });
     } else if (password!.text.length < 6) {
-      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-          context, "Password can't be less than 6 character");
+      isLoading.value = true;
+      await Future.delayed(const Duration(seconds: 2)).then((value) {
+        isLoading.value = false;
+        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+          context,
+          "Password can't be less than 6 character",
+        );
+      });
     } else {
       if (email!.text.isNotEmpty && password!.text.isNotEmpty) {
         if (CheckForm.isValidEmail(email!.text)) {
           await login(context);
         } else {
-          ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-              context, "Incorrect email format. e.g. : user@example.com");
+          isLoading.value = true;
+          await Future.delayed(const Duration(seconds: 2)).then((value) {
+            isLoading.value = false;
+            ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+              context,
+              "Incorrect email format. e.g. : user@example.com",
+            );
+          });
         }
       }
     }

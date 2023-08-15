@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:movieapp/module/auth/auth_controller.dart';
 import 'package:movieapp/module/updateProfile/controller/update_profile_controller.dart';
 
-import '../../module/home/widgets/homeWidgets/detail_profile_picture.dart';
+import 'detail_profile_picture.dart';
 
 class ProfilePictureWidget extends StatelessWidget {
   const ProfilePictureWidget(

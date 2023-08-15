@@ -5,13 +5,13 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:movieapp/module/auth/auth_controller.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
+import 'package:movieapp/module/user/user_controller.dart';
 import 'package:movieapp/shared/utils/check_form.dart';
 import 'package:movieapp/shared/utils/scaffold_messenger.dart';
 
 class UpdateProfileController extends GetxController {
-  AuthController authController = Get.put(AuthController());
+  UserController userController = Get.put(UserController());
   HomeController homeController = Get.put(HomeController());
   TextEditingController? textEditingController = TextEditingController();
   File? selectedImageGallery;
@@ -31,17 +31,23 @@ class UpdateProfileController extends GetxController {
 
   Future<void> updateUsername(BuildContext context, idToken) async {
     if (textEditingController!.text == "") {
-      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-          context, "You must fill out this form!");
+      isLoading.value = true;
+      Future.delayed(const Duration(seconds: 2)).then((value) {
+        isLoading.value = false;
+        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+          context,
+          "You must fill out this form!",
+        );
+      });
     } else {
       isLoading.value = true;
-      if (authController.username != textEditingController!.text) {
-        await authController
+      if (userController.username != textEditingController!.text) {
+        await userController
             .updateUsername(idToken, textEditingController!.text)
             .then((value) {
-          if (authController.updateSuccess.value == true) {
+          if (userController.updateSuccess.value == true) {
             newUsername = textEditingController!.text;
-            newIdToken = authController.newIdToken;
+            newIdToken = userController.newIdToken;
             textEditingController!.text = "";
             ScaffoldMessengerUtils.showSuccessedFloatingSnackBar(
                 context, "Update Username success");
@@ -49,39 +55,59 @@ class UpdateProfileController extends GetxController {
             Get.forceAppUpdate();
           } else {
             textEditingController!.text = "";
-            ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-                context, "Your Update time has expired, please login again!");
-            isLoading.value = false;
+            isLoading.value = true;
+            Future.delayed(const Duration(seconds: 2)).then((value) {
+              isLoading.value = false;
+              ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+                context,
+                "Your Update time has expired, please login again!",
+              );
+            });
           }
         });
       } else {
-        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-            context, "Username is in use!");
-        isLoading.value = false;
+        isLoading.value = true;
+        await Future.delayed(const Duration(seconds: 2)).then((value) {
+          isLoading.value = false;
+          ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+            context,
+            "Username is in use!",
+          );
+        });
       }
     }
   }
 
   Future<void> updateEmail(BuildContext context, idToken) async {
     if (textEditingController!.text == "") {
-      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-          context, "You must fill out this form!");
+      isLoading.value = true;
+      await Future.delayed(const Duration(seconds: 2)).then((value) {
+        isLoading.value = false;
+        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+          context,
+          "You must fill out this form!",
+        );
+      });
     } else if (textEditingController!.text.isNotEmpty &&
         textEditingController!.text.length < 6) {
-      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-        context,
-        "Profile picture must be more than 6 characters!",
-      );
+      isLoading.value = true;
+      await Future.delayed(const Duration(seconds: 2)).then((value) {
+        isLoading.value = false;
+        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+          context,
+          "Profile picture must be more than 6 characters!",
+        );
+      });
     } else {
       isLoading.value = true;
       if (CheckForm.isValidEmail(textEditingController!.text)) {
-        if (authController.acceptedEmail != textEditingController!.text) {
-          await authController
+        if (userController.acceptedEmail != textEditingController!.text) {
+          await userController
               .updateEmail(idToken, textEditingController!.text)
               .then((value) {
-            if (authController.updateSuccess.value == true) {
+            if (userController.updateSuccess.value == true) {
               newEmail = textEditingController!.text;
-              newIdToken = authController.newIdToken;
+              newIdToken = userController.newIdToken;
               textEditingController!.text = "";
               ScaffoldMessengerUtils.showSuccessedFloatingSnackBar(
                   context, "Update email success");
@@ -89,43 +115,68 @@ class UpdateProfileController extends GetxController {
               Get.forceAppUpdate();
             } else {
               textEditingController!.text = "";
-              ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-                  context, "Your Update time has expired, please login again!");
-              isLoading.value = false;
+              isLoading.value = true;
+              Future.delayed(const Duration(seconds: 2)).then((value) {
+                isLoading.value = false;
+                ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+                  context,
+                  "Your Update time has expired, please login again!",
+                );
+              });
             }
           });
         } else {
-          ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-              context, "Email is in use!");
-          isLoading.value = false;
+          isLoading.value = true;
+          await Future.delayed(const Duration(seconds: 2)).then((value) {
+            isLoading.value = false;
+            ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+              context,
+              "Email is in use!",
+            );
+          });
         }
       } else {
-        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-            context, "Incorrect email format. e.g. : user@example.com");
-        isLoading.value = false;
+        isLoading.value = true;
+        await Future.delayed(const Duration(seconds: 2)).then((value) {
+          isLoading.value = false;
+          ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+            context,
+            "Incorrect email format. e.g. : user@example.com",
+          );
+        });
       }
     }
   }
 
   Future<void> updatePassword(BuildContext context, idToken) async {
     if (textEditingController!.text == "") {
-      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-          context, "You must fill out this form!");
+      isLoading.value = true;
+      await Future.delayed(const Duration(seconds: 2)).then((value) {
+        isLoading.value = false;
+        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+          context,
+          "You must fill out this form!",
+        );
+      });
     } else if (textEditingController!.text.isNotEmpty &&
         textEditingController!.text.length < 6) {
-      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-        context,
-        "Profile picture must be more than 6 characters!",
-      );
+      isLoading.value = true;
+      await Future.delayed(const Duration(seconds: 2)).then((value) {
+        isLoading.value = false;
+        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+          context,
+          "Profile picture must be more than 6 characters!",
+        );
+      });
     } else {
       isLoading.value = true;
-      if (authController.acceptedPassword != textEditingController!.text) {
-        await authController
+      if (userController.acceptedPassword != textEditingController!.text) {
+        await userController
             .updatePassword(idToken, textEditingController!.text)
             .then((value) {
-          if (authController.updateSuccess.value == true) {
+          if (userController.updateSuccess.value == true) {
             newPassword = textEditingController!.text;
-            newIdToken = authController.newIdToken;
+            newIdToken = userController.newIdToken;
             textEditingController!.text = "";
             ScaffoldMessengerUtils.showSuccessedFloatingSnackBar(
                 context, "Update Password success");
@@ -133,41 +184,61 @@ class UpdateProfileController extends GetxController {
             Get.forceAppUpdate();
           } else {
             textEditingController!.text = "";
-            ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-                context, "Your Update time has expired, please login again!");
-            isLoading.value = false;
+            isLoading.value = true;
+            Future.delayed(const Duration(seconds: 2)).then((value) {
+              isLoading.value = false;
+              ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+                context,
+                "Your Update time has expired, please login again!",
+              );
+            });
           }
         });
       } else {
-        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-            context, "Password is in use!");
-        isLoading.value = false;
+        isLoading.value = true;
+        await Future.delayed(const Duration(seconds: 2)).then((value) {
+          isLoading.value = false;
+          ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+            context,
+            "Password is in use!",
+          );
+        });
       }
     }
   }
 
   Future<void> updateProfilePictureWUrl(BuildContext context, idToken) async {
     if (textEditingController!.text == "") {
-      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-          context, "You must fill out this form!");
+      isLoading.value = true;
+      await Future.delayed(const Duration(seconds: 2)).then((value) {
+        isLoading.value = false;
+        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+          context,
+          "You must fill out this form!",
+        );
+      });
     } else if (textEditingController!.text.isNotEmpty &&
         textEditingController!.text.length < 10) {
-      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-        context,
-        "Profile picture must be more than 10 characters!",
-      );
+      isLoading.value = true;
+      await Future.delayed(const Duration(seconds: 2)).then((value) {
+        isLoading.value = false;
+        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+          context,
+          "Profile picture must be more than 10 characters!",
+        );
+      });
     } else if (CheckForm.isImageUrl(textEditingController)) {
       isLoading.value = true;
-      if (authController.acceptedProfilePicture !=
+      if (userController.acceptedProfilePicture !=
           textEditingController!.text) {
-        await authController
+        await userController
             .updateProfilePictureWUrl(idToken, textEditingController!.text)
             .then((value) {
-          print("ATUH UPDATE : ${authController.updateSuccess.value}");
-          if (authController.updateSuccess.value == true) {
+          print("ATUH UPDATE : ${userController.updateSuccess.value}");
+          if (userController.updateSuccess.value == true) {
             newProfilePictureUrl = textEditingController!.text;
             newProfilePictureGallery = null;
-            newIdToken = authController.newIdToken;
+            newIdToken = userController.newIdToken;
             textEditingController!.text = "";
             ScaffoldMessengerUtils.showSuccessedFloatingSnackBar(
                 context, "Update ProfilePicture Success");
@@ -175,20 +246,30 @@ class UpdateProfileController extends GetxController {
             Get.forceAppUpdate();
           } else {
             textEditingController!.text = "";
-            ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-                context, "Your Update time has expired, please login again!");
-            isLoading.value = false;
+            isLoading.value = true;
+            Future.delayed(const Duration(seconds: 2)).then((value) {
+              isLoading.value = false;
+              ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+                  context, "Your Update time has expired, please login again!");
+            });
           }
         });
       } else {
-        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-            context, "Profile Picture is in use!");
-        isLoading.value = false;
+        isLoading.value = true;
+        isLoading.value = true;
+        await Future.delayed(const Duration(seconds: 2)).then((value) {
+          isLoading.value = false;
+          ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+              context, "Profile Picture is in use!");
+        });
       }
     } else {
-      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-          context, "Url link format  must end with .jpg .jpeg or .png!");
-      isLoading.value = false;
+      isLoading.value = true;
+      await Future.delayed(const Duration(seconds: 2)).then((value) {
+        isLoading.value = false;
+        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+            context, "Url link format  must end with .jpg .jpeg or .png!");
+      });
     }
   }
 
@@ -212,9 +293,11 @@ class UpdateProfileController extends GetxController {
       newProfilePictureGallery = File(imageGallery.path);
       isSavedImage.value = true;
       if (showCheck.value == true) {
-        await authController
+        isLoading.value = true;
+        await userController
             .updateProfilePictureWGallery(idToken, newProfilePictureGallery!)
             .then((value) {
+          isLoading.value = false;
           ScaffoldMessengerUtils.showSuccessedFloatingSnackBar(
               context, "Update ProfilePicture Success");
           showCheck.value = false;

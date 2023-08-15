@@ -68,7 +68,8 @@ class DetailProfilePicture extends StatelessWidget {
                             'https://icon-library.com/images/default-profile-icon/default-profile-icon-6.jpg',
                             fit: BoxFit.cover,
                           ),
-                          !isImageGallery &&
+                          imageUrl != "" &&
+                                  !isImageGallery &&
                                   imageGallery == "" &&
                                   !isImageGalleryUpdated
                               ? Image.network(

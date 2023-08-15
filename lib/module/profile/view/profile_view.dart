@@ -74,9 +74,13 @@ class ProfileView extends StatelessWidget {
                                               .showCheck.value ==
                                           true
                                       ? GestureDetector(
-                                          onTap: () => updateProfileController
-                                              .updateProfilePictureWGallery(
-                                                  context, idToken),
+                                          onTap: updateProfileController
+                                                      .isLoading.value ==
+                                                  true
+                                              ? () {}
+                                              : () => updateProfileController
+                                                  .updateProfilePictureWGallery(
+                                                      context, idToken),
                                           child: const Icon(
                                             Icons.check,
                                             color: CustomColor.secondaryBgColor,

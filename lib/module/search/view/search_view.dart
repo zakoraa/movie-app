@@ -104,4 +104,3 @@ class SearchView extends StatelessWidget {
     ));
   }
 }
-// TUNGGU YA SAYA BELAJAR UNTUK SEARCH DULU !

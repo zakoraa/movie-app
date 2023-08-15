@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/auth/auth_controller.dart';
+import 'package:movieapp/shared/utils/check_form.dart';
 
 import '../../../shared/utils/scaffold_messenger.dart';
 
@@ -26,12 +27,7 @@ class SignupController extends GetxController {
     confirmPasswordIsVisible.value = !confirmPasswordIsVisible.value;
   }
 
-  bool isValidEmail(String email) {
-    final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-    return emailRegExp.hasMatch(email);
-  }
-
-  void signup(context) {
+  Future<void> signup(context) async {
     isLoading.value = true;
     authController
         .signup(username!.text, email!.text, password!.text)
@@ -43,7 +39,8 @@ class SignupController extends GetxController {
         email!.text = "";
         password!.text = "";
         confirmPassword!.text = "";
-        ScaffoldMessengerUtils.showSuccessedFloatingSnackBar(context, "Signup success");
+        ScaffoldMessengerUtils.showSuccessedFloatingSnackBar(
+            context, "Signup success");
       } else {
         isLoading.value = false;
         ScaffoldMessengerUtils.showFailedFloatingSnackBar(
@@ -52,32 +49,62 @@ class SignupController extends GetxController {
     });
   }
 
-  void signupValidation(BuildContext context) {
+  Future<void> signupValidation(BuildContext context) async {
     if (email!.text.isEmpty ||
         password!.text.isEmpty ||
         username!.text.isEmpty ||
         confirmPassword!.text.isEmpty) {
-      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-          context, "You must fill out this form!");
+      isLoading.value = true;
+      await Future.delayed(const Duration(seconds: 2)).then((value) {
+        isLoading.value = false;
+        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+          context,
+          "You must fill out this form!",
+        );
+      });
     } else if (email!.text.length < 6) {
-      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-          context, "Email can't be less than 6 character");
+      isLoading.value = true;
+      await Future.delayed(const Duration(seconds: 2)).then((value) {
+        isLoading.value = false;
+        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+          context,
+          "Email can't be less than 6 character",
+        );
+      });
     } else if (password!.text.length < 6) {
-      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-          context, "Password can't be less than 6 character");
+      isLoading.value = true;
+      await Future.delayed(const Duration(seconds: 2)).then((value) {
+        isLoading.value = false;
+        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+          context,
+          "Password can't be less than 6 character",
+        );
+      });
     } else if (password!.text != confirmPassword!.text) {
-      ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-          context, "Password and confirm password must be the same!");
+      isLoading.value = true;
+      await Future.delayed(const Duration(seconds: 2)).then((value) {
+        isLoading.value = false;
+        ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+          context,
+          "Password and Confirm Password must be the same!",
+        );
+      });
     } else {
       if (email!.text.isNotEmpty && password!.text.isNotEmpty) {
-        if (isValidEmail(email!.text)) {
+        if (CheckForm.isValidEmail(email!.text)) {
           print("username : ${username!.text}");
           print("email : ${email!.text}");
           print("password : ${password!.text}");
-          signup(context);
+          await signup(context);
         } else {
-          ScaffoldMessengerUtils.showFailedFloatingSnackBar(
-              context, "Incorrect email format. e.g. : user@example.com");
+          isLoading.value = true;
+          await Future.delayed(const Duration(seconds: 2)).then((value) {
+            isLoading.value = false;
+            ScaffoldMessengerUtils.showFailedFloatingSnackBar(
+              context,
+              "Incorrect email format. e.g. : user@example.com",
+            );
+          });
         }
       }
     }
