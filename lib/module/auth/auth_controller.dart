@@ -18,28 +18,28 @@ class AuthController extends GetxController {
   RxBool loginSuccess = false.obs;
   String acceptedProfilePicture = "";
 
-  @override
-  void onInit() {
-    super.onInit();
-    checkLoginStatus();
-  }
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  //   checkLoginStatus();
+  // }
 
-  Future<void> checkLoginStatus() async {
-    bool isLoggedIn = storage.read('isLoggedIn') ?? false;
+  // Future<void> checkLoginStatus() async {
+  //   bool isLoggedIn = storage.read('isLoggedIn') ?? false;
 
-    if (isLoggedIn) {
-      String? savedUsername = storage.read('username');
-      String? savedProfilePicture = storage.read('profilePicture');
+  //   if (isLoggedIn) {
+  //     String? savedUsername = storage.read('username');
+  //     String? savedProfilePicture = storage.read('profilePicture');
 
-      if (savedUsername != null) {
-        username = savedUsername;
-      }
+  //     if (savedUsername != null) {
+  //       username = savedUsername;
+  //     }
 
-      if (savedProfilePicture != null) {
-        acceptedProfilePicture = savedProfilePicture;
-      }
-    }
-  }
+  //     if (savedProfilePicture != null) {
+  //       acceptedProfilePicture = savedProfilePicture;
+  //     }
+  //   }
+  // }
 
   Future<void> login(String email, String password) async {
     try {
