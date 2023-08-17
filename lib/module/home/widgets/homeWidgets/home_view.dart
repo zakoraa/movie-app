@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
-import 'package:movieapp/module/auth/auth_controller.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
 import 'package:movieapp/module/home/controllers/movie_controller.dart';
 import 'package:movieapp/module/home/controllers/serial_movie_controller.dart';
@@ -39,7 +38,6 @@ class _HomeViewState extends State<HomeView> {
     MovieSerialController movieSerialController =
         Get.find<MovieSerialController>();
     HomeController homeController = Get.find<HomeController>();
-    AuthController authController = Get.put(AuthController());
     return Obx(() {
       homeController.sortedByYear(widget.listViewMovieList);
       return movieController.isLoading.value &&

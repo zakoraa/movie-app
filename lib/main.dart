@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movieapp/module/login/view/login_view.dart';
-import 'package:movieapp/module/search/view/search_view.dart';
 import 'package:movieapp/shared/theme/theme_data.dart';
 
 void main() async {

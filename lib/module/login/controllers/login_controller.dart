@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/auth/auth_controller.dart';
 import 'package:movieapp/main_page.dart';
+import 'package:movieapp/module/user/user_controller.dart';
 import 'package:movieapp/shared/utils/check_form.dart';
 import 'package:movieapp/shared/utils/scaffold_messenger.dart';
 
 class LoginController extends GetxController {
   AuthController authController = Get.put(AuthController());
+  UserController userController = Get.put(UserController());
   RxBool passwordIsVisible = true.obs;
   RxBool obscureText = false.obs;
   RxBool isLoading = false.obs;
@@ -21,6 +23,9 @@ class LoginController extends GetxController {
 
   Future<void> login(BuildContext context) async {
     isLoading.value = true;
+    // if (authController.loginSuccess.value == false) {
+    //   await userController.getUserDb();
+    // }
     await authController.login(email!.text, password!.text).then((value) {
       if (authController.loginSuccess.value == false) {
         isLoading.value = false;

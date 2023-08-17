@@ -17,6 +17,27 @@ class UserController {
   RxBool updateSuccess = false.obs;
   String acceptedProfilePicture = "";
   String? username = AuthController().username;
+  String? idUserDb, emailDb;
+
+  Future<void> addUserToDb(String email) async {
+    try {
+      var data = await userService.addUserToDb(email);
+      idUserDb = data["name"];
+      print("data : $idUserDb");
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future<void> getUserDb() async {
+    try {
+      var data = await userService.getUserDb();
+      emailDb = data["email"];
+      print("data email db : ${data["email"]}");
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
   Future<void> updateUsername(String idToken, String username) async {
     try {

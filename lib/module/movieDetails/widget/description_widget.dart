@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/module/auth/auth_controller.dart';
 import 'package:movieapp/module/movieDetails/controller/movie_details_controller.dart';
 import 'package:movieapp/shared/theme/colors.dart';
 
@@ -18,7 +17,6 @@ class Description extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AuthController authController = Get.put(AuthController());
     MovieDetailsController controller = Get.put(MovieDetailsController());
     return Container(
         width: Get.size.width,

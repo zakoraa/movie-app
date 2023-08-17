@@ -7,16 +7,13 @@ import 'package:http/http.dart' as http;
 
 class FavoriteMoviesServices {
   String? apiKey = dotenv.env['FAV_MOVIES_API_KEY'];
-  addFavoriteMovies(String userId, List movieIdList) async {
+  addFavoriteMovies(String email, List movieIdList) async {
     print("movie List : $movieIdList");
-    print("user id : $userId");
+    print("user email : $email");
     Uri url = Uri.parse(
-        "https://$apiKey.asia-southeast1.firebasedatabase.app/users.json");
-    var response = await http.post(url,
-        body: jsonEncode({
-          "userId": userId, 
-          "movieId": movieIdList
-          }));
+        "https://$apiKey.asia-southeast1.firebasedatabase.app/users/$email.json");
+    var response =
+        await http.patch(url, body: jsonEncode({"movieId": movieIdList}));
 
     final data = jsonDecode(response.body);
     print("dataService:$data");
@@ -29,10 +26,7 @@ class FavoriteMoviesServices {
     Uri url = Uri.parse(
         "https://$apiKey.asia-southeast1.firebasedatabase.app/users.json");
     var response = await http.post(url,
-        body: jsonEncode({
-          "userId": userId, 
-          "movieId": movieIdList
-          }));
+        body: jsonEncode({"userId": userId, "movieId": movieIdList}));
 
     final data = jsonDecode(response.body);
     print("dataService:$data");

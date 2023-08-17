@@ -17,6 +17,7 @@ class AuthController extends GetxController {
   RxBool emailDuplication = false.obs;
   RxBool loginSuccess = false.obs;
   String acceptedProfilePicture = "";
+  String? localIdSignUp, emailSignUp;
 
   // @override
   // void onInit() {
@@ -69,6 +70,8 @@ class AuthController extends GetxController {
       if (data.keys.toString() == '(error)') {
         emailDuplication.value = true;
       }
+      localIdSignUp = data["localId"];
+      emailSignUp = data["email"];
       print("data : ${data}");
     } catch (e) {
       print(e.toString());

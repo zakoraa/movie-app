@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
 
-class SearchController extends GetxController {
+class SearchViewController extends GetxController {
   HomeController homeController = Get.put(HomeController());
   TextEditingController? textEditingController = TextEditingController();
   List seacrhResult = [];

@@ -12,8 +12,6 @@ class SignupView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SignupController signupController = Get.put(SignupController());
-    TextEditingController? email;
-    TextEditingController? password;
     return FormLoginSignup(
         content: Positioned(
       bottom: 0,

@@ -11,7 +11,7 @@ class SearchView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SearchController controller = Get.put(SearchController());
+    SearchViewController controller = Get.put(SearchViewController());
     return Scaffold(
         body: SizedBox(
       height: Get.height,

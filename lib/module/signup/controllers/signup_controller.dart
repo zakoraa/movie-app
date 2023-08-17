@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/auth/auth_controller.dart';
+import 'package:movieapp/module/user/user_controller.dart';
 import 'package:movieapp/shared/utils/check_form.dart';
-
 import '../../../shared/utils/scaffold_messenger.dart';
 
 class SignupController extends GetxController {
@@ -19,6 +19,8 @@ class SignupController extends GetxController {
   TextEditingController? password = TextEditingController();
   TextEditingController? confirmPassword = TextEditingController();
 
+  UserController userController = Get.put(UserController());
+
   void visiblePass() {
     passwordIsVisible.value = !passwordIsVisible.value;
   }
@@ -29,6 +31,10 @@ class SignupController extends GetxController {
 
   Future<void> signup(context) async {
     isLoading.value = true;
+    // if (authController.emailDuplication.value == false) {
+    //   print("email txt : ${email!.text}");
+    //   await userController.addUserToDb(email!.text);
+    // }
     authController
         .signup(username!.text, email!.text, password!.text)
         .then((value) {
