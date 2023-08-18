@@ -17,7 +17,12 @@ class Description extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MovieDetailsController controller = Get.put(MovieDetailsController());
+    MovieDetailsController controller = Get.find<MovieDetailsController>();
+    if (movie.favorite == false) {
+      controller.isLiked.value = false;
+    } else {
+      controller.isLiked.value = true;
+    }
     return Container(
         width: Get.size.width,
         height: Get.size.height,
@@ -51,13 +56,11 @@ class Description extends StatelessWidget {
                           fontWeight: FontWeight.w500),
                     ),
                   ),
-                  Obx(() => GestureDetector(
-                      onTap: () async {
-                        controller.handleLike();
-                        // await controller.addFavoriteMovie(
-                        //     authController.userId!, movie.id);
+                  GestureDetector(
+                      onTap: () {
+                        controller.handleLike(movie);
                       },
-                      child: controller.isLiked.value
+                      child: Obx(() => controller.isLiked.value
                           ? const Icon(
                               Icons.favorite,
                               color: CustomColor.secondaryBgColor,
@@ -114,3 +117,5 @@ class Description extends StatelessWidget {
         ));
   }
 }
+
+// EHH BELUM REMOVENYA BELUM HEHE

@@ -31,10 +31,6 @@ class SignupController extends GetxController {
 
   Future<void> signup(context) async {
     isLoading.value = true;
-    // if (authController.emailDuplication.value == false) {
-    //   print("email txt : ${email!.text}");
-    //   await userController.addUserToDb(email!.text);
-    // }
     authController
         .signup(username!.text, email!.text, password!.text)
         .then((value) {

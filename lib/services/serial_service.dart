@@ -10,15 +10,13 @@ class GetMovieSerial {
   Future getData() async {
     try {
       Uri url = Uri.parse("https://api.themoviedb.org/3/trending/tv/day");
-      final response = await http.get(url, headers: {
-        'accept': 'application/json',
-        'Authorization':
-            '$apiKey'
-      });
+      final response = await http.get(url,
+          headers: {'accept': 'application/json', 'Authorization': '$apiKey'});
       Map data = jsonDecode(response.body);
       List serialMovieData = [];
 
       for (dynamic i in data['results']) {
+        i["favorite"] = false;
         serialMovieData.add(i);
       }
       if (serialMovieData.isNotEmpty) {

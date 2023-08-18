@@ -16,8 +16,8 @@ class GetMovie {
 
       Map data = jsonDecode(response.body);
       List movieData = [];
-
       for (dynamic i in data['results']) {
+        i["favorite"] = false;
         movieData.add(i);
       }
       if (movieData.isNotEmpty) {

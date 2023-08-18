@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movieapp/module/favoriteMovies/view/favorite_movies_view.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
 import 'package:movieapp/shared/theme/colors.dart';
 
@@ -38,6 +39,8 @@ class ContainerDrawer extends StatelessWidget {
                         idToken: idToken!));
                   } else if (e.key == "Logout") {
                     homeController.confirmLogout(context);
+                  } else {
+                    Get.to(() => const FavoriteMoviesView());
                   }
                 },
                 child: Container(

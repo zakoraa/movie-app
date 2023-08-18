@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movieapp/module/login/view/login_view.dart';
+import 'package:movieapp/module/movieDetails/controller/movie_details_controller.dart';
 import 'package:movieapp/shared/theme/theme_data.dart';
 
 void main() async {
@@ -20,6 +21,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MovieDetailsController movieDetailsController =
+        Get.put(MovieDetailsController());
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeDataCostum.themeData,

@@ -1,9 +1,10 @@
 import 'package:intl/intl.dart';
 
 class MovieSerial {
-  int? id;
-  String? title, poster, releaseDate, backdrop, overview;
-  dynamic rating;
+  final int? id;
+  final String? title, poster, releaseDate, backdrop, overview;
+  final dynamic rating;
+  bool favorite;
 
   MovieSerial({
     required this.id,
@@ -13,6 +14,7 @@ class MovieSerial {
     this.poster,
     this.backdrop,
     required this.overview,
+    required this.favorite,
   });
 
   factory MovieSerial.fromJson(Map<String, dynamic> json) {
@@ -25,11 +27,13 @@ class MovieSerial {
             "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png",
         backdrop: json["backdrop_path"] ??
             "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png",
-        overview: json["overview"]);
+        overview: json["overview"],
+        favorite: false);
   }
 
   static List<MovieSerial> movieSerialFromSnapshot(List snapshot) {
     return snapshot.map((data) {
+      data['favorite'] = false;
       return MovieSerial.fromJson(data);
     }).toList();
   }
