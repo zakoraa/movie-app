@@ -23,9 +23,6 @@ class LoginController extends GetxController {
 
   Future<void> login(BuildContext context) async {
     isLoading.value = true;
-    // if (authController.loginSuccess.value == false) {
-    //   await userController.getUserDb();
-    // }
     await authController.login(email!.text, password!.text).then((value) {
       if (authController.loginSuccess.value == false) {
         isLoading.value = false;
