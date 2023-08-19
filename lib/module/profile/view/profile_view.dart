@@ -67,7 +67,7 @@ class ProfileView extends StatelessWidget {
                                 .updateProfilePictureWGallery(context, idToken),
                         child: const Icon(
                           Icons.check,
-                          color: CustomColor.secondaryBgColor,
+                          color: Colors.white,
                           size: 30,
                         ),
                       )

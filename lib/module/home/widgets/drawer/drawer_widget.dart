@@ -52,10 +52,9 @@ class DrawerWidget extends StatelessWidget {
                           height: 10.0,
                         ),
                         Text(
-                          userController.username == null ||
-                                  userController.username! == ""
-                              ? authController.username!
-                              : userController.username!,
+                          updateProfileController.newUsername != null
+                              ? updateProfileController.newUsername!
+                              : authController.username!,
                           style: const TextStyle(
                               color: Colors.white, fontSize: 15),
                         )
@@ -69,18 +68,15 @@ class DrawerWidget extends StatelessWidget {
                 profilePicture: authController.acceptedProfilePicture == ""
                     ? 'https://icon-library.com/images/default-profile-icon/default-profile-icon-6.jpg'
                     : authController.acceptedProfilePicture,
-                username: authController.username == null ||
-                        authController.username == ""
-                    ? ""
-                    : authController.username!,
-                email: authController.acceptedEmail == null ||
-                        authController.acceptedEmail == ""
-                    ? ""
-                    : authController.acceptedEmail!,
-                password: authController.acceptedPassword == null ||
-                        authController.acceptedPassword == ""
-                    ? ""
-                    : authController.acceptedPassword!,
+                username: updateProfileController.newUsername != null
+                    ? updateProfileController.newUsername!
+                    : authController.username,
+                email: updateProfileController.newEmail != null
+                    ? updateProfileController.newEmail!
+                    : authController.acceptedEmail,
+                password: updateProfileController.newPassword != null
+                    ? updateProfileController.newPassword!
+                    : authController.acceptedPassword,
                 idToken: authController.idToken == null ||
                         authController.idToken == ""
                     ? ""
