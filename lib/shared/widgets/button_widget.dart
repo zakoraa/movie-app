@@ -31,7 +31,7 @@ class ButtonWidget extends StatelessWidget {
               width: width,
               height: height,
               decoration: BoxDecoration(
-                  color: const Color.fromARGB(176, 255, 193, 7),
+                  color: const Color.fromARGB(172, 252, 172, 34),
                   borderRadius: BorderRadius.circular(15)),
               child: Center(
                   child: Text(

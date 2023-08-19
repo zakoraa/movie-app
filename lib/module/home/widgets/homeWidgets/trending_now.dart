@@ -25,7 +25,10 @@ class TrendingNow extends StatelessWidget {
             children: [
               const Padding(
                 padding: EdgeInsets.only(left: 20, top: 5),
-                child: Text("Trending Now"),
+                child: Text(
+                  "Trending Now",
+                  style: TextStyle(fontSize: 16),
+                ),
               ),
               ListTileWidget(listMovie: trendingMovies)
             ],

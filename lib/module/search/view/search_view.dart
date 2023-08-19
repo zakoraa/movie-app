@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/module/search/controller/seacrh_controller.dart';
+import 'package:movieapp/module/search/controller/search_controller.dart';
 import 'package:movieapp/shared/widgets/app_bar_custom.dart';
 import 'package:movieapp/shared/widgets/list_tile_widget.dart';
 
@@ -23,13 +23,15 @@ class SearchView extends StatelessWidget {
               child: AppBarCustom(
                 onTap: () => Get.back(),
                 title: "Search",
+                fontSize: 16,
                 child: Padding(
                   padding: const EdgeInsets.only(top: 30, right: 20, left: 20),
                   child: Column(
                     children: [
                       Container(
+                        height: 50,
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 12.0,
+                          horizontal: 10.0,
                         ),
                         decoration: BoxDecoration(
                           color: const Color.fromARGB(46, 144, 143, 143),

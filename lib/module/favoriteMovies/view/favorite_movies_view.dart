@@ -23,6 +23,7 @@ class FavoriteMoviesView extends StatelessWidget {
             child: AppBarCustom(
               onTap: () => Get.back(),
               title: "Your Favorite Movies",
+              fontSize: 18,
               child: Padding(
                 padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
                 child: Column(
@@ -37,6 +38,7 @@ class FavoriteMoviesView extends StatelessWidget {
                               style: TextStyle(
                                   color: Colors.grey,
                                   fontFamily: "normal",
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w300),
                             ),
                           )

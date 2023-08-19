@@ -34,7 +34,10 @@ class ListViewWidget extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(text),
+                    Text(
+                      text,
+                      style: const TextStyle(fontSize: 16),
+                    ),
                     GestureDetector(
                       onTap: () => Get.to(
                           () => SeeAllView(

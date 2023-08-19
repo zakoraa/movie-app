@@ -23,14 +23,14 @@ class SelectType extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 20),
       child: SizedBox(
-        height: 40,
+        height: 35,
         width: Get.width,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) => Obx(() => GestureDetector(
                 onTap: () => homeController.selectIndex(index),
                 child: Container(
-                  height: 40,
+                  height: 35,
                   width: 75,
                   decoration: BoxDecoration(
                       color: (homeController.selectedIndex.value == index)
@@ -42,7 +42,7 @@ class SelectType extends StatelessWidget {
                     child: Text(
                       movieType[index],
                       style: const TextStyle(
-                          fontWeight: FontWeight.w200, fontSize: 12),
+                          fontWeight: FontWeight.w200, fontSize: 11),
                     ),
                   ),
                 ),

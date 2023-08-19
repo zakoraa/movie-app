@@ -75,7 +75,7 @@ class HeaderWidget extends StatelessWidget {
                     )
                   ],
                 ),
-                const ProfilePictureWidget(size: 65, tag: "Home")
+                const ProfilePictureWidget(size: 70, tag: "Home")
               ],
             )
           ],

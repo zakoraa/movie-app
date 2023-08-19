@@ -44,6 +44,7 @@ class UpdateProfileView extends StatelessWidget {
               controller.textEditingController!.clear();
             },
             title: "Update Your $textData",
+            fontSize: 18,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(

@@ -59,6 +59,7 @@ class ProfileView extends StatelessWidget {
                   updateProfileController.showCheck.value = false;
                 },
                 title: "Profile",
+                fontSize: 18,
                 checkIcon: updateProfileController.showCheck.value == true
                     ? GestureDetector(
                         onTap: updateProfileController.isLoading.value == true
@@ -127,7 +128,7 @@ class ProfileView extends StatelessWidget {
                                         idToken: idToken)),
                                     child: Container(
                                       margin: const EdgeInsets.only(bottom: 20),
-                                      height: 60,
+                                      height: 50,
                                       width: Get.width,
                                       decoration: BoxDecoration(
                                           color: const Color.fromARGB(
@@ -148,7 +149,7 @@ class ProfileView extends StatelessWidget {
                                                   Icon(
                                                     settingOptions.values
                                                         .elementAt(index),
-                                                    size: 25,
+                                                    size: 20,
                                                     color: Colors.grey,
                                                   ),
                                                   const SizedBox(
@@ -158,7 +159,7 @@ class ProfileView extends StatelessWidget {
                                                     settingOptions.keys
                                                         .elementAt(index),
                                                     style: const TextStyle(
-                                                        fontSize: 16,
+                                                        fontSize: 14,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                         color: Colors.grey,
@@ -177,13 +178,13 @@ class ProfileView extends StatelessWidget {
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     fontFamily: "normal",
-                                                    fontSize: 16),
+                                                    fontSize: 14),
                                               ),
                                             ),
                                             const Icon(
                                               Icons.keyboard_arrow_right,
                                               color: Colors.grey,
-                                              size: 40,
+                                              size: 35,
                                             ),
                                           ],
                                         ),

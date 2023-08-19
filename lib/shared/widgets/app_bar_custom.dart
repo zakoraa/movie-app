@@ -36,6 +36,7 @@ class AppBarCustom extends StatelessWidget {
                       onTap: onTap,
                       child: const Icon(
                         Icons.arrow_back,
+                        size: 30,
                       ),
                     ),
                   ),
