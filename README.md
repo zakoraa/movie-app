@@ -1,5 +1,5 @@
 # Movie App
-A movie app with tmdb API & firebase using Flutter using Flutter with Getx & MVC architecture
+A movie app with tmdb API & firebase using Flutter with Getx & MVC architecture
 
 # View Of Pages
 <img src= "https://github.com/zakoraa/movie-app/assets/129678009/c685a3a5-2319-46a8-bc87-82adf5300e0b"  height = "450" width = "200"/>
