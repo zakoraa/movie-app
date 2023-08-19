@@ -20,16 +20,13 @@ class FavoriteMoviesView extends StatelessWidget {
           child: ScaffoldBackgroundTemplate(
               child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
-            child: SafeArea(
+            child: AppBarCustom(
+              onTap: () => Get.back(),
+              title: "Your Favorite Movies",
               child: Padding(
-                padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
+                padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
                 child: Column(
                   children: [
-                    AppBarCustom(
-                        onTap: () => Get.back(), title: "Your Favorite Movies"),
-                    const SizedBox(
-                      height: 30.0,
-                    ),
                     movieDetailsController.favMovies.isNotEmpty
                         ? ListTileWidget(
                             listMovie: movieDetailsController.favMovies)
