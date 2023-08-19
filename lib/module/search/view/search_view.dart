@@ -71,6 +71,14 @@ class SearchView extends StatelessWidget {
                                   )),
                             ),
                           ),
+                          GestureDetector(
+                            onTap: () => controller.clearSearch(),
+                            child: const Icon(
+                              Icons.close,
+                              color: Colors.grey,
+                              size: 25,
+                            ),
+                          )
                         ],
                       ),
                     ),
@@ -79,7 +87,7 @@ class SearchView extends StatelessWidget {
                     ),
                     GetBuilder(
                       init: controller,
-                      builder: (_) => controller.seacrhResult.isEmpty
+                      builder: (controller) => controller.searchResult.isEmpty
                           ? const Padding(
                               padding: EdgeInsets.only(top: 20),
                               child: Text(
@@ -91,7 +99,7 @@ class SearchView extends StatelessWidget {
                                     fontWeight: FontWeight.w400),
                               ),
                             )
-                          : ListTileWidget(listMovie: controller.seacrhResult),
+                          : ListTileWidget(listMovie: controller.searchResult),
                     )
                   ],
                 ),
