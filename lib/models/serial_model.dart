@@ -33,7 +33,6 @@ class MovieSerial {
 
   static List<MovieSerial> movieSerialFromSnapshot(List snapshot) {
     return snapshot.map((data) {
-      data['favorite'] = false;
       return MovieSerial.fromJson(data);
     }).toList();
   }

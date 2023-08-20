@@ -14,15 +14,15 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(()=>_buildPage());
+    return Obx(() => _buildPage());
   }
 }
 
 Widget _buildPage() {
   HomeController homeController = Get.put(HomeController());
-   MovieController movieController = Get.put(MovieController());
-    MovieSerialController movieSerialController =
-        Get.put(MovieSerialController());
+  MovieController movieController = Get.put(MovieController());
+  MovieSerialController movieSerialController =
+      Get.put(MovieSerialController());
   switch (homeController.selectedIndex.value) {
     case 0:
       return const MovieHomeView();

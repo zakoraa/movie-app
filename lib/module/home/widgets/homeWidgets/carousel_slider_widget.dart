@@ -25,10 +25,10 @@ class CarouselSliderWidget extends StatelessWidget {
             options: CarouselOptions(
               height: 225,
               viewportFraction: 0.8,
-              autoPlay: true, //otomatis kegeser sendiri
+              autoPlay: true,
               autoPlayAnimationDuration:
-                  const Duration(seconds: 4), // lama animasi gesernya
-              autoPlayInterval: const Duration(seconds: 7), // waktu
+                  const Duration(seconds: 4),
+              autoPlayInterval: const Duration(seconds: 7),
               enlargeCenterPage: true,
             ),
             items: carouselListMovie.map((movie) {

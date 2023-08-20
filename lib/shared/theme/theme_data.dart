@@ -8,7 +8,7 @@ abstract class ThemeDataCostum {
       scaffoldBackgroundColor: CustomColor.primaryBgColor,
       iconTheme: const IconThemeData(color: Color(0xFFFFFFFF), size: 35),
       textTheme: TextTheme(
-        bodyText2: GoogleFonts.poppins(
+        bodyMedium: GoogleFonts.poppins(
           color: CustomColor.textColor,
           fontSize: 18,
           fontWeight: FontWeight.w600,

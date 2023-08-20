@@ -7,7 +7,7 @@ import '../../../shared/utils/image_url_api.dart';
 import '../widget/description_widget.dart';
 
 class MovieDetailsView extends StatelessWidget {
-  MovieDetailsView({super.key, required this.movie});
+  const MovieDetailsView({super.key, required this.movie});
   final movie;
 
   @override
@@ -21,8 +21,11 @@ class MovieDetailsView extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           child: Stack(
             children: [
-              Image.network(movie.poster == "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png"?
-                          "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png":"${ImageUrlApi.imageUrlOriginal}${movie.poster}",
+              Image.network(
+                  movie.poster ==
+                          "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png"
+                      ? "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png"
+                      : "${ImageUrlApi.imageUrlOriginal}${movie.poster}",
                   fit: BoxFit.cover,
                   height: imgHeight,
                   width: imgWidth,

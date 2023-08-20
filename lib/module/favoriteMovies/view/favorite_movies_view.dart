@@ -12,7 +12,6 @@ class FavoriteMoviesView extends StatelessWidget {
   Widget build(BuildContext context) {
     MovieDetailsController movieDetailsController =
         Get.find<MovieDetailsController>();
-    print(movieDetailsController.favMovies);
     return Scaffold(
       body: SizedBox(
           height: Get.height,

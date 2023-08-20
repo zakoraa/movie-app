@@ -86,6 +86,5 @@ class HomeController extends GetxController {
     movieSerialController.isLoading.value = true;
     await movieSerialController.getData();
     await movieController.getData();
-    print("NAME : ${authController.username}");
   }
 }

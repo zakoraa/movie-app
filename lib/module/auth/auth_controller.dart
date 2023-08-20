@@ -19,29 +19,6 @@ class AuthController extends GetxController {
   String acceptedProfilePicture = "";
   String? localIdSignUp, emailSignUp;
 
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  //   checkLoginStatus();
-  // }
-
-  // Future<void> checkLoginStatus() async {
-  //   bool isLoggedIn = storage.read('isLoggedIn') ?? false;
-
-  //   if (isLoggedIn) {
-  //     String? savedUsername = storage.read('username');
-  //     String? savedProfilePicture = storage.read('profilePicture');
-
-  //     if (savedUsername != null) {
-  //       username = savedUsername;
-  //     }
-
-  //     if (savedProfilePicture != null) {
-  //       acceptedProfilePicture = savedProfilePicture;
-  //     }
-  //   }
-  // }
-
   Future<void> login(String email, String password) async {
     try {
       var data = await authService.login(email, password);

@@ -32,9 +32,9 @@ class ProfileController extends GetxController {
               decoration: BoxDecoration(
                   color: const Color.fromARGB(46, 144, 143, 143),
                   borderRadius: BorderRadius.circular(5)),
-              child: Center(
+              child: const Center(
                   child: Row(
-                children: const [
+                children: [
                   SizedBox(
                     width: 10.0,
                   ),
@@ -71,9 +71,9 @@ class ProfileController extends GetxController {
               decoration: BoxDecoration(
                   color: const Color.fromARGB(46, 144, 143, 143),
                   borderRadius: BorderRadius.circular(5)),
-              child: Center(
+              child: const Center(
                   child: Row(
-                children: const [
+                children: [
                   SizedBox(
                     width: 10.0,
                   ),

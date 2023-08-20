@@ -22,10 +22,4 @@ class MovieSerialController extends GetxController {
     }
     isLoading.value = false;
   }
-
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  //   getData();
-  // }
 }
