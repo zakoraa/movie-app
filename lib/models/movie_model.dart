@@ -22,7 +22,9 @@ class Movie {
       id: json['id'],
       title: json['title'],
       rating: NumberFormat("#.#").format(json["vote_average"]),
-      releaseDate: json['release_date'].substring(0, 4),
+      releaseDate: json['release_date'] == ""
+          ? "2023"
+          : json['release_date'].substring(0, 4),
       poster: json['poster_path'] ??
           "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png",
       backdrop: json['backdrop_path'] ??

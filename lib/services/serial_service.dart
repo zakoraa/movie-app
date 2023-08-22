@@ -16,8 +16,12 @@ class GetMovieSerial {
       List serialMovieData = [];
 
       for (dynamic i in data['results']) {
-        i["favorite"] = false;
-        serialMovieData.add(i);
+        if (i["first_air_date"] == "") {
+          continue;
+        } else {
+          i["favorite"] = false;
+          serialMovieData.add(i);
+        }
       }
       if (serialMovieData.isNotEmpty) {
         print("Get Movie Serial Success");
