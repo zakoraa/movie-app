@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:movieapp/module/signup/controllers/signup_controller.dart';
 import 'package:movieapp/shared/widgets/button_widget.dart';
 import 'package:movieapp/shared/widgets/form_login_signup.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../shared/widgets/textfield_widget.dart';
 
@@ -13,15 +14,9 @@ class SignupView extends StatelessWidget {
   Widget build(BuildContext context) {
     SignupController signupController = Get.put(SignupController());
     return FormLoginSignup(
-        content: Positioned(
-      bottom: 0,
-      child: Container(
-        height: Get.size.height * 0.8,
+      content: SizedBox(
+        height: Get.size.height,
         width: Get.size.width,
-        decoration: const BoxDecoration(
-            color: Color.fromARGB(126, 71, 51, 21),
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(30), topRight: Radius.circular(30))),
         child: ListView(physics: const BouncingScrollPhysics(), children: [
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
@@ -29,8 +24,10 @@ class SignupView extends StatelessWidget {
               width: Get.size.width,
               child: Column(
                 children: [
+                  Lottie.asset("assets/lottie/login.json",
+                      repeat: true, fit: BoxFit.contain),
                   const Text(
-                    "WELCOME",
+                    "WELCOME 👋",
                     style: TextStyle(fontSize: 30),
                   ),
                   const SizedBox(
@@ -103,6 +100,6 @@ class SignupView extends StatelessWidget {
           ),
         ]),
       ),
-    ));
+    );
   }
 }

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movieapp/shared/theme/colors.dart';
 
 class FormLoginSignup extends StatelessWidget {
   const FormLoginSignup({super.key, required this.content});
@@ -11,45 +12,25 @@ class FormLoginSignup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
-        body: SizedBox(
+      // resizeToAvoidBottomInset: false,
+      backgroundColor: CustomColor.primaryBgColor,
+      body: SizedBox(
           height: Get.size.height,
           width: Get.size.width,
-          child: Stack(
-            children: [
-              Positioned(
-                  top: 0,
-                  right: 0,
-                  child: SizedBox(
-                      height: Get.size.height * 0.5,
-                      width: Get.size.width,
-                      child: ShaderMask(
-                        shaderCallback: (Rect bounds) {
-                          return const LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Colors.black,
-                              Colors.transparent,
-                            ],
-                            stops: [0.0, 1.0],
-                          ).createShader(bounds);
-                        },
-                        blendMode: BlendMode.dstIn,
-                        child: Image.network(
-                          "https://bacaterus.com/wp-content/uploads/2021/09/You-S1_.webp",
-                          fit: BoxFit.cover,
-                        ),
-                      ))),
-              Positioned(
-                  bottom: 0,
-                  child: Image.asset(
-                    "assets/Ellipse 1.png",
-                    scale: 2,
+          child: Stack(children: [  
+            Positioned(
+              right: -30,
+              child: Transform.rotate(
+                  transformHitTests: true,
+                  angle: 0.3,
+                  child: Container(
+                    color: Colors.black,
+                    height: Get.height + 600,
+                    width: Get.width * 0.75,
                   )),
-              content
-            ],
-          ),
-        ));
+            ),
+            content
+          ])),
+    );
   }
 }

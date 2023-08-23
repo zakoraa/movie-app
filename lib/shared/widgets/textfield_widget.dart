@@ -85,7 +85,7 @@ class TextFieldWidget extends StatelessWidget {
                             color: Colors.grey,
                           ))
                       : const SizedBox.shrink(),
-                  fillColor: const Color.fromARGB(67, 158, 158, 158),
+                  fillColor: const Color.fromARGB(255, 75, 75, 75),
                   filled: true,
                   contentPadding: EdgeInsets.symmetric(
                       horizontal: loginSignup == false ? 15 : 10,
