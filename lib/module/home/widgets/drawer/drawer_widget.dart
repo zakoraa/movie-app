@@ -27,7 +27,7 @@ class DrawerWidget extends StatelessWidget {
               top: 0,
               right: 0,
               child: Image.asset(
-                "assets/Ellipse 2.png",
+                "assets/images/Ellipse 2.png",
                 scale: 1,
               )),
           Column(

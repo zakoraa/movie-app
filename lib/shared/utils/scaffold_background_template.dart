@@ -17,13 +17,13 @@ class ScaffoldBackgroundTemplate extends StatelessWidget {
             top: 0,
             right: 0,
             child: Image.asset(
-              "assets/Ellipse 2.png",
+              "assets/images/Ellipse 2.png",
               scale: 1.5,
             )),
         Positioned(
             bottom: 0,
             child: Image.asset(
-              "assets/Ellipse 1.png",
+              "assets/images/Ellipse 1.png",
               scale: 1.5,
             )),
         child
