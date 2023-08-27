@@ -21,7 +21,8 @@ class ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() => Material(
-          color: Colors.transparent,
+          color: const Color.fromARGB(255, 252, 172, 34),
+          borderRadius: BorderRadius.circular(15),
           elevation: 0.0,
           child: InkWell(
             splashColor: Colors.transparent,
@@ -31,7 +32,7 @@ class ButtonWidget extends StatelessWidget {
               width: width,
               height: height,
               decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 252, 172, 34),
+                  color: Colors.transparent,
                   borderRadius: BorderRadius.circular(15)),
               child: Center(
                   child: Text(
