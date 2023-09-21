@@ -19,7 +19,7 @@ class SignupView extends StatelessWidget {
         width: Get.size.width,
         child: ListView(physics: const BouncingScrollPhysics(), children: [
           Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
+            padding: const EdgeInsets.only(left: 20, right: 20, bottom: 40),
             child: SizedBox(
               width: Get.size.width,
               child: Column(
@@ -90,9 +90,6 @@ class SignupView extends StatelessWidget {
                           fontFamily: "normal",
                           fontWeight: FontWeight.normal),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 40.0,
                   ),
                 ],
               ),
