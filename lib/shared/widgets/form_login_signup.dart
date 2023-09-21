@@ -12,7 +12,6 @@ class FormLoginSignup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
       backgroundColor: CustomColor.primaryBgColor,
       body: SizedBox(
           height: Get.size.height,

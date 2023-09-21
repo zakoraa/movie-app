@@ -22,7 +22,6 @@ class ProfilePictureWidget extends StatelessWidget {
     String? newImageUrl = updateProfileController.newProfilePictureUrl;
     File? newImageGallery = updateProfileController.newProfilePictureGallery;
 
-    // bool
     bool isImageAdded = authController.acceptedProfilePicture !=
         ""; // If account already have image
     bool isImageGalleryUpdated =
@@ -34,7 +33,6 @@ class ProfilePictureWidget extends StatelessWidget {
             ? authController.acceptedProfilePicture.split("'").length == 3
             : false; // if image is gallery
 
-    // dynamic
     dynamic imageGallery = isImageGalleryUpdated
         ? newImageGallery
         : isImageGallery == false
@@ -91,5 +89,3 @@ class ProfilePictureWidget extends StatelessWidget {
     );
   }
 }
-
-// YEEEE WALAUPUN CODE SAYA SANGAT TIDAK CLEAN!!!

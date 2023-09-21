@@ -10,35 +10,8 @@ import 'package:movieapp/module/auth/auth_controller.dart';
 
 class UserService {
   String? apiKey = dotenv.env['FIREBASE_API_KEY'];
-  String? favMoviesApiKey = dotenv.env['FAV_MOVIES_API_KEY'];
   AuthController authController = Get.put(AuthController());
   String? id;
-
-  addUserToDb(String email) async {
-    Uri url = Uri.parse(
-        "https://$favMoviesApiKey.asia-southeast1.firebasedatabase.app/user_fav_movies.json");
-
-    var response = await http.post(url,
-        body: jsonEncode({
-          "email": email,
-          "fav_movies": ["0"]
-        }));
-
-    final data = jsonDecode(response.body);
-    print("data : $data");
-    return data;
-  }
-
-  getUserDb() async {
-    Uri url = Uri.parse(
-        "https://$favMoviesApiKey.asia-southeast1.firebasedatabase.app/user_fav_movies.json");
-
-    var response = await http.get(url);
-
-    final data = jsonDecode(response.body);
-    print("data : $data");
-    return data;
-  }
 
   updateProfilePictureWUrl(String idToken, String profilePicture) async {
     Uri url = Uri.parse(
