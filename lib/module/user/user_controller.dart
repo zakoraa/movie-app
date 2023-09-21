@@ -3,14 +3,12 @@
 import 'dart:io';
 
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:movieapp/module/auth/auth_controller.dart';
 import 'package:movieapp/services/user_service.dart';
 
 class UserController {
   UserService userService = Get.put(UserService());
   AuthController authController = Get.put(AuthController());
-  final GetStorage storage = GetStorage();
 
   String? acceptedEmail, acceptedPassword, idToken, newIdToken;
   RxBool emailDuplication = false.obs;
@@ -18,26 +16,6 @@ class UserController {
   String acceptedProfilePicture = "";
   String? username = AuthController().username;
   String? idUserDb, emailDb;
-
-  Future<void> addUserToDb(String email) async {
-    try {
-      var data = await userService.addUserToDb(email);
-      idUserDb = data["name"];
-      print("data : $idUserDb");
-    } catch (e) {
-      print(e.toString());
-    }
-  }
-
-  Future<void> getUserDb() async {
-    try {
-      var data = await userService.getUserDb();
-      emailDb = data["email"];
-      print("data email db : ${data["email"]}");
-    } catch (e) {
-      print(e.toString());
-    }
-  }
 
   Future<void> updateUsername(String idToken, String username) async {
     try {
