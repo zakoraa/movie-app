@@ -13,6 +13,7 @@ class FormLoginSignup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomColor.primaryBgColor,
+      resizeToAvoidBottomInset: false,
       body: Container(
           height: Get.size.height,
           width: Get.size.width,
