@@ -75,16 +75,15 @@ class TextFieldWidget extends StatelessWidget {
                               ? selectedController.visiblePass()
                               : signupController.visibleConfirmPass(),
                           child: Icon(
-                            confirmPass == false
-                                ? (!selectedController.passwordIsVisible.value
-                                    ? Icons.visibility
-                                    : Icons.visibility_off)
-                                : (!signupController
-                                        .confirmPasswordIsVisible.value
-                                    ? Icons.visibility
-                                    : Icons.visibility_off),
-                            color: CustomColor.primaryBgColor,
-                          ))
+                              confirmPass == false
+                                  ? (!selectedController.passwordIsVisible.value
+                                      ? Icons.visibility
+                                      : Icons.visibility_off)
+                                  : (!signupController
+                                          .confirmPasswordIsVisible.value
+                                      ? Icons.visibility
+                                      : Icons.visibility_off),
+                              color: const Color.fromARGB(255, 194, 194, 194)))
                       : const SizedBox.shrink(),
                   fillColor: const Color.fromARGB(255, 69, 69, 69),
                   filled: true,
