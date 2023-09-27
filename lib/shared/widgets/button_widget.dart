@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movieapp/shared/theme/colors.dart';
 
 class ButtonWidget extends StatelessWidget {
   const ButtonWidget({
@@ -21,7 +22,7 @@ class ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() => Material(
-          color: const Color.fromARGB(255, 252, 172, 34),
+          color: CustomColor.buttonColor,
           borderRadius: BorderRadius.circular(15),
           elevation: 0.0,
           child: InkWell(
