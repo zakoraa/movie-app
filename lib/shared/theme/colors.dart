@@ -5,5 +5,5 @@ abstract class CustomColor {
   static const secondaryBgColor = Color(0xFFFFB039);
   static const textColor = Color(0xFFFFFFFF);
   static const buttonColor = Color.fromARGB(255, 252, 172, 34);
-  static const yellow = Color.fromARGB(255, 252, 234, 34);
+  static const yellow = Color.fromARGB(255, 250, 206, 45);
 }

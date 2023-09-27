@@ -110,7 +110,7 @@ class SignupView extends StatelessWidget {
                         child: const Text(
                           "Login",
                           style: TextStyle(
-                              fontSize: 11,
+                              fontSize: 12,
                               fontFamily: "normal",
                               color: CustomColor.yellow,
                               fontWeight: FontWeight.bold),
