@@ -13,23 +13,16 @@ class FormLoginSignup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomColor.primaryBgColor,
-      body: SizedBox(
+      body: Container(
           height: Get.size.height,
           width: Get.size.width,
-          child: Stack(children: [  
-            Positioned(
-              right: -30,
-              child: Transform.rotate(
-                  transformHitTests: true,
-                  angle: 0.3,
-                  child: Container(
-                    color: Colors.black,
-                    height: Get.height + 600,
-                    width: Get.width * 0.75,
-                  )),
-            ),
-            content
-          ])),
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(
+                    "assets/images/bg_login.jpg",
+                  ),
+                  fit: BoxFit.cover)),
+          child: content),
     );
   }
 }
