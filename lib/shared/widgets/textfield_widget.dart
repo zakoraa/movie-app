@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/module/signup/controllers/signup_controller.dart';
+import 'package:movieapp/shared/theme/colors.dart';
 
 class TextFieldWidget extends StatelessWidget {
   const TextFieldWidget(
@@ -82,10 +83,10 @@ class TextFieldWidget extends StatelessWidget {
                                         .confirmPasswordIsVisible.value
                                     ? Icons.visibility
                                     : Icons.visibility_off),
-                            color: Colors.grey,
+                            color: CustomColor.primaryBgColor,
                           ))
                       : const SizedBox.shrink(),
-                  fillColor: const Color.fromARGB(255, 75, 75, 75),
+                  fillColor: const Color.fromARGB(255, 69, 69, 69),
                   filled: true,
                   contentPadding: EdgeInsets.symmetric(
                       horizontal: loginSignup == false ? 15 : 10,
