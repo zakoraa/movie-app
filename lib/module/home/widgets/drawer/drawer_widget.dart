@@ -20,7 +20,7 @@ class DrawerWidget extends StatelessWidget {
     UpdateProfileController updateProfileController =
         Get.put(UpdateProfileController());
     return Drawer(
-      backgroundColor: const Color(0xFF2C2C2C),
+      backgroundColor: CustomColor.primaryBgColor,
       child: Stack(
         children: [
           Positioned(
