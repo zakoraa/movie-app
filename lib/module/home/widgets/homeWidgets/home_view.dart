@@ -15,7 +15,7 @@ import 'list_view_widget.dart';
 import 'select_type.dart';
 import 'trending_now.dart';
 
-class HomeView extends StatefulWidget {
+class HomeView extends StatelessWidget {
   const HomeView({
     super.key,
     required this.carouselMovieList,
@@ -28,18 +28,13 @@ class HomeView extends StatefulWidget {
   final trendingNowMovieList;
 
   @override
-  State<HomeView> createState() => _HomeViewState();
-}
-
-class _HomeViewState extends State<HomeView> {
-  @override
   Widget build(BuildContext context) {
     MovieController movieController = Get.find<MovieController>();
     MovieSerialController movieSerialController =
         Get.find<MovieSerialController>();
     HomeController homeController = Get.find<HomeController>();
     return Obx(() {
-      homeController.sortedByYear(widget.listViewMovieList);
+      homeController.sortedByYear(listViewMovieList);
       return movieController.isLoading.value &&
               movieSerialController.isLoading.value
           ? const Scaffold(
@@ -76,7 +71,7 @@ class _HomeViewState extends State<HomeView> {
                                       ),
                                       CarouselSliderWidget(
                                         carouselMovieList:
-                                            widget.carouselMovieList,
+                                            carouselMovieList,
                                       ),
                                       const SizedBox(
                                         height: 20.0,
@@ -84,14 +79,14 @@ class _HomeViewState extends State<HomeView> {
                                       ListViewWidget(
                                         text: "For You",
                                         listViewMovieList:
-                                            widget.listViewMovieList,
+                                            listViewMovieList,
                                       ),
                                       const SizedBox(
                                         height: 20.0,
                                       ),
                                       TrendingNow(
                                         trendingNowMovieList:
-                                            widget.trendingNowMovieList,
+                                            trendingNowMovieList,
                                       ),
                                       homeController.moviesIn2023.length <= 3
                                           ? const SizedBox.shrink()
