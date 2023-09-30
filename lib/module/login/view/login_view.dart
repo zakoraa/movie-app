@@ -75,9 +75,9 @@ class LoginView extends StatelessWidget {
                         height: 50.0,
                       ),
                       ButtonWidget(
-                          fontSize: 16,
-                          width: Get.width * 0.80,
-                          height: 48,
+                          fontSize: 14,
+                          width: Get.width * 0.75,
+                          height: 40,
                           text: "Login",
                           onTap: () => loginController.loginValidation(context),
                           controller: loginController),
