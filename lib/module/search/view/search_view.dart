@@ -13,103 +13,108 @@ class SearchView extends StatelessWidget {
   Widget build(BuildContext context) {
     SearchViewController controller = Get.put(SearchViewController());
     return Scaffold(
-      body: SizedBox(
-        height: Get.height,
-        child: ScaffoldBackgroundTemplate(
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
+        resizeToAvoidBottomInset: false,
+        body: SizedBox(
+          height: Get.height,
+          child: ScaffoldBackgroundTemplate(
             child: SizedBox(
+              height: Get.height,
               width: Get.width,
-              child: AppBarCustom(
-                onTap: () => Get.back(),
-                title: "Search",
-                fontSize: 16,
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 30, right: 20, left: 20),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 50,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10.0,
-                        ),
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(46, 144, 143, 143),
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(5.0),
-                          ),
-                          border: Border.all(
-                            width: 0.5,
-                            color: const Color.fromARGB(121, 189, 189, 189),
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.search,
-                                color: Colors.grey,
+              child: Stack(children: [
+                SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.only(top: 150, right: 20, left: 20),
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 50,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10.0,
+                            ),
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(46, 144, 143, 143),
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(5.0),
+                              ),
+                              border: Border.all(
+                                width: 0.5,
+                                color: const Color.fromARGB(121, 189, 189, 189),
                               ),
                             ),
-                            Expanded(
-                              child: TextFormField(
-                                controller: controller.textEditingController,
-                                onChanged: controller.onSearch,
-                                cursorColor: Colors.white,
-                                style: const TextStyle(
-                                  color: Colors.white,
+                            child: Row(
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Icon(
+                                    Icons.search,
+                                    color: Colors.grey,
+                                  ),
                                 ),
-                                initialValue: null,
-                                decoration: const InputDecoration.collapsed(
-                                    filled: true,
-                                    fillColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    hintText: "Search",
-                                    hintStyle: TextStyle(
-                                      color: Colors.grey,
-                                    )),
-                              ),
+                                Expanded(
+                                  child: TextFormField(
+                                    controller:
+                                        controller.textEditingController,
+                                    onChanged: controller.onSearch,
+                                    cursorColor: Colors.white,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                    initialValue: null,
+                                    decoration: const InputDecoration.collapsed(
+                                        filled: true,
+                                        fillColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        hintText: "Search",
+                                        hintStyle: TextStyle(
+                                          color: Colors.grey,
+                                        )),
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () => controller.clearSearch(),
+                                  child: const Icon(
+                                    Icons.close,
+                                    color: Colors.grey,
+                                    size: 25,
+                                  ),
+                                )
+                              ],
                             ),
-                            GestureDetector(
-                              onTap: () => controller.clearSearch(),
-                              child: const Icon(
-                                Icons.close,
-                                color: Colors.grey,
-                                size: 25,
-                              ),
-                            )
-                          ],
-                        ),
+                          ),
+                          const SizedBox(
+                            height: 30.0,
+                          ),
+                          GetBuilder(
+                            init: controller,
+                            builder: (controller) =>
+                                controller.searchResult.isEmpty
+                                    ? const Padding(
+                                        padding: EdgeInsets.only(top: 20),
+                                        child: Text(
+                                          "No Result",
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 15,
+                                              fontFamily: "normal",
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      )
+                                    : ListTileWidget(
+                                        listMovie: controller.searchResult),
+                          )
+                        ],
                       ),
-                      const SizedBox(
-                        height: 30.0,
-                      ),
-                      GetBuilder(
-                        init: controller,
-                        builder: (controller) => controller.searchResult.isEmpty
-                            ? const Padding(
-                                padding: EdgeInsets.only(top: 20),
-                                child: Text(
-                                  "No Result",
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 15,
-                                      fontFamily: "normal",
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              )
-                            : ListTileWidget(
-                                listMovie: controller.searchResult),
-                      )
-                    ],
-                  ),
+                    )),
+                AppBarCustom(
+                  onTap: () => Get.back(),
+                  title: "Search",
+                  fontSize: 18,
                 ),
-              ),
+              ]),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

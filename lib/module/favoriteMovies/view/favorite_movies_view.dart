@@ -17,14 +17,11 @@ class FavoriteMoviesView extends StatelessWidget {
           height: Get.height,
           width: Get.width,
           child: ScaffoldBackgroundTemplate(
-              child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: AppBarCustom(
-              onTap: () => Get.back(),
-              title: "Your Favorite Movies",
-              fontSize: 18,
+              child: Stack(children: [
+            SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Padding(
-                padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
+                padding: const EdgeInsets.only(top: 150, left: 20, right: 20),
                 child: Column(
                   children: [
                     movieDetailsController.favMovies.isNotEmpty
@@ -45,7 +42,12 @@ class FavoriteMoviesView extends StatelessWidget {
                 ),
               ),
             ),
-          ))),
+            AppBarCustom(
+              onTap: () => Get.back(),
+              title: "Your Favorite Movies",
+              fontSize: 18,
+            )
+          ]))),
     );
   }
 }
