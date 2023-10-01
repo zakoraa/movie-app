@@ -17,37 +17,43 @@ class FavoriteMoviesView extends StatelessWidget {
           height: Get.height,
           width: Get.width,
           child: ScaffoldBackgroundTemplate(
-              child: Stack(children: [
-            SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 150, left: 20, right: 20),
-                child: Column(
-                  children: [
-                    movieDetailsController.favMovies.isNotEmpty
-                        ? ListTileWidget(
-                            listMovie: movieDetailsController.favMovies)
-                        : const Padding(
-                            padding: EdgeInsets.only(top: 10),
-                            child: Text(
-                              "No Movies",
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontFamily: "normal",
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w300),
-                            ),
-                          )
-                  ],
+              child: SizedBox(
+                height: Get.height,
+                width: Get.width,
+                child: Stack(children: [
+                          SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 150, left: 20, right: 20),
+                  child: Column(
+                    children: [
+                      movieDetailsController.favMovies.isNotEmpty
+                          ? ListTileWidget(
+                              listMovie: movieDetailsController.favMovies)
+                          : const Padding(
+                              padding: EdgeInsets.only(top: 10),
+                              child: Center(
+                                child: Text(
+                                  "No Movies",
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontFamily: "normal",
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w300),
+                                ),
+                              ),
+                            )
+                    ],
+                  ),
                 ),
-              ),
-            ),
-            AppBarCustom(
-              onTap: () => Get.back(),
-              title: "Your Favorite Movies",
-              fontSize: 18,
-            )
-          ]))),
+                          ),
+                          AppBarCustom(
+                onTap: () => Get.back(),
+                title: "Your Favorite Movies",
+                fontSize: 18,
+                          )
+                        ]),
+              ))),
     );
   }
 }
