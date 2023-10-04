@@ -47,6 +47,7 @@ dependencies:
   flutter_dotenv: ^5.1.0
   image_picker: ^1.0.2
   lottie: ^2.6.0
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
