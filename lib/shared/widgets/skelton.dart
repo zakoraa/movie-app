@@ -12,7 +12,7 @@ class SkeltonWidget extends StatelessWidget {
       width: width,
       decoration: BoxDecoration(
         color: Colors.black,
-        borderRadius: BorderRadius.circular(15)
+        borderRadius: BorderRadius.circular(20)
       ),
     );
   }
