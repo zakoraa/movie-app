@@ -6,7 +6,7 @@ import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:movieapp/module/home/controllers/home_controller.dart';
 import 'package:movieapp/module/home/controllers/movie_controller.dart';
 import 'package:movieapp/module/home/controllers/serial_movie_controller.dart';
-import 'package:movieapp/shared/utils/loading.dart';
+import 'package:movieapp/shared/utils/loading_shimmer.dart';
 import 'package:movieapp/shared/utils/scaffold_background_template.dart';
 import 'carousel_slider_widget.dart';
 import '../drawer/drawer_widget.dart';
@@ -38,7 +38,7 @@ class HomeView extends StatelessWidget {
       return movieController.isLoading.value &&
               movieSerialController.isLoading.value
           ? const Scaffold(
-              body: ScaffoldBackgroundTemplate(child: LoadingView()))
+              body: ScaffoldBackgroundTemplate(child: LoadingShimmer()))
           : Scaffold(
               drawer: const DrawerWidget(),
               body: SizedBox(
