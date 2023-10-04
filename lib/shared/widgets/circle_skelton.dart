@@ -10,10 +10,8 @@ class CircleSkeltonWidget extends StatelessWidget {
     return Container(
       height: size,
       width: size,
-      decoration: BoxDecoration(
-        color: Colors.black,
-        borderRadius: BorderRadius.circular(size)
-      ),
+      decoration:
+          const BoxDecoration(color: Colors.black, shape: BoxShape.circle),
     );
   }
 }
