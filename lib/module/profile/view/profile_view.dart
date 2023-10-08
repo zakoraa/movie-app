@@ -51,6 +51,7 @@ class ProfileView extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 20, left: 20, top: 140),
               child: ListView(
+                physics: const NeverScrollableScrollPhysics(),
                 children: [
                   Column(
                     children: [
@@ -91,10 +92,10 @@ class ProfileView extends StatelessWidget {
                                         profilePicture: profilePicture,
                                         email: email,
                                         username: username,
-                                        textData:
-                                            settingOptions.keys.elementAt(index),
-                                        iconData:
-                                            settingOptions.values.elementAt(index),
+                                        textData: settingOptions.keys
+                                            .elementAt(index),
+                                        iconData: settingOptions.values
+                                            .elementAt(index),
                                         userInfo: userInfo[index],
                                         password: password,
                                         idToken: idToken)),
@@ -105,9 +106,11 @@ class ProfileView extends StatelessWidget {
                                       decoration: BoxDecoration(
                                           color: const Color.fromARGB(
                                               110, 113, 113, 113),
-                                          borderRadius: BorderRadius.circular(5)),
+                                          borderRadius:
+                                              BorderRadius.circular(5)),
                                       child: Padding(
-                                        padding: const EdgeInsets.only(left: 20),
+                                        padding:
+                                            const EdgeInsets.only(left: 20),
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
@@ -130,7 +133,8 @@ class ProfileView extends StatelessWidget {
                                                         .elementAt(index),
                                                     style: const TextStyle(
                                                         fontSize: 14,
-                                                        fontWeight: FontWeight.w500,
+                                                        fontWeight:
+                                                            FontWeight.w500,
                                                         color: Colors.grey,
                                                         fontFamily: "normal"),
                                                   ),
@@ -144,7 +148,8 @@ class ProfileView extends StatelessWidget {
                                                 style: const TextStyle(
                                                     color: Colors.grey,
                                                     fontWeight: FontWeight.w400,
-                                                    overflow: TextOverflow.ellipsis,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
                                                     fontFamily: "normal",
                                                     fontSize: 14),
                                               ),
